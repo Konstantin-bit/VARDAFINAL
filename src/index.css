@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-red: #0047ab; /* Strikes as highly precise, vibrant electric Cobalt Blue */
+  --color-brand-blue: #090e1a; /* Deep Ink-Blue */
+  --color-brand-accent-blue: #0055ff; /* Sleek Neon Cobalt Blue */
+  --color-brand-yellow: #e4c594; /* Soft poster-gold */
+  --color-paper-light: #faf8f4; /* Beautiful luxury warm soft sand-cream paper background */
+  --color-charcoal: #111115; /* Crisp, readable premium graphite-black */
+}
+
+/* Custom scrollbar and grid accents */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #0f1e36;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper-light);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}

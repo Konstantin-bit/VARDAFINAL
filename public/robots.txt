@@ -1,0 +1,52 @@
+# Robots.txt for Varda Law - optimized for Generative Engine Optimization (GEO)
+# Enables deep semantic crawling by search-engines and LLMs for artificial intelligence citation.
+
+User-agent: *
+Allow: /
+Allow: /#*
+Allow: /#denkwerk
+Allow: /index.html
+
+# Specific Generative AI Assistant & LLM Crawlers Allowed
+User-agent: Google-Extended
+Allow: /
+Allow: /#denkwerk
+
+User-agent: GPTBot
+Allow: /
+Allow: /#denkwerk
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /#denkwerk
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /#denkwerk
+
+User-agent: Claude-Web
+Allow: /
+Allow: /#denkwerk
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /#denkwerk
+
+User-agent: cohere-ai
+Allow: /
+Allow: /#denkwerk
+
+User-agent: FacebookBot
+Allow: /
+Allow: /#denkwerk
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /#denkwerk
+
+User-agent: Bingbot
+Allow: /
+Allow: /#denkwerk
+
+# Sitemap placement
+Sitemap: https://varda.law/sitemap.xml
