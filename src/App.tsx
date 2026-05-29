@@ -522,28 +522,35 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 bg-[#060912] text-paper-light flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#1B2A3E] text-[#FAF8F5] flex flex-col overflow-y-auto"
           >
-            {/* Elegant micro-grid & abstract strategic legal blueprint overlay in background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-[0.035] transition-opacity duration-1000 z-0">
+            {/* Elegant micro-grid & abstract strategic legal blueprint overlay in background + Fine Archival Paper Grain Filter */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-[0.05] transition-opacity duration-1000 z-0">
               <svg width="100%" height="100%" className="absolute inset-0" xmlns="http://www.w3.org/2000/svg">
                 <defs>
+                  <filter id="varda-paper-grain">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" />
+                  </filter>
                   <pattern id="menu-grid-arch" width="60" height="60" patternUnits="userSpaceOnUse">
-                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" strokeWidth="0.5" />
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FAF8F5" strokeWidth="0.4" strokeOpacity="0.4" />
                   </pattern>
                 </defs>
+                {/* Apply Tactile Paper Grain Noise */}
+                <rect width="100%" height="100%" filter="url(#varda-paper-grain)" />
+                {/* Blueprint Elements styled in matching Ivory hue */}
                 <rect width="100%" height="100%" fill="url(#menu-grid-arch)" />
-                <circle cx="75%" cy="45%" r="280" className="stroke-white stroke-[0.75] fill-none" strokeDasharray="4 8" />
-                <circle cx="75%" cy="45%" r="180" className="stroke-white stroke-[0.5] fill-none" />
-                <circle cx="75%" cy="45%" r="80" className="stroke-white stroke-[0.75] fill-none" />
-                <path d="M 120 220 L 420 220 L 520 320 L 920 320" className="stroke-white stroke-[0.75] fill-none" strokeDasharray="3 3"/>
-                <path d="M 320 120 L 320 570" className="stroke-white stroke-[0.5] fill-none"/>
-                <path d="M 520 270 L 520 720" className="stroke-white stroke-[0.5] fill-none"/>
-                <text x="140" y="200" fill="#ffffff" className="font-mono text-[9px] tracking-[0.2em] opacity-40">STRATEGIC CAPITAL STRUCTURE LAYER_A</text>
-                <text x="540" y="300" fill="#ffffff" className="font-mono text-[9px] tracking-[0.2em] opacity-40">CORPORATE ENTITY REORGANIZATION PROTOCOL : V.L_GEN_04</text>
-                <text x="740" y="405" fill="#ffffff" className="font-mono text-[9px] tracking-[0.2em] opacity-40">MUC_HQ / 48.1351 N | 11.5820 E</text>
-                <path d="M 30 30 L 60 30 M 30 30 L 30 60" className="stroke-white stroke-[1.5] fill-none" />
-                <path d="M 97% 30 L 94% 30 M 97% 30 L 97% 60" className="stroke-white stroke-[1.5] fill-none" />
+                <circle cx="75%" cy="45%" r="280" stroke="#FAF8F5" strokeWidth="0.75" fill="none" strokeDasharray="4 8" strokeOpacity="0.3" />
+                <circle cx="75%" cy="45%" r="180" stroke="#FAF8F5" strokeWidth="0.5" fill="none" strokeOpacity="0.2" />
+                <circle cx="75%" cy="45%" r="80" stroke="#FAF8F5" strokeWidth="0.75" fill="none" strokeOpacity="0.4" />
+                <path d="M 120 220 L 420 220 L 520 320 L 920 320" stroke="#FAF8F5" strokeWidth="0.75" fill="none" strokeDasharray="3 3" strokeOpacity="0.3" />
+                <path d="M 320 120 L 320 570" stroke="#FAF8F5" strokeWidth="0.5" fill="none" strokeOpacity="0.2" />
+                <path d="M 520 270 L 520 720" stroke="#FAF8F5" strokeWidth="0.5" fill="none" strokeOpacity="0.2" />
+                <text x="140" y="200" fill="#FAF8F5" fillOpacity="0.3" className="font-mono text-[9px] tracking-[0.2em]">STRATEGIC CAPITAL STRUCTURE LAYER_A</text>
+                <text x="540" y="300" fill="#FAF8F5" fillOpacity="0.3" className="font-mono text-[9px] tracking-[0.2em]">CORPORATE ENTITY REORGANIZATION PROTOCOL : V.L_GEN_04</text>
+                <text x="740" y="405" fill="#FAF8F5" fillOpacity="0.3" className="font-mono text-[9px] tracking-[0.2em]">MUC_HQ / 48.1351 N | 11.5820 E</text>
+                <path d="M 30 30 L 60 30 M 30 30 L 30 60" stroke="#FAF8F5" strokeWidth="1.5" fill="none" strokeOpacity="0.5" />
+                <path d="M 97% 30 L 94% 30 M 97% 30 L 97% 60" stroke="#FAF8F5" strokeWidth="1.5" fill="none" strokeOpacity="0.5" />
               </svg>
             </div>
 
@@ -551,20 +558,20 @@ export default function App() {
             <div className="mx-auto w-full max-w-7xl px-6 py-12 md:px-12 flex-1 flex flex-col justify-between relative z-10">
               
               {/* Header inside the dropdown */}
-              <div className="flex justify-between items-center pb-8 border-b border-white/10">
-                <a href="#home" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 font-display text-lg font-bold tracking-widest text-[#FAF8F4]/95">
+              <div className="flex justify-between items-center pb-8 border-b border-[#FAF8F5]/10">
+                <a href="#home" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 font-display text-lg font-bold tracking-widest text-[#FAF8F5]/95">
                   <span>VARDA</span>
                   <span className="text-brand-red font-sans text-xl font-black">•</span>
-                  <span className="font-serif italic font-normal tracking-normal text-base text-paper-light/85 text-white/80">Legal</span>
+                  <span className="font-serif italic font-normal tracking-normal text-base text-[#FAF8F5]/80">Legal</span>
                 </a>
 
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="group inline-flex items-center space-x-3 text-white/50 hover:text-brand-yellow font-mono text-xs uppercase tracking-widest cursor-pointer transition-all duration-300"
+                  className="group inline-flex items-center space-x-3 text-[#FAF8F5]/50 hover:text-brand-yellow font-mono text-xs uppercase tracking-widest cursor-pointer transition-all duration-300"
                 >
                   <span className="font-mono font-medium">{lang === "DE" ? "SCHLIESSEN" : "CLOSE"}</span>
-                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:border-brand-yellow transition-all duration-300">
-                    <X className="h-3.5 w-3.5 text-white/70 group-hover:text-brand-yellow transition-colors duration-300" />
+                  <div className="w-8 h-8 rounded-full border border-[#FAF8F5]/20 flex items-center justify-center bg-[#FAF8F5]/5 group-hover:border-brand-yellow transition-all duration-300">
+                    <X className="h-3.5 w-3.5 text-[#FAF8F5]/70 group-hover:text-brand-yellow transition-colors duration-300" />
                   </div>
                 </button>
               </div>
@@ -573,37 +580,37 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 py-12 md:py-16 flex-1 items-center">
                 
                 {/* Left Column: Premium Bureau Directory Archive Index */}
-                <div className="lg:col-span-4 lg:border-r border-white/10 lg:pr-12 flex flex-col justify-between h-auto lg:h-[480px]">
+                <div className="lg:col-span-4 lg:border-r border-[#FAF8F5]/10 lg:pr-12 flex flex-col justify-between h-auto lg:h-[480px]">
                   <div className="space-y-6">
                     <div className="space-y-2">
                       <div className="font-mono text-[9px] tracking-widest text-brand-yellow uppercase">[ INTEGRATED COUNSEL ]</div>
-                      <h4 className="font-serif text-2xl font-light text-white tracking-tight leading-snug">
+                      <h4 className="font-serif text-2xl font-light text-[#FAF8F5] tracking-tight leading-snug">
                         {lang === "DE" ? "Präzision & Diskrete Kompetenz." : "Precision & Pure Discretion."}
                       </h4>
                     </div>
-                    <p className="text-white/60 font-sans text-xs md:text-sm leading-relaxed max-w-sm">
+                    <p className="text-[#FAF8F5]/70 font-sans text-xs md:text-sm leading-relaxed max-w-sm">
                       {lang === "DE" 
-                        ? "Varda Legal steht für die absolute Synthese von intellektuellem Anspruch, unternehmerischem Pragmatismus und zeitloser Unabhängigkeit auf der Ebene führender europäischer Sozietäten."
-                        : "Varda Legal stands for the ultimate synthesis of intellectual rigour, entrepreneurial pragmatism, and timeless independence at the level of premier European boutique firms."}
+                        ? "Varda Legal steht für die absolute Synthese von intellektuellem Anspruch, unternehmerischem Pragmatismus und zeitloser Unabhängigkeit."
+                        : "Varda Legal stands for the ultimate synthesis of intellectual rigour, entrepreneurial pragmatism, and timeless independence."}
                     </p>
                   </div>
 
-                  <div className="space-y-4 pt-8 border-t border-white/5 font-mono text-[9px] text-white/40 uppercase tracking-widest mt-8 lg:mt-0">
+                  <div className="space-y-4 pt-8 border-t border-[#FAF8F5]/5 font-mono text-[9px] text-[#FAF8F5]/40 uppercase tracking-widest mt-8 lg:mt-0">
                     <div className="flex justify-between py-1">
-                      <span className="text-white/20">[ GRÜNDER / PARTNER ]</span>
-                      <span className="text-white/75 text-right font-medium">Dr. Konstantin Filbinger</span>
+                      <span className="text-[#FAF8F5]/20">[ GRÜNDER / PARTNER ]</span>
+                      <span className="text-[#FAF8F5]/85 text-right font-medium">Dr. Konstantin Filbinger</span>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-white/20">[ HAUPTSITZ / HQ ]</span>
-                      <span className="text-white/75 text-right font-medium">München • Germany</span>
+                      <span className="text-[#FAF8F5]/20">[ HAUPTSITZ / HQ ]</span>
+                      <span className="text-[#FAF8F5]/85 text-right font-medium">München • Germany</span>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-white/20">[ SPEZIALISIERUNG ]</span>
-                      <span className="text-white/75 text-right font-medium">M&A • Tech • Corporate</span>
+                      <span className="text-[#FAF8F5]/20">[ SPEZIALISIERUNG ]</span>
+                      <span className="text-[#FAF8F5]/85 text-right font-medium">M&A • Tech • Corporate</span>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-white/20">[ BERATUNGSSTIL ]</span>
-                      <span className="text-white/75 text-right font-medium">Radikal Funktional</span>
+                      <span className="text-[#FAF8F5]/20">[ BERATUNGSSTIL ]</span>
+                      <span className="text-[#FAF8F5]/85 text-right font-medium">Radikal Funktional</span>
                     </div>
                   </div>
                 </div>
@@ -665,7 +672,7 @@ export default function App() {
                       <motion.div 
                         key={idx}
                         whileHover={{ x: 10 }}
-                        className="border-b border-white/5 pb-2.5 group transition-all duration-300"
+                        className="border-b border-[#FAF8F5]/5 pb-2.5 group transition-all duration-300"
                       >
                         <a
                           href={menuItem.target}
@@ -673,18 +680,18 @@ export default function App() {
                           className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-1"
                         >
                           <div className="flex items-center space-x-4">
-                            <span className="font-mono text-[9px] text-brand-yellow font-semibold tracking-wider bg-white/5 px-2 py-0.5 rounded-sm select-none border border-white/10">
+                            <span className="font-mono text-[9px] text-brand-yellow font-semibold tracking-wider bg-[#FAF8F5]/5 px-2 py-0.5 rounded-sm select-none border border-[#FAF8F5]/10">
                               {menuItem.sec}
                             </span>
-                            <span className="font-serif italic text-2xl sm:text-3xl md:text-3.5xl tracking-tight text-white/95 group-hover:text-brand-yellow transition-colors duration-300">
+                            <span className="font-serif italic text-2xl sm:text-3xl md:text-3.5xl tracking-tight text-[#FAF8F5]/95 group-hover:text-brand-yellow transition-colors duration-300">
                               {menuItem.label}
                             </span>
                           </div>
                           <div className="flex flex-col items-start sm:items-end pt-1 sm:pt-0">
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand-yellow/65 group-hover:text-white font-bold transition-colors">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand-yellow/65 group-hover:text-[#FAF8F5] font-bold transition-colors">
                               {menuItem.subtitle}
                             </span>
-                            <span className="text-[10px] text-white/40 font-serif italic mt-0.5 group-hover:text-white/60 transition-colors hidden sm:block">
+                            <span className="text-[10px] text-[#FAF8F5]/40 font-serif italic mt-0.5 group-hover:text-[#FAF8F5]/60 transition-colors hidden sm:block">
                               {menuItem.desc}
                             </span>
                           </div>
@@ -697,19 +704,19 @@ export default function App() {
               </div>
 
               {/* Bottom footer index */}
-              <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-white/40 gap-4">
+              <div className="pt-8 border-t border-[#FAF8F5]/10 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-[#FAF8F5]/40 gap-4">
                 <div className="tracking-wide">© 2026 DR. KONSTANTIN FILBINGER • VARDA LEGAL • MUNICH</div>
                 <div className="flex space-x-6 text-[10px]">
                   <button 
                     onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveLegalModal("impressum"); }} 
-                    className="hover:text-white transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
+                    className="hover:text-[#FAF8F5] transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
                   >
                     IMPRESSUM
                   </button>
                   <span>•</span>
                   <button 
                     onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveLegalModal("datenschutz"); }} 
-                    className="hover:text-white transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
+                    className="hover:text-[#FAF8F5] transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
                   >
                     DATENSCHUTZ
                   </button>
