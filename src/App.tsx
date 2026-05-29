@@ -769,7 +769,7 @@ export default function App() {
                 <p className="font-semibold text-charcoal text-sm">München • Germany</p>
                 <p className="text-charcoal/70 leading-relaxed">
                   {lang === "DE" 
-                    ? "Unser Büro befindet sich im Herzen von München." 
+                    ? "Unser Kanzlei befindet sich im Herzen von München." 
                     : "Our office sits in the heart of Munich."}
                 </p>
               </div>
@@ -2368,7 +2368,7 @@ export default function App() {
         <div className="mt-16 sm:mt-24 mb-16 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
           {/* The Static Navigation Image in full size, uncropped, clean display */}
           <img 
-            src="/src/assets/images/VardaLegal_Munich.png"
+            src="/src/assets/images/vardalegal_munich.png"
             alt="Strategic Navigation and Precision - Varda Legal"
             referrerPolicy="no-referrer"
             className="w-full h-auto block rounded shadow border border-charcoal/10"
