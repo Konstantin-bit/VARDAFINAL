@@ -33,6 +33,10 @@ import {
 } from "lucide-react";
 import { content, Language, Article } from "./types";
 
+import contractIntelligenceImage from "./assets/images/vardalegal_contractintelligence.png"
+
+import munichImage from "./assets/images/vardalegal_munich.png"
+
 export default function App() {
   const [lang, setLang] = useState<Language>("EN");
   const [activeSection, setActiveSection] = useState("home");
@@ -753,7 +757,7 @@ export default function App() {
               {/* Display of uploaded asset "contract intelligence.png" under Dr. Konstantin Filbinger */}
               <div className="mt-8 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
                 <img 
-                  src="/src/assets/images/vardalegal_contractintelligence.png"
+                  src={contractIntelligenceImage}
                   alt="Contract Intelligence - Varda Legal"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto block rounded shadow border border-charcoal/10"
@@ -2368,7 +2372,7 @@ export default function App() {
         <div className="mt-16 sm:mt-24 mb-16 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
           {/* The Static Navigation Image in full size, uncropped, clean display */}
           <img 
-            src="/src/assets/images/vardalegal_munich.png"
+            src={munichImage}
             alt="Strategic Navigation and Precision - Varda Legal"
             referrerPolicy="no-referrer"
             className="w-full h-auto block rounded shadow border border-charcoal/10"
