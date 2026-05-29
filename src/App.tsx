@@ -37,6 +37,10 @@ import contractIntelligenceImage from "./assets/images/vardalegal_contractintell
 
 import munichImage from "./assets/images/vardalegal_munich.png"
 
+import konstiArch from "./assets/images/konsti2024_arch.png"
+
+import coffeeImage from "./assets/images/vardalegal_coffeetable.png"
+
 export default function App() {
   const [lang, setLang] = useState<Language>("EN");
   const [activeSection, setActiveSection] = useState("home");
@@ -638,7 +642,7 @@ export default function App() {
             <div className="space-y-3">
               <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-transparent border border-charcoal/15 overflow-hidden rounded group">
                 <img
-                  src="/src/assets/images/vardalegal_coffeetable.png"
+                  src={coffeeImage}
                   alt="Varda Legal - Coffee Table"
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                   referrerPolicy="no-referrer"
@@ -654,7 +658,7 @@ export default function App() {
             <div className="space-y-3">
               <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-[#FAF8F4] border border-charcoal/15 overflow-hidden group">
                 <img
-                  src="/src/assets/images/konsti2024_arch.png"
+                  src={konstiArch}
                   alt="Dr. Konstantin Filbinger - Varda Legal"
                   className="w-full h-full object-cover sepia-[0.14] saturate-[0.95] contrast-[1.02] opacity-95 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
                   referrerPolicy="no-referrer"
