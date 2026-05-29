@@ -630,7 +630,7 @@ export default function App() {
           {/* Bottom Tier: Tri-Panel Grid (Left Card Deck | Middle Architecture Frame | Right Specialties Matrix) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12 border-t border-charcoal/10">
             
-            {/* Panel 1: Premium VardaLegal_CoffeeTable Production Asset */}
+            {/* Panel 1: Premium vardalegal_coffeetable Production Asset */}
             <div className="space-y-3">
               <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-transparent border border-charcoal/15 overflow-hidden rounded group">
                 <img
@@ -750,7 +750,7 @@ export default function App() {
                 <div className="font-serif font-semibold tracking-wide italic text-charcoal text-lg">Dr. Konstantin Filbinger</div>
               </div>
 
-              {/* Display of uploaded asset "Contract Intelligence.png" under Dr. Konstantin Filbinger */}
+              {/* Display of uploaded asset "contract intelligence.png" under Dr. Konstantin Filbinger */}
               <div className="mt-8 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
                 <img 
                   src="/src/assets/images/vardalegal_contractintelligence.png"
