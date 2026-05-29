@@ -617,7 +617,7 @@ export default function App() {
               <div className="space-y-6 lg:pl-8 flex flex-col justify-center">
                 <p className="font-sans text-base sm:text-lg text-charcoal/85 leading-relaxed max-w-md">
                   {lang === "DE" 
-                    ? "Varda Legal berät Gründer, Unternehmen und Privatpersonen im Gesellschaftsrecht, Vertragsrecht und zu Tech-Themen."
+                    ? "Varda Legal berät Gründer, Unternehmen und Privatpersonen im Gesellschaftsrecht, Vertragsrecht, M&A und zu Tech-Themen."
                     : "Varda Legal advises founders, companies and private individuals on corporate law, contract law and tech topics."}
                 </p>
                 
@@ -718,7 +718,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Big Bio Text */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-8 space-y-8">
               <div className="space-y-3">
                 <h3 className="font-display text-lg sm:text-xl font-bold text-charcoal leading-snug">
                   {d.wir.heading}
@@ -768,21 +768,6 @@ export default function App() {
                 />
               </div>
             </div>
-
-          {/* Right Column: Munich Statement Info Box */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="border border-charcoal/10 bg-[#FAF8F4] p-6 flex items-start space-x-3 shadow-sm rounded-sm">
-              <div className="p-1.5 px-2.5 bg-[#0047ab] text-[10px] text-white font-mono font-bold rounded-sm select-none">MUC</div>
-              <div className="text-xs space-y-1.5">
-                <p className="font-semibold text-charcoal text-sm">München • Germany</p>
-                <p className="text-charcoal/70 leading-relaxed">
-                  {lang === "DE" 
-                    ? "Unser Kanzlei befindet sich im Herzen von München." 
-                    : "Our office sits in the heart of Munich."}
-                </p>
-              </div>
-            </div>
-          </div>
 
         </div>
       </section>
