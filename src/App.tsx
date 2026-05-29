@@ -318,6 +318,31 @@ export default function App() {
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (bookingForm.name && bookingForm.email) {
+      const subject = encodeURIComponent(
+        lang === "DE" 
+          ? `Terminanfrage: Varda Legal - ${selectedMeetingType === "15min" ? "15 Min Fast Check" : "45 Min Strategy Box"}` 
+          : `Booking Request: Varda Legal - ${selectedMeetingType === "15min" ? "15-Min Fast Check" : "45-Min Strategy Box"}`
+      );
+      const emailBody = encodeURIComponent(
+        lang === "DE"
+          ? `Hallo Dr. Filbinger,\n\nhier ist eine neue Terminanfrage vom Kalendertool:\n\n` +
+            `• Name: ${bookingForm.name}\n` +
+            `• E-Mail: ${bookingForm.email}\n` +
+            `• Unternehmen: ${bookingForm.company || "Keine Angabe"}\n` +
+            `• Paket: ${selectedMeetingType === "15min" ? "15 Min. Fast Check" : "45 Min. Strategy Box"}\n` +
+            `• Datum: 2026-05-${selectedDay} um ${selectedTimeSlot} (Europe/Berlin)\n\n` +
+            `Nachricht:\n${bookingForm.message || "Keine Nachricht angegeben"}\n\n` +
+            `Beste Grüße\n${bookingForm.name}`
+          : `Dear Dr. Filbinger,\n\nHere is a new booking request submitted via the calendar tool:\n\n` +
+            `• Name: ${bookingForm.name}\n` +
+            `• Email: ${bookingForm.email}\n` +
+            `• Company: ${bookingForm.company || "Not specified"}\n` +
+            `• Package: ${selectedMeetingType === "15min" ? "15 Min. Fast Check" : "45 Min. Strategy Box"}\n` +
+            `• Date: 2026-05-${selectedDay} at ${selectedTimeSlot} (Europe/Berlin)\n\n` +
+            `Message:\n${bookingForm.message || "No message provided"}\n\n` +
+            `Best regards,\n${bookingForm.name}`
+      );
+      window.location.href = `mailto:info@vardalegal.com?subject=${subject}&body=${emailBody}`;
       setBookingStep("success");
     }
   };
@@ -489,87 +514,202 @@ export default function App() {
         </div>
       </header>
 
-      {/* LUXURIOUS SLIDE-DOWN DRAWER OVERLAY MENU (Inspired by Wendelstein high-fashion dark drawer) */}
+      {/* LUXURIOUS SLIDE-DOWN DRAWER OVERLAY MENU (Inspired by premium European boutique law firms & blueprint aesthetics) */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ type: "spring", stiffness: 220, damping: 26 }}
-            className="fixed inset-0 z-50 bg-charcoal text-paper-light flex mr-0 flex-col overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 z-50 bg-[#060912] text-paper-light flex flex-col overflow-y-auto"
           >
+            {/* Elegant micro-grid & abstract strategic legal blueprint overlay in background */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-[0.035] transition-opacity duration-1000 z-0">
+              <svg width="100%" height="100%" className="absolute inset-0" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="menu-grid-arch" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" strokeWidth="0.5" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#menu-grid-arch)" />
+                <circle cx="75%" cy="45%" r="280" className="stroke-white stroke-[0.75] fill-none" strokeDasharray="4 8" />
+                <circle cx="75%" cy="45%" r="180" className="stroke-white stroke-[0.5] fill-none" />
+                <circle cx="75%" cy="45%" r="80" className="stroke-white stroke-[0.75] fill-none" />
+                <path d="M 120 220 L 420 220 L 520 320 L 920 320" className="stroke-white stroke-[0.75] fill-none" strokeDasharray="3 3"/>
+                <path d="M 320 120 L 320 570" className="stroke-white stroke-[0.5] fill-none"/>
+                <path d="M 520 270 L 520 720" className="stroke-white stroke-[0.5] fill-none"/>
+                <text x="140" y="200" fill="#ffffff" className="font-mono text-[9px] tracking-[0.2em] opacity-40">STRATEGIC CAPITAL STRUCTURE LAYER_A</text>
+                <text x="540" y="300" fill="#ffffff" className="font-mono text-[9px] tracking-[0.2em] opacity-40">CORPORATE ENTITY REORGANIZATION PROTOCOL : V.L_GEN_04</text>
+                <text x="740" y="405" fill="#ffffff" className="font-mono text-[9px] tracking-[0.2em] opacity-40">MUC_HQ / 48.1351 N | 11.5820 E</text>
+                <path d="M 30 30 L 60 30 M 30 30 L 30 60" className="stroke-white stroke-[1.5] fill-none" />
+                <path d="M 97% 30 L 94% 30 M 97% 30 L 97% 60" className="stroke-white stroke-[1.5] fill-none" />
+              </svg>
+            </div>
+
             {/* Inner frame containing elegant alignments */}
-            <div className="mx-auto w-full max-w-7xl px-4 py-8 md:px-8 flex-1 flex flex-col justify-between">
+            <div className="mx-auto w-full max-w-7xl px-6 py-12 md:px-12 flex-1 flex flex-col justify-between relative z-10">
               
               {/* Header inside the dropdown */}
-              <div className="flex justify-between items-center pb-6 border-b border-white/10">
-                <a href="#home" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 font-display text-lg font-bold tracking-widest text-white">
+              <div className="flex justify-between items-center pb-8 border-b border-white/10">
+                <a href="#home" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 font-display text-lg font-bold tracking-widest text-[#FAF8F4]/95">
                   <span>VARDA</span>
                   <span className="text-brand-red font-sans text-xl font-black">•</span>
-                  <span className="font-serif italic font-normal tracking-normal text-base text-paper-light/85">Legal</span>
+                  <span className="font-serif italic font-normal tracking-normal text-base text-paper-light/85 text-white/80">Legal</span>
                 </a>
 
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="inline-flex items-center space-x-2 text-white/50 hover:text-brand-red font-mono text-xs uppercase cursor-pointer"
+                  className="group inline-flex items-center space-x-3 text-white/50 hover:text-brand-yellow font-mono text-xs uppercase tracking-widest cursor-pointer transition-all duration-300"
                 >
-                  <span>{lang === "DE" ? "SCHLIESSEN" : "CLOSE"}</span>
-                  <X className="h-4 p-0.5 border border-white/20 rounded-full bg-white/5" />
+                  <span className="font-mono font-medium">{lang === "DE" ? "SCHLIESSEN" : "CLOSE"}</span>
+                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:border-brand-yellow transition-all duration-300">
+                    <X className="h-3.5 w-3.5 text-white/70 group-hover:text-brand-yellow transition-colors duration-300" />
+                  </div>
                 </button>
               </div>
 
-              {/* Menu content - Centered elegante Navigationsliste */}
-              <div className="flex flex-col justify-center py-12 flex-1 w-full max-w-2xl mx-auto">
+              {/* Menu content - Architectural layout splits (Left Column Directory Index | Right Column Core Strategic Navigation) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 py-12 md:py-16 flex-1 items-center">
                 
-                {/* Huge high-fashion vertical list of key anchors */}
-                <div className="space-y-2 md:space-y-4 w-full">
-                  {[
-                    { label: "START", target: "#home", subtitle: lang === "DE" ? "00 / Kanzlei-Kuppel" : "00 / Firm Cupola" },
-                    { label: "PROFILE", target: "#wir", subtitle: lang === "DE" ? "01 / Über Varda Legal" : "01 / About Varda Legal" },
-                    { label: "EXPERTISE", target: "#fokus", subtitle: "02 / Kompetenzen & Sektoren" },
-                    { label: "FORM FOLLOWS FUNCTION", target: "#fff", subtitle: "03 / Kanzlei-Erbauung" },
-                    { label: "DENKWERK", target: "#denkwerk", subtitle: "04 / Schriften & Leitfäden" },
-                    { label: "FEES", target: "#verguetung", subtitle: "05 / Vergütungsmodelle" },
-                    { label: "CONTACT", target: "#letsgo", subtitle: "06 / Online-Reservierung" }
-                  ].map((menuItem, idx) => (
-                    <motion.div 
-                      key={idx}
-                      whileHover={{ x: 12 }}
-                      className="border-b border-white/5 pb-2"
-                    >
-                      <a
-                        href={menuItem.target}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="group flex items-baseline justify-between py-1"
+                {/* Left Column: Premium Bureau Directory Archive Index */}
+                <div className="lg:col-span-4 lg:border-r border-white/10 lg:pr-12 flex flex-col justify-between h-auto lg:h-[480px]">
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <div className="font-mono text-[9px] tracking-widest text-brand-yellow uppercase">[ INTEGRATED COUNSEL ]</div>
+                      <h4 className="font-serif text-2xl font-light text-white tracking-tight leading-snug">
+                        {lang === "DE" ? "Präzision & Diskrete Kompetenz." : "Precision & Pure Discretion."}
+                      </h4>
+                    </div>
+                    <p className="text-white/60 font-sans text-xs md:text-sm leading-relaxed max-w-sm">
+                      {lang === "DE" 
+                        ? "Varda Legal steht für die absolute Synthese von intellektuellem Anspruch, unternehmerischem Pragmatismus und zeitloser Unabhängigkeit auf der Ebene führender europäischer Sozietäten."
+                        : "Varda Legal stands for the ultimate synthesis of intellectual rigour, entrepreneurial pragmatism, and timeless independence at the level of premier European boutique firms."}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 pt-8 border-t border-white/5 font-mono text-[9px] text-white/40 uppercase tracking-widest mt-8 lg:mt-0">
+                    <div className="flex justify-between py-1">
+                      <span className="text-white/20">[ GRÜNDER / PARTNER ]</span>
+                      <span className="text-white/75 text-right font-medium">Dr. Konstantin Filbinger</span>
+                    </div>
+                    <div className="flex justify-between py-1">
+                      <span className="text-white/20">[ HAUPTSITZ / HQ ]</span>
+                      <span className="text-white/75 text-right font-medium">München • Germany</span>
+                    </div>
+                    <div className="flex justify-between py-1">
+                      <span className="text-white/20">[ SPEZIALISIERUNG ]</span>
+                      <span className="text-white/75 text-right font-medium">M&A • Tech • Corporate</span>
+                    </div>
+                    <div className="flex justify-between py-1">
+                      <span className="text-white/20">[ BERATUNGSSTIL ]</span>
+                      <span className="text-white/75 text-right font-medium">Radikal Funktional</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: High-fashion, asymmetrical structured anchors with section symbols & editorial lines */}
+                <div className="lg:col-span-8 flex flex-col justify-center w-full">
+                  <div className="space-y-3 md:space-y-4 w-full">
+                    {[
+                      { 
+                        label: "START", 
+                        target: "#home", 
+                        subtitle: lang === "DE" ? "00 / Kanzlei-Kuppel" : "00 / Firm Cupola",
+                        sec: "§ 00",
+                        desc: lang === "DE" ? "Initialer Einblick & Kanzleiphilosophie" : "Initial perspective & philosophy"
+                      },
+                      { 
+                        label: "PROFILE", 
+                        target: "#wir", 
+                        subtitle: lang === "DE" ? "01 / Über Varda Legal" : "01 / About Varda Legal",
+                        sec: "§ 01",
+                        desc: lang === "DE" ? "Selbstverständnis & Profil des Gründers" : "Executive summary & founder portrait"
+                      },
+                      { 
+                        label: "EXPERTISE", 
+                        target: "#fokus", 
+                        subtitle: lang === "DE" ? "02 / Kompetenzen & Sektoren" : "02 / Competences & Sectors",
+                        sec: "§ 02",
+                        desc: lang === "DE" ? "Spezialisierte Beratungsschwerpunkte" : "Specialized strategic practice fields"
+                      },
+                      { 
+                        label: "FORM FOLLOWS FUNCTION", 
+                        target: "#fff", 
+                        subtitle: lang === "DE" ? "03 / Kanzlei-Erbauung" : "03 / Firm Building",
+                        sec: "§ 03",
+                        desc: lang === "DE" ? "Ergebnisorientierter Pragmatismus" : "Aesthetic of radical outcome focus"
+                      },
+                      { 
+                        label: "DENKWERK", 
+                        target: "#denkwerk", 
+                        subtitle: lang === "DE" ? "04 / Schriften & Leitfäden" : "04 / Writings & Briefings",
+                        sec: "§ 04",
+                        desc: lang === "DE" ? "Wissenschaftlich fundierte Kanzlei-Impulse" : "Intellectual publications & briefings"
+                      },
+                      { 
+                        label: "FEES", 
+                        target: "#verguetung", 
+                        subtitle: lang === "DE" ? "05 / Vergütungsmodelle" : "05 / Fee Structures",
+                        sec: "§ 05",
+                        desc: lang === "DE" ? "Strikte Preistransparenz & Flatrates" : "Predictable transaction fee modules"
+                      },
+                      { 
+                        label: "CONTACT", 
+                        target: "#letsgo", 
+                        subtitle: lang === "DE" ? "06 / Online-Reservierung" : "06 / Online Reservation",
+                        sec: "§ 06",
+                        desc: lang === "DE" ? "Direkter digitaler Beratungstermin" : "Immediate secure booking scheduler"
+                      }
+                    ].map((menuItem, idx) => (
+                      <motion.div 
+                        key={idx}
+                        whileHover={{ x: 10 }}
+                        className="border-b border-white/5 pb-2.5 group transition-all duration-300"
                       >
-                        <span className="font-serif italic text-3xl sm:text-4xl md:text-5xl tracking-tight text-white group-hover:text-brand-yellow transition-colors duration-200">
-                          {menuItem.label}
-                        </span>
-                        <span className="font-mono text-[9px] uppercase tracking-widest text-white/40 group-hover:text-brand-yellow font-bold">
-                          {menuItem.subtitle}
-                        </span>
-                      </a>
-                    </motion.div>
-                  ))}
+                        <a
+                          href={menuItem.target}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-1"
+                        >
+                          <div className="flex items-center space-x-4">
+                            <span className="font-mono text-[9px] text-brand-yellow font-semibold tracking-wider bg-white/5 px-2 py-0.5 rounded-sm select-none border border-white/10">
+                              {menuItem.sec}
+                            </span>
+                            <span className="font-serif italic text-2xl sm:text-3xl md:text-3.5xl tracking-tight text-white/95 group-hover:text-brand-yellow transition-colors duration-300">
+                              {menuItem.label}
+                            </span>
+                          </div>
+                          <div className="flex flex-col items-start sm:items-end pt-1 sm:pt-0">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand-yellow/65 group-hover:text-white font-bold transition-colors">
+                              {menuItem.subtitle}
+                            </span>
+                            <span className="text-[10px] text-white/40 font-serif italic mt-0.5 group-hover:text-white/60 transition-colors hidden sm:block">
+                              {menuItem.desc}
+                            </span>
+                          </div>
+                        </a>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
 
               </div>
 
               {/* Bottom footer index */}
-              <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-white/40 gap-4">
-                <div>© 2026 Dr. Konstantin Filbinger. Auenstraße 21, 80469 München.</div>
+              <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-white/40 gap-4">
+                <div className="tracking-wide">© 2026 DR. KONSTANTIN FILBINGER • VARDA LEGAL • MUNICH</div>
                 <div className="flex space-x-6 text-[10px]">
                   <button 
                     onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveLegalModal("impressum"); }} 
-                    className="hover:text-white transition-colors cursor-pointer uppercase bg-transparent border-none p-0"
+                    className="hover:text-white transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
                   >
                     IMPRESSUM
                   </button>
                   <span>•</span>
                   <button 
                     onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveLegalModal("datenschutz"); }} 
-                    className="hover:text-white transition-colors cursor-pointer uppercase bg-transparent border-none p-0"
+                    className="hover:text-white transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
                   >
                     DATENSCHUTZ
                   </button>
@@ -648,10 +788,6 @@ export default function App() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="flex justify-between font-mono text-[9px] text-charcoal/40 uppercase tracking-wider px-1">
-                <span>[ Business Card. Coffee Table ]</span>
-                <span>01 / IDENTITÄT</span>
-              </div>
             </div>
 
             {/* Panel 2: Modular Architecture View Frame with Founder Portrait */}
@@ -679,10 +815,6 @@ export default function App() {
                   Dr. Konstantin Filbinger
                 </div>
               </div>
-              <div className="flex justify-between font-mono text-[9px] text-charcoal/40 uppercase tracking-wider px-1">
-                <span>[ Founder Portrait. MUC_HQ ]</span>
-                <span>01 / PORTRAIT</span>
-              </div>
             </div>
 
             {/* Panel 3: Specialties Grid Deck and Statement ("enables growth") */}
@@ -697,10 +829,13 @@ export default function App() {
                 </p>
 
                 <div className="flex items-center justify-between pt-2">
-                  {/* Circular M Badge exactly like bottom right of the reference image */}
-                  <div className="w-9 h-9 rounded-full border border-charcoal flex items-center justify-center font-display text-xs font-black text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300 select-none cursor-pointer">
-                    M
-                  </div>
+                  {/* Circular V Badge that links to the booking calendar (#letsgo) */}
+                  <a
+                    href="#letsgo"
+                    className="w-9 h-9 rounded-full border border-charcoal flex items-center justify-center font-display text-xs font-black text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300 select-none cursor-pointer"
+                  >
+                    V
+                  </a>
                 </div>
               </div>
 
@@ -1942,90 +2077,148 @@ export default function App() {
             ))}
           </div>
 
-          {/* DETAILED ARTICLE EXPANSION DRAWER/MODAL (brand eins Style layout) */}
+          {/* DETAILED ARTICLE EXPANSION DRAWER/MODAL (Unmistakably Premium European Publication Style) */}
           <AnimatePresence>
             {selectedArticle && (
               <div 
-                className="fixed inset-0 z-50 flex items-center justify-end bg-charcoal/40 backdrop-blur-sm"
+                className="fixed inset-0 z-50 overflow-y-auto bg-charcoal/40 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10"
                 onClick={() => setSelectedArticle(null)}
               >
                 <motion.div
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{ type: "tween", duration: 0.35 }}
-                  className="w-full max-w-3xl h-full bg-paper-light border-l border-charcoal/20 p-6 md:p-12 overflow-y-auto shadow-2xl flex flex-col justify-between"
+                  initial={{ opacity: 0, scale: 0.98, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.98, y: 15 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full max-w-4xl bg-[#FAF8F5] border border-charcoal/15 p-6 sm:p-10 md:p-16 shadow-2xl flex flex-col justify-between rounded-[2px] max-h-[92vh] overflow-y-auto relative"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="space-y-8">
-                    {/* Header Controls */}
-                    <div className="flex justify-between items-center pb-4 border-b border-charcoal/10">
+                  <div className="space-y-10">
+                    {/* Editorial Top bar */}
+                    <div className="flex justify-between items-center pb-6 border-b border-charcoal/10 font-mono text-[10px] uppercase tracking-widest text-charcoal/40">
                       <button
                         onClick={() => setSelectedArticle(null)}
-                        className="inline-flex items-center space-x-2 font-mono text-xs tracking-wider uppercase text-charcoal/60 hover:text-brand-red focus:outline-none"
+                        className="group inline-flex items-center space-x-2 text-charcoal/60 hover:text-charcoal transition-colors focus:outline-none cursor-pointer"
                       >
-                        <X className="h-4" />
-                        <span>{d.denkwerk.back}</span>
+                        <span className="text-sm font-light tracking-normal transition-transform group-hover:-translate-x-1">←</span>
+                        <span className="font-mono font-medium">{d.denkwerk.back}</span>
                       </button>
-                      <div className="font-mono text-[10px] bg-charcoal text-white px-2 py-0.5 uppercase tracking-wide">
-                        {selectedArticle.category}
+                      <div className="border border-charcoal/20 px-3 py-1 font-mono font-semibold text-charcoal/70 bg-transparent rounded-sm uppercase tracking-wider">
+                        [ {selectedArticle.category} ]
                       </div>
                     </div>
 
-                    {/* Article Matter */}
-                    <div className="space-y-6">
-                      <div className="flex justify-between font-mono text-xs text-charcoal/40">
-                        <span>{selectedArticle.date}</span>
-                        <span>{selectedArticle.readingTime}</span>
+                    {/* Article Body Columns Style Layout */}
+                    <div className="space-y-8">
+                      {/* Publication Date and Title */}
+                      <div className="space-y-4">
+                        <div className="flex items-center space-x-4 font-mono text-xs text-charcoal/50">
+                          <span>{selectedArticle.date}</span>
+                          <span>•</span>
+                          <span>{selectedArticle.readingTime}</span>
+                          <span>•</span>
+                          <span className="italic">{lang === "DE" ? "Schriftenreihe Varda" : "Varda Publications"}</span>
+                        </div>
+                        
+                        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-charcoal leading-[1.1] max-w-3xl">
+                          {selectedArticle.title}
+                        </h1>
                       </div>
-                      
-                      <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-charcoal py-2 leading-[1.08]">
-                        {selectedArticle.title}
-                      </h1>
 
-                      <div className="h-[2px] w-24 bg-brand-red" />
+                      <div className="h-[1px] w-28 bg-charcoal/30" />
 
-                      {/* Hard-rendered styled details inside div to maintain typography */}
-                      <p className="font-serif italic text-lg text-charcoal/75 leading-relaxed bg-white p-4 border-l-4 border-charcoal/25">
-                        {selectedArticle.excerpt}
-                      </p>
+                      {/* Asymmetric layout: Side Index Table + Content Pillar */}
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pt-4">
+                        
+                        {/* Side Archival Meta-Index Column */}
+                        <div className="lg:col-span-4 h-full flex flex-col justify-between shrink-0 space-y-6 lg:border-r lg:border-charcoal/10 lg:pr-8 font-mono text-[10px] uppercase tracking-widest text-[#947444]/80">
+                          <div className="space-y-4">
+                            <div className="border-b border-charcoal/5 pb-2">
+                              <span className="text-charcoal/30 block mb-1">[ GRÜNDER / AUTOR ]</span>
+                              <span className="text-charcoal/80 font-semibold">Dr. Konstantin Filbinger</span>
+                            </div>
+                            <div className="border-b border-charcoal/5 pb-2">
+                              <span className="text-charcoal/30 block mb-1">[ RECHTSGEBIET ]</span>
+                              <span className="text-charcoal/80 font-semibold">{selectedArticle.category}</span>
+                            </div>
+                            <div className="border-b border-charcoal/5 pb-2">
+                              <span className="text-charcoal/30 block mb-1">[ HERAUSGEBER ]</span>
+                              <span className="text-charcoal/80 font-semibold">Varda Legal • München</span>
+                            </div>
+                            <div className="pb-2">
+                              <span className="text-charcoal/30 block mb-1">[ STATUS ]</span>
+                              <span className="text-charcoal/80 font-semibold">Veröffentlicht • Volltext</span>
+                            </div>
+                          </div>
+                          
+                          <div className="hidden lg:block pt-8 text-[9px] text-[#947444]/65 italic leading-relaxed prose prose-sm font-serif lowercase">
+                            "veritate et fide — dem recht gedient, dem fortschritt verpflichtet."
+                          </div>
+                        </div>
 
-                      <div className="prose prose-sm md:prose-base text-charcoal/90 pt-4 leading-relaxed font-sans space-y-6">
-                        {/* Splitting fake Markdown elements beautifully with customized elements */}
-                        {selectedArticle.content.split("\n\n").map((para, pIdx) => {
-                          if (para.startsWith("### ")) {
-                            return (
-                              <h3 key={pIdx} className="font-display font-bold text-lg md:text-xl text-charcoal pt-4 border-b border-charcoal/5 pb-1">
-                                {para.replace("### ", "")}
-                              </h3>
-                            );
-                          }
-                          return (
-                            <p key={pIdx} className="text-sm md:text-base text-charcoal/85">
-                              {para}
-                            </p>
-                          );
-                        })}
+                        {/* Core Content Reading Pillar */}
+                        <div className="lg:col-span-8 space-y-8">
+                          {/* Excerpt */}
+                          <div className="font-serif italic text-base sm:text-lg text-charcoal/70 leading-relaxed pl-5 border-l-4 border-[#947444]/40 bg-white/50 p-4 rounded-sm">
+                            {selectedArticle.excerpt}
+                          </div>
+
+                          {/* Render Rich Body Sections */}
+                          <div className="prose prose-stone max-w-none text-charcoal/85 leading-relaxed font-sans text-sm sm:text-base space-y-6">
+                            {selectedArticle.content.split("\n\n").map((para, pIdx) => {
+                              if (para.startsWith("### ")) {
+                                return (
+                                  <h3 key={pIdx} className="font-serif text-lg sm:text-xl font-medium text-charcoal pt-6 border-b border-charcoal/10 pb-2">
+                                    {para.replace("### ", "")}
+                                  </h3>
+                                );
+                              }
+                              if (para.startsWith("#### ")) {
+                                return (
+                                  <h4 key={pIdx} className="font-serif text-base font-semibold text-charcoal pt-4 italic">
+                                    {para.replace("#### ", "")}
+                                  </h4>
+                                );
+                              }
+                              if (para.startsWith("- ") || para.startsWith("* ")) {
+                                const listItems = para.split("\n");
+                                return (
+                                  <ul key={pIdx} className="list-disc pl-5 space-y-2 text-charcoal/80 text-sm">
+                                    {listItems.map((li, liIdx) => (
+                                      <li key={liIdx}>{li.replace(/^[\-\*]\s+/, "")}</li>
+                                    ))}
+                                  </ul>
+                                );
+                              }
+                              return (
+                                <p key={pIdx} className="text-charcoal/80 leading-relaxed text-sm sm:text-base font-sans">
+                                  {para}
+                                </p>
+                              );
+                            })}
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
 
                   {/* Closure & Legal Stamp footer */}
                   <div className="mt-12 pt-8 border-t border-charcoal/10 space-y-4">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="text-charcoal/60">© 2026 Varda Legal, München</span>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono gap-4">
+                      <span className="text-charcoal/50">© 2026 VARDA LEGAL • GENTLEMANS AGREEMENT INSPIRED</span>
                       <a 
                         href="#letsgo" 
                         onClick={() => setSelectedArticle(null)}
-                        className="text-brand-red font-bold hover:underline"
+                        className="inline-flex items-center space-x-1 text-[#947444] font-bold hover:text-charcoal uppercase tracking-widest transition-colors font-mono"
                       >
-                        {lang === "DE" ? "Kanzlei buchen" : "Consult with us"}
+                        <span>{lang === "DE" ? "Kanzlei buchen" : "Consult with us"}</span>
+                        <span className="text-sm">→</span>
                       </a>
                     </div>
-                    <p className="text-[10px] text-charcoal/40 leading-snug font-mono">
+                    <p className="text-[10px] text-charcoal/40 leading-relaxed font-mono">
                       {lang === "DE" 
-                        ? "Dieser Fachbeitrag dient lediglich der allgemeinen Information und Orientierung. Er stellt keinerlei steuerliche oder rechtsverbindliche Beratung dar." 
-                        : "This thought piece serves of general instructional guidance only and constitutes no structural tax or legal retainer binding advice."}
+                        ? "HINWEIS: Dieser Fachbeitrag dient lediglich der allgemeinen Information und wissenschaftlichen Orientierung. Er stellt zu keinem Zeitpunkt eine steuerliche oder rechtsverbindliche Beratung dar und begründet kein Mandatsverhältnis." 
+                        : "DISCLAIMER: This thought piece serves for general instructional and scientific orientation only. It constitutes no structural tax or legal binding advice and does not initiate a client-attorney relationship."}
                     </p>
                   </div>
                 </motion.div>
