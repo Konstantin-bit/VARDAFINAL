@@ -1417,7 +1417,7 @@ export default function App() {
                     </div>
                     <p className="text-charcoal/70 font-sans text-xs md:text-sm leading-relaxed max-w-sm">
                       {lang === "DE" 
-                        ? "Varda Legal steht für die absolute Synthese von intellektuellem Anspruch, unternehmerischem Pragmatismus und zeitloser Unabhängigkeit."
+                        ? "Varda Legal steht für die Synthese von intellektuellem Anspruch, unternehmerischem Pragmatismus und zeitloser Unabhängigkeit."
                         : "Varda Legal stands for the ultimate synthesis of intellectual rigour, entrepreneurial pragmatism, and timeless independence."}
                     </p>
                   </div>
@@ -1479,7 +1479,7 @@ export default function App() {
                         target: "#denkwerk", 
                         subtitle: lang === "DE" ? "04 / Schriften & Leitfäden" : "04 / Writings & Briefings",
                         sec: "04",
-                        desc: lang === "DE" ? "Wissenschaftlich fundierte Kanzlei-Impulse" : "Intellectual publications & briefings"
+                        desc: lang === "DE" ? "Kanzlei-Impulse" : "Intellectual publications & briefings"
                       },
                       { 
                         label: lang === "DE" ? "Vergütung" : "Fees", 
@@ -3411,7 +3411,7 @@ export default function App() {
                       </h1>
                       <p className="font-serif text-base italic text-charcoal/60 font-light max-w-2xl leading-relaxed">
                         {lang === "DE" 
-                          ? "Wissenschaftlich fundierte Leitfäden, rechtssichere Ablaufmodelle und praxisnahe Abhandlungen für Gesellschafter und Geschäftsführer."
+                          ? "Leitfäden, rechtssichere Ablaufmodelle und praxisnahe Abhandlungen für Gesellschafter und Geschäftsführer."
                           : "Academic-level governance guidelines, secure structural templates, and research-focused legal briefs for board members and enterprise directors."}
                       </p>
                     </div>
