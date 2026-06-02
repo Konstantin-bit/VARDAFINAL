@@ -33,18 +33,802 @@ import {
 } from "lucide-react";
 import { content, Language, Article } from "./types";
 
-import contractIntelligenceImage from "./assets/images/vardalegal_contractintelligence.png"
+import contractIntelligenceImage from "./assets/images/contractintelligence2.png"
 
 import munichImage from "./assets/images/vardalegal_munich.png"
 
+import vardalegalEndframe from "./assets/images/vardalegal_endframe.png"
+
 import konstiArch from "./assets/images/konsti2024_arch.png"
+import konstiImage from "./assets/images/konsti.png"
+import konstiClarity from "./assets/images/konsticlarity.png"
+import linkedinImage from "./assets/images/linkedin.png"
 
 import coffeeImage from "./assets/images/vardalegal_coffeetable.png"
+import tokenRecoveryImage from "./assets/images/tokenrecovery.png.png"
+import unternehmensverkaufImage from "./assets/images/unternehmensverkauf.png"
+import vertraegeImage from "./assets/images/vertraege.png"
+
+function DecisionArchitectureBlueprint({ lang }: { lang: Language }) {
+  const [activeNode, setActiveNode] = useState<string | null>(null);
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTick((prev) => (prev + 1) % 100);
+    }, 85);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative w-full h-full bg-[#FAF8F4] border border-charcoal/15 overflow-hidden p-6 select-none flex flex-col justify-between group shadow-sm min-h-[380px]">
+      {/* Background blueprint grid overlay */}
+      <div className="absolute inset-0 bg-[#FAF8F4]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(28,27,25,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(28,27,25,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-charcoal/[0.04] rounded-full pointer-events-none animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border border-charcoal/[0.02] rounded-full pointer-events-none" />
+
+      {/* Frame Headers: Corporate editorial labels */}
+      <div className="relative z-10 flex justify-between items-start font-mono text-[9px] text-charcoal/50 uppercase tracking-widest">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-[#C0823E] animate-ping" />
+          <span>Varda Decision Engine / Blueprint v2.1</span>
+        </div>
+        <div>[ SCALE 1:45 ]</div>
+      </div>
+
+      {/* Blueprint Dynamic SVG rendering Complexity -> Clarity */}
+      <div className="relative z-10 my-auto h-52 md:h-60 flex items-center justify-center">
+        <svg className="w-full h-full overflow-visible" viewBox="0 0 500 220" fill="none">
+          <defs>
+            <linearGradient id="blueprintGoldGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="rgba(192, 130, 62, 0.2)" />
+              <stop offset="50%" stopColor="#C0823E" />
+              <stop offset="100%" stopColor="#1B2A4A" />
+            </linearGradient>
+            <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          {/* LEFT ZONE: STRATEGIC COMPLEXITY (Inputs from client) */}
+          <g opacity="0.9">
+            {/* Connection Paths to Central Synthesis Hub */}
+            <path 
+              d="M 50 35 Q 160 35 240 100" 
+              stroke={activeNode === "gov" ? "#C0823E" : "rgba(28,27,25,0.18)"} 
+              strokeWidth="1.2" 
+              strokeDasharray={activeNode === "gov" ? "none" : "3 3"} 
+              className="transition-all duration-300"
+              fill="none" 
+            />
+            <path 
+              d="M 50 80 Q 160 80 240 105" 
+              stroke={activeNode === "mna" ? "#C0823E" : "rgba(28,27,25,0.18)"} 
+              strokeWidth="1.2" 
+              strokeDasharray={activeNode === "mna" ? "none" : "3 3"} 
+              className="transition-all duration-300" 
+              fill="none" 
+            />
+            <path 
+              d="M 50 130 Q 160 130 240 115" 
+              stroke={activeNode === "reg" ? "#C0823E" : "rgba(28,27,25,0.18)"} 
+              strokeWidth="1.2" 
+              strokeDasharray={activeNode === "reg" ? "none" : "3 3"} 
+              className="transition-all duration-300" 
+              fill="none" 
+            />
+            <path 
+              d="M 50 175 Q 160 175 240 120" 
+              stroke={activeNode === "tax" ? "#C0823E" : "rgba(28,27,25,0.18)"} 
+              strokeWidth="1.2" 
+              strokeDasharray={activeNode === "tax" ? "none" : "3 3"} 
+              className="transition-all duration-300" 
+              fill="none" 
+            />
+
+            {/* Input Node Buttons */}
+            <g 
+              className="cursor-pointer" 
+              onMouseEnter={() => setActiveNode("gov")} 
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <circle cx="50" cy="35" r="5" fill="#FAF8F4" stroke="rgba(28,27,25,0.4)" strokeWidth="1.5" />
+              <circle cx="50" cy="35" r="2.5" fill={activeNode === "gov" ? "#C0823E" : "rgba(28,27,25,0.4)"} />
+              <text x="62" y="38" className="font-mono text-[9px] fill-charcoal/70 tracking-wide font-medium">
+                {lang === "DE" ? "Strukturelle Reibung" : "Corporate Ambiguity"}
+              </text>
+            </g>
+
+            <g 
+              className="cursor-pointer" 
+              onMouseEnter={() => setActiveNode("mna")} 
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <circle cx="50" cy="80" r="5" fill="#FAF8F4" stroke="rgba(28,27,25,0.4)" strokeWidth="1.5" />
+              <circle cx="50" cy="80" r="2.5" fill={activeNode === "mna" ? "#C0823E" : "rgba(28,27,25,0.4)"} />
+              <text x="62" y="83" className="font-mono text-[9px] fill-charcoal/70 tracking-wide font-medium">
+                {lang === "DE" ? "Transaktions-Risiko" : "Transactional Risk Factors"}
+              </text>
+            </g>
+
+            <g 
+              className="cursor-pointer" 
+              onMouseEnter={() => setActiveNode("reg")} 
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <circle cx="50" cy="130" r="5" fill="#FAF8F4" stroke="rgba(28,27,25,0.4)" strokeWidth="1.5" />
+              <circle cx="50" cy="130" r="2.5" fill={activeNode === "reg" ? "#C0823E" : "rgba(28,27,25,0.4)"} />
+              <text x="62" y="133" className="font-mono text-[9px] fill-charcoal/70 tracking-wide font-medium">
+                {lang === "DE" ? "Regulatorisches Rauschen" : "Regulatory Friction"}
+              </text>
+            </g>
+
+            <g 
+              className="cursor-pointer" 
+              onMouseEnter={() => setActiveNode("tax")} 
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <circle cx="50" cy="175" r="5" fill="#FAF8F4" stroke="rgba(28,27,25,0.4)" strokeWidth="1.5" />
+              <circle cx="50" cy="175" r="2.5" fill={activeNode === "tax" ? "#C0823E" : "rgba(28,27,25,0.4)"} />
+              <text x="62" y="178" className="font-mono text-[9px] fill-charcoal/70 tracking-wide font-medium">
+                {lang === "DE" ? "Systemische Konflikte" : "Systemic Exposure Vectors"}
+              </text>
+            </g>
+          </g>
+
+          {/* CENTRE: THE VARDA DIAGNOSTIC SYNTHESIS FILTER */}
+          <g transform="translate(250, 110)">
+            <circle cx="0" cy="0" r="26" stroke="rgba(192, 130, 62, 0.3)" strokeWidth="1" strokeDasharray="3 2" />
+            <circle cx="0" cy="0" r="16" stroke="#C0823E" strokeWidth="1" strokeOpacity="0.4" />
+            <circle cx="0" cy="0" r="7" fill="#1B2A4A" className="animate-pulse" />
+            
+            <line x1="-32" y1="0" x2="32" y2="0" stroke="rgba(28,27,25,0.12)" strokeWidth="1" />
+            <line x1="0" y1="-32" x2="0" y2="32" stroke="rgba(28,27,25,0.12)" strokeWidth="1" />
+
+            {/* Micro rotating indicators */}
+            <g style={{ transform: `rotate(${tick * 3.6}deg)`, transformOrigin: "0 0" }}>
+              <line x1="-16" y1="-16" x2="-20" y2="-20" stroke="#C0823E" strokeWidth="1.5" />
+              <line x1="16" y1="16" x2="20" y2="20" stroke="#C0823E" strokeWidth="1.5" />
+            </g>
+
+            <text x="0" y="-36" textAnchor="middle" className="font-mono text-[8px] fill-[#C0823E] font-bold tracking-[0.25em]">
+              SYNTHESIS
+            </text>
+          </g>
+
+          {/* RIGHT ZONE: STRATEGIC CLARITY TRAJECTORY */}
+          {/* Golden clear trajectory beam */}
+          <path 
+            d="M 250 110 L 440 110" 
+            stroke="url(#blueprintGoldGrad)" 
+            strokeWidth="3.5" 
+            strokeLinecap="round" 
+            filter="url(#subtleGlow)"
+          />
+
+          <line x1="310" y1="104" x2="310" y2="116" stroke="rgba(28,27,25,0.2)" strokeWidth="1" />
+          <text x="310" y="126" textAnchor="middle" className="font-mono text-[7px] fill-charcoal/50 uppercase tracking-widest">MAPPING</text>
+
+          <line x1="375" y1="104" x2="375" y2="116" stroke="rgba(28,27,25,0.2)" strokeWidth="1" />
+          <text x="375" y="126" textAnchor="middle" className="font-mono text-[7px] fill-charcoal/50 uppercase tracking-widest">REDUCTION</text>
+
+          {/* Glowing pulse crawling along the unified vector */}
+          {/* Calculated based on tick */}
+          <circle cx={250 + ((tick % 50) * 3.8)} cy="110" r="4.5" fill="#1B2A4A" stroke="#FAF8F4" strokeWidth="1.5" />
+
+          {/* ENDPOINT: THE DECISION METRIC */}
+          <g transform="translate(440, 110)">
+            <rect x="-32" y="-30" width="64" height="16" fill="#1B2A4A" stroke="#C0823E" strokeWidth="1" />
+            <text x="0" y="-19" textAnchor="middle" className="font-mono text-[8px] fill-white font-bold tracking-widest">
+              {lang === "DE" ? "KLARHEIT" : "CLARITY"}
+            </text>
+            <circle cx="0" cy="0" r="5.5" fill="#C0823E" stroke="#FAF8F4" strokeWidth="1.5" />
+            <circle cx="0" cy="0" r="10" stroke="#C0823E" strokeWidth="0.8" strokeDasharray="2 1" className="animate-spin" />
+            <text x="0" y="24" textAnchor="middle" className="font-mono text-[8px] fill-[#1B2A4A] font-bold tracking-wider">
+              {lang === "DE" ? "HANDLUNG" : "ACTION"}
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      {/* Blueprint Coordinates / Technical Parameters */}
+      <div className="relative z-10 border-t border-charcoal/10 pt-3 flex justify-between items-center font-mono text-[8px] text-charcoal/65">
+        <div>COORDINATES: X_40.8 // Y_110.0</div>
+        <div className="flex items-center gap-4">
+          <span>THETA: 0.00°</span>
+          <span className="text-[#C0823E] font-bold">STABILITY: 100%</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MnaDecisionArchitecture({ lang }: { lang: Language }) {
+  const [activeNode, setActiveNode] = useState<string | null>(null);
+
+  const t = (de: string, en: string) => (lang === "DE" ? de : en);
+
+  // Define static data with type safety
+  const nodes = {
+    s1: {
+      id: "s1",
+      title: t("Umsatz ist stabil", "Revenue is stable"),
+      desc: t("Jährliche Umsätze belegt durch lückenlose betriebswirtschaftliche Auswertungen (BWA) und geprüfte Jahresabschlüsse.", "Annual revenues proven by complete business assessments (BWA) and audited annual accounts."),
+      status: "verified"
+    },
+    s2: {
+      id: "s2",
+      title: t("Kunden bleiben", "Customers will stay"),
+      desc: t("Kundenbasis ist loyal, Verträge wurden in der Vergangenheit jedoch nur mündlich verlängert. Die Werthaltigkeit ist für den Käufer mangels Dokumentation nicht nachweisbar.", "Customer base is loyal, but contracts have historically only been extended verbally. Retention is unprovable to the buyer due to a lack of documentation."),
+      status: "broken",
+      breakLabel: t("LÜCKENHAFTE BELEGE", "INCOMPLETE RECORDS"),
+      breakReason: t("Unterbrochen: Mündliche Absprachen schaffen kein verifizierbares Vertrauen.", "Interrupted: Verbal agreements do not create verifiable trust.")
+    },
+    s3: {
+      id: "s3",
+      title: t("IP gehört der Gesellschaft", "IP belongs to the company"),
+      desc: t("Software wurde zum Teil durch Freelancer entwickelt, ohne dass die Rechteübertragung jemals schriftlich dokumentiert oder gegengezeichnet wurde.", "Software was partly developed by freelancers without the transfer of rights ever being documented in writing or counter-signed."),
+      status: "broken",
+      breakLabel: t("UNKLARHEIT RECHTSKETTE", "UNRESOLVED RIGHTS"),
+      breakReason: t("Unterbrochen: Dokumentär unklare Rechtekette entwertet das Technologie-Asset.", "Interrupted: Documentarily unclear chain of rights devalues the tech asset.")
+    },
+    s4: {
+      id: "s4",
+      title: t("Schlüsselpersonen bleiben", "Key personnel will stay"),
+      desc: t("Sämtliche Schlüsselmitarbeiter haben schriftliche, für den Käufer verifizierbare Lock-Up- und Retention-Agreements unterzeichnet.", "All key personnel have signed written lock-up and retention agreements that are verifiable for the buyer."),
+      status: "verified"
+    },
+    t1: {
+      id: "t1",
+      title: t("weniger Rückfragen", "fewer inquiries"),
+      desc: t("Präzise, sofort zugängliche Dokumentation im Datenraum eliminiert zeitaufwendige Q&A-Loops.", "Precise, immediately accessible data room documentation eliminates time-consuming Q&A loops.")
+    },
+    t2: {
+      id: "t2",
+      title: t("höhere Transaktionssicherheit", "higher transaction security"),
+      desc: t("Vollständig belegbare Behauptungen verringern die Wahrscheinlichkeit eines Deal-Abbruchs im späten Prozessstadium.", "Fully verifiable assertions decrease the probability of transaction termination in late process stages.")
+    },
+    t3: {
+      id: "t3",
+      title: t("bessere Verhandlungsposition", "better negotiation position"),
+      desc: t("Beseitigung von Unklarheiten verhindert nachträgliche Risikoabschläge oder Kaufpreiseinbehalte durch den Käufer.", "Elimination of ambiguities prevents retroactive risk discounts or purchase price holdbacks by the buyer.")
+    },
+    t4: {
+      id: "t4",
+      title: t("schnellerer Prozess", "faster process"),
+      desc: t("Eine strukturierte und geprüfte Vorbereitung verkürzt die Due Diligence Phase um wertvolle Wochen.", "Structured and pre-audited preparation shortens the due diligence phase by valuable weeks.")
+    }
+  };
+
+  return (
+    <div className="relative w-full bg-[#FAF8F4] border border-charcoal/10 rounded-sm p-8 select-none flex flex-col justify-between group shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+      {/* Background blueprint grid overlay for a warm draft-paper feeling */}
+      <div className="absolute inset-0 bg-[#FAF8F4]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(17,17,21,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(17,17,21,0.015)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+      
+      {/* Top Editorial Labeling & Title */}
+      <div className="relative z-10 flex flex-col space-y-2 pb-6 border-b border-charcoal/[0.06] mb-8">
+        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#947444] font-semibold">
+          {t("VARDA DECISION ARCHITECTURE NO. 02", "VARDA DECISION ARCHITECTURE NO. 02")}
+        </span>
+        <h4 className="font-serif text-2xl text-charcoal font-medium tracking-tight">
+          {t("Der Unternehmensverkauf", "The Company Sale")}
+        </h4>
+        <p className="font-sans text-[11px] sm:text-[12px] italic text-charcoal/60 font-light max-w-2xl">
+          {t("Ein Unternehmenskauf beginnt mit Dokumenten. Er endet mit Vertrauen. Das Modell visualisiert die weichenstellende Funktion der Verifizierbarkeit.",
+              "A company sale begins with documents. It ends with trust. The model visualizes the path-defining role of verifiability.")}
+        </p>
+      </div>
+
+      {/* Main Diagram Canvas Area (Responsive Swipe Container for Mobile UX) */}
+      <div className="relative z-10 w-full overflow-x-auto scrollbar-thin">
+        <div className="min-w-[760px] relative px-2 py-4">
+          
+          {/* Section Headers for LHS/RHS Columns */}
+          <div className="flex justify-between px-4 mb-4">
+            <span className="font-mono text-[9px] uppercase tracking-widest text-charcoal/50 font-semibold select-text">
+              01 / {t("Aussagen", "Statements")}
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-widest text-[#947444] font-semibold select-text">
+              02 / {t("Zentrum des Vertrauens", "Core of Trust")}
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-widest text-charcoal/50 font-semibold select-text">
+              03 / {t("Vertrauen", "Trust Outcomes")}
+            </span>
+          </div>
+
+          <svg className="w-full h-[360px] overflow-visible" viewBox="0 0 800 360" fill="none">
+            <defs>
+              <filter id="subtleGlowHub" x="-15%" y="-15%" width="130%" height="130%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            {/* --- PATHS SECTION (LHS -> HUB -> RHS) --- */}
+            
+            {/* Path 1: s1 -> Hub (Verified, Solid) */}
+            <path
+              d="M 230 70 C 310 70, 340 180, 400 180"
+              stroke={activeNode === "s1" || activeNode === "center" ? "#947444" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "s1" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {/* Animated Flow Dot for Path 1 */}
+            {(activeNode === "s1" || activeNode === "center") && (
+              <circle r="3" fill="#947444">
+                <animateMotion
+                  dur="2s"
+                  repeatCount="indefinite"
+                  path="M 230 70 C 310 70, 340 180, 400 180"
+                />
+              </circle>
+            )}
+
+            {/* Path 2: s2 -> Hub (Broken - Intended portion) */}
+            <path
+              d="M 230 140 H 290"
+              stroke={activeNode === "s2" ? "#C0823E" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "s2" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {/* Path 2: Dashed remainder (faded, broken) */}
+            <path
+              d="M 290 140 C 330 140, 350 180, 400 180"
+              stroke="rgba(17,17,21,0.06)"
+              strokeWidth="0.8"
+              strokeDasharray="3 3"
+              fill="none"
+            />
+            {/* Break Indicator Lines (Double Slash) at x=290 */}
+            <line x1="288" y1="135" x2="292" y2="145" stroke="#C0823E" strokeWidth="1.2" />
+            <line x1="292" y1="135" x2="296" y2="145" stroke="#C0823E" strokeWidth="1.2" />
+            
+            {/* Label for break 2 */}
+            <text x="304" y="137" className="font-mono text-[8px] fill-charcoal/40 tracking-wider">
+              {nodes.s2.breakLabel}
+            </text>
+
+
+            {/* Path 3: s3 -> Hub (Broken - Intended portion) */}
+            <path
+              d="M 230 220 H 290"
+              stroke={activeNode === "s3" ? "#C0823E" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "s3" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {/* Path 3: Dashed remainder (faded, broken) */}
+            <path
+              d="M 290 220 C 330 220, 350 180, 400 180"
+              stroke="rgba(17,17,21,0.06)"
+              strokeWidth="0.8"
+              strokeDasharray="3 3"
+              fill="none"
+            />
+            {/* Break Indicator Lines (Double Slash) at x=290 */}
+            <line x1="288" y1="215" x2="292" y2="225" stroke="#C0823E" strokeWidth="1.2" />
+            <line x1="292" y1="215" x2="296" y2="225" stroke="#C0823E" strokeWidth="1.2" />
+            
+            {/* Label for break 3 */}
+            <text x="304" y="217" className="font-mono text-[8px] fill-charcoal/40 tracking-wider">
+              {nodes.s3.breakLabel}
+            </text>
+
+
+            {/* Path 4: s4 -> Hub (Verified, Solid) */}
+            <path
+              d="M 230 290 C 310 290, 340 180, 400 180"
+              stroke={activeNode === "s4" || activeNode === "center" ? "#947444" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "s4" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {/* Animated Flow Dot for Path 4 */}
+            {(activeNode === "s4" || activeNode === "center") && (
+              <circle r="3" fill="#947444">
+                <animateMotion
+                  dur="2s"
+                  repeatCount="indefinite"
+                  path="M 230 290 C 310 290, 340 180, 400 180"
+                />
+              </circle>
+            )}
+
+
+            {/* --- Hub OUTWARD Paths (Center -> Trust Outcomes) --- */}
+            
+            {/* Path Hub -> t1 */}
+            <path
+              d="M 400 180 C 460 180, 500 70, 570 70"
+              stroke={activeNode === "t1" || activeNode === "center" || activeNode === "s1" || activeNode === "s4" ? "#947444" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "t1" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {(activeNode === "center" || activeNode === "s1" || activeNode === "s4") && (
+              <circle r="2.5" fill="#947444" opacity="0.8">
+                <animateMotion
+                  dur="2.5s"
+                  begin="0.5s"
+                  repeatCount="indefinite"
+                  path="M 400 180 C 460 180, 500 70, 570 70"
+                />
+              </circle>
+            )}
+
+            {/* Path Hub -> t2 */}
+            <path
+              d="M 400 180 C 460 180, 500 140, 570 140"
+              stroke={activeNode === "t2" || activeNode === "center" || activeNode === "s1" || activeNode === "s4" ? "#947444" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "t2" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {(activeNode === "center" || activeNode === "s1" || activeNode === "s4") && (
+              <circle r="2.5" fill="#947444" opacity="0.8">
+                <animateMotion
+                  dur="2.5s"
+                  begin="0.2s"
+                  repeatCount="indefinite"
+                  path="M 400 180 C 460 180, 500 140, 570 140"
+                />
+              </circle>
+            )}
+
+            {/* Path Hub -> t3 */}
+            <path
+              d="M 400 180 C 460 180, 500 220, 570 220"
+              stroke={activeNode === "t3" || activeNode === "center" || activeNode === "s1" || activeNode === "s4" ? "#947444" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "t3" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {(activeNode === "center" || activeNode === "s1" || activeNode === "s4") && (
+              <circle r="2.5" fill="#947444" opacity="0.8">
+                <animateMotion
+                  dur="2.5s"
+                  begin="0.7s"
+                  repeatCount="indefinite"
+                  path="M 400 180 C 460 180, 500 220, 570 220"
+                />
+              </circle>
+            )}
+
+            {/* Path Hub -> t4 */}
+            <path
+              d="M 400 180 C 460 180, 500 290, 570 290"
+              stroke={activeNode === "t4" || activeNode === "center" || activeNode === "s1" || activeNode === "s4" ? "#947444" : "rgba(17,17,21,0.14)"}
+              strokeWidth={activeNode === "t4" ? "1.8" : "1"}
+              className="transition-all duration-300"
+              fill="none"
+            />
+            {(activeNode === "center" || activeNode === "s1" || activeNode === "s4") && (
+              <circle r="2.5" fill="#947444" opacity="0.8">
+                <animateMotion
+                  dur="2.5s"
+                  begin="0s"
+                  repeatCount="indefinite"
+                  path="M 400 180 C 460 180, 500 290, 570 290"
+                />
+              </circle>
+            )}
+
+
+            {/* --- NODES (LEFT ZONE: STATEMENTS) --- */}
+            
+            {/* Left Node 1: Umsatz ist stabil */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("s1")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="30"
+                y="48"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "s1" ? "#947444" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "s1" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="45" y="74" className="font-serif text-[12px] fill-charcoal/90 font-medium">
+                {nodes.s1.title}
+              </text>
+              {/* Verification status dot */}
+              <circle cx="218" cy="70" r="4.5" fill="#FAF8F4" stroke="rgba(16,185,129,0.3)" strokeWidth="1" />
+              <circle cx="218" cy="70" r="2" fill="#10b981" />
+            </g>
+
+            {/* Left Node 2: Kunden bleiben */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("s2")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="30"
+                y="118"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "s2" ? "#C0823E" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "s2" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="45" y="144" className="font-serif text-[12px] fill-charcoal/90 font-medium">
+                {nodes.s2.title}
+              </text>
+              {/* Interruption status dot */}
+              <circle cx="218" cy="140" r="4.5" fill="#FAF8F4" stroke="rgba(192,130,62,0.3)" strokeWidth="1" />
+              <circle cx="218" cy="140" r="2" fill="#C0823E" />
+            </g>
+
+            {/* Left Node 3: IP gehört der Gesellschaft */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("s3")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="30"
+                y="198"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "s3" ? "#C0823E" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "s3" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="45" y="224" className="font-serif text-[12px] fill-charcoal/90 font-medium">
+                {nodes.s3.title}
+              </text>
+              {/* Interruption status dot */}
+              <circle cx="218" cy="220" r="4.5" fill="#FAF8F4" stroke="rgba(192,130,62,0.3)" strokeWidth="1" />
+              <circle cx="218" cy="220" r="2" fill="#C0823E" />
+            </g>
+
+            {/* Left Node 4: Schlüsselpersonen bleiben */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("s4")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="30"
+                y="268"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "s4" ? "#947444" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "s4" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="45" y="294" className="font-serif text-[12px] fill-charcoal/90 font-medium">
+                {nodes.s4.title}
+              </text>
+              {/* Verification status dot */}
+              <circle cx="218" cy="290" r="4.5" fill="#FAF8F4" stroke="rgba(16,185,129,0.3)" strokeWidth="1" />
+              <circle cx="218" cy="290" r="2" fill="#10b981" />
+            </g>
+
+
+            {/* --- CENTER HUB: VERIFIZIERBARKEIT --- */}
+            
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("center")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              {/* Exterior fine rotating reference circle */}
+              <circle
+                cx="400"
+                cy="180"
+                r="64"
+                fill="none"
+                stroke="rgba(148,116,68,0.15)"
+                strokeWidth="0.8"
+                strokeDasharray="4 4"
+                className="animate-[spin_45s_linear_infinite]"
+              />
+              {/* Inner physical node core */}
+              <circle
+                cx="400"
+                cy="180"
+                r="56"
+                fill="#FAF8F4"
+                stroke={activeNode === "center" ? "#947444" : "rgba(17,17,21,0.22)"}
+                strokeWidth={activeNode === "center" ? "2" : "1.2"}
+                filter={activeNode === "center" ? "url(#subtleGlowHub)" : undefined}
+                className="transition-all duration-300"
+              />
+              {/* Grid marks on hub for technical/precision blueprint style */}
+              <line x1="400" y1="116" x2="400" y2="122" stroke="rgba(17,17,21,0.2)" strokeWidth="1" />
+              <line x1="400" y1="238" x2="400" y2="244" stroke="rgba(17,17,21,0.2)" strokeWidth="1" />
+              <line x1="336" y1="180" x2="342" y2="180" stroke="rgba(17,17,21,0.2)" strokeWidth="1" />
+              <line x1="458" y1="180" x2="464" y2="180" stroke="rgba(17,17,21,0.2)" strokeWidth="1" />
+
+              {/* Inscriptions */}
+              <text x="400" y="171" textAnchor="middle" className="font-sans text-[10px] font-bold tracking-[0.16em] fill-charcoal">
+                {t("VERIFIZIERBARKEIT", "VERIFIABILITY")}
+              </text>
+              <text x="400" y="196" textAnchor="middle" className="font-serif text-[9px] italic fill-charcoal/50 leading-tight">
+                {t("Kann die Aussage", "Can the statement")}
+              </text>
+              <text x="400" y="206" textAnchor="middle" className="font-serif text-[9px] italic fill-charcoal/50 leading-tight">
+                {t("belegt werden?", "be verified?")}
+              </text>
+            </g>
+
+
+            {/* --- NODES (RIGHT ZONE: TRUST OUTCOMES) --- */}
+            
+            {/* Right Node 1: weniger Rückfragen */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("t1")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="570"
+                y="48"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "t1" ? "#947444" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "t1" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="585" y="74" className="font-mono text-[10px] uppercase tracking-wider fill-charcoal/95 font-medium">
+                {nodes.t1.title}
+              </text>
+            </g>
+
+            {/* Right Node 2: höhere Transaktionssicherheit */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("t2")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="570"
+                y="118"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "t2" ? "#947444" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "t2" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="585" y="144" className="font-mono text-[10px] uppercase tracking-wider fill-charcoal/95 font-medium">
+                {nodes.t2.title}
+              </text>
+            </g>
+
+            {/* Right Node 3: bessere Verhandlungsposition */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("t3")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="570"
+                y="198"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "t3" ? "#947444" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "t3" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="585" y="224" className="font-mono text-[10px] uppercase tracking-wider fill-charcoal/95 font-medium">
+                {nodes.t3.title}
+              </text>
+            </g>
+
+            {/* Right Node 4: schnellerer Prozess */}
+            <g
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode("t4")}
+              onMouseLeave={() => setActiveNode(null)}
+            >
+              <rect
+                x="570"
+                y="268"
+                width="200"
+                height="44"
+                rx="2"
+                fill="#FAF8F4"
+                stroke={activeNode === "t4" ? "#947444" : "rgba(17,17,21,0.12)"}
+                strokeWidth={activeNode === "t4" ? "1.5" : "1"}
+                className="transition-all duration-200"
+              />
+              <text x="585" y="294" className="font-mono text-[10px] uppercase tracking-wider fill-charcoal/95 font-medium">
+                {nodes.t4.title}
+              </text>
+            </g>
+
+          </svg>
+        </div>
+      </div>
+
+      {/* Interactive Tooltip Card at the Bottom of the Widget to provide strategy-firm depth */}
+      <div className="relative z-10 mt-6 p-5 bg-[#FAF8F4] border border-charcoal/10 rounded-sm min-h-[100px] flex flex-col justify-center transition-all duration-300">
+        {activeNode ? (
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[#947444] font-semibold">
+                {activeNode.startsWith("s") 
+                  ? t("Aussage / Verifikation", "Statement / Verification State") 
+                  : activeNode === "center" 
+                    ? t("Zentrale Verifikation", "Central Verification Hub") 
+                    : t("Effekt auf den Prozess", "Impact on Process")}
+              </span>
+              
+              {activeNode.startsWith("s") && (
+                <span className={`px-2 py-0.5 rounded-full font-mono text-[8px] uppercase font-bold tracking-wider ${
+                  activeNode === "s1" || activeNode === "s4"
+                    ? "bg-emerald-50 text-emerald-800 border border-emerald-100/50" 
+                    : "bg-amber-50 text-amber-800 border border-amber-100/50"
+                }`}>
+                  {activeNode === "s1" || activeNode === "s4"
+                    ? t("Belegbar / Solide", "Verifiable / Sound") 
+                    : t("Unterbrochen / Risiko", "Interrupted / Risk Factor")}
+                </span>
+              )}
+
+              {activeNode.startsWith("t") && (
+                <span className="px-2 py-0.5 rounded-full font-mono text-[8px] uppercase font-bold tracking-wider bg-blue-50 text-blue-800 border border-blue-100/50">
+                  {t("Resultierender Wert", "Resulting Value")}
+                </span>
+              )}
+            </div>
+
+            <h5 className="font-serif text-sm font-bold text-charcoal">
+              {activeNode === "center" ? t("Der Filter der Due Diligence", "The Due Diligence Grid") : (nodes as any)[activeNode]?.title}
+            </h5>
+
+            <p className="font-sans text-[12px] text-charcoal/70 leading-relaxed font-light">
+              {activeNode === "center" 
+                ? t("Das verifiziert vorliegende Dokumentenwerk bildet das unerschütterliche Fundament. Behauptungen, die hier mangels Unterlagen scheitern, zerstören das Vertrauen, bevor Verträge entstehen können.", 
+                    "The factual, audited documentation forms an unshakable foundation. Statements that fail here due to lack of records dissolve trust before agreements can be finalized.")
+                : activeNode === "s2" 
+                  ? t("Die Aussage 'Kunden bleiben' ist dealkritisch, bricht jedoch ab. Ohne schriftlich fixierte, übertragbare Verträge wertet der Käufer die Kundenbasis als ungesichertes Risiko und fordert massive Abschläge auf den Kaufpreis.", 
+                      "The assertion 'Customers will stay' is critical, but fails here. Without written, transferable customer agreements, the buyer reviews the revenues as unsecured risk and demands substantial discounts.")
+                  : activeNode === "s3"
+                    ? t("Software-Assets ohne saubere, ununterbrochene Rechtekette durch schriftliche Vereinbarungen mit allen Freelancern und Entwicklern stellen eine existenzielle Rechtsunsicherheit dar. Die Verifikation bricht ab.", 
+                        "Software assets without a clear, unbroken chain of title by written agreements with all freelancers and developers pose an existential legal liability. Verification fails.")
+                    : (nodes as any)[activeNode]?.desc}
+            </p>
+          </div>
+        ) : (
+          <div className="text-center py-2 text-charcoal/40 italic font-serif text-[12px]">
+            {t("Bewegen Sie den Cursor über ein Architekturelement, um die verfahrensrechtlichen Zusammenhänge zu analysieren.", 
+               "Hover over any architectural node to analyze the strategic and structural outcomes.")}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   const [lang, setLang] = useState<Language>("EN");
   const [activeSection, setActiveSection] = useState("home");
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [isKompendiumOpen, setIsKompendiumOpen] = useState(false);
   
   // Interactive Simulator State
   const [preMoney, setPreMoney] = useState<number>(3000000);
@@ -55,7 +839,7 @@ export default function App() {
   const [selectedFeeAddons, setSelectedFeeAddons] = useState<string[]>([]);
   
   // Custom Scheduler State
-  const [bookingStep, setBookingStep] = useState<"slot" | "details" | "success">("slot");
+  const [bookingStep, setBookingStep] = useState<"intake" | "success">("intake");
   const [selectedMeetingType, setSelectedMeetingType] = useState<"15min" | "45min">("15min");
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
@@ -63,8 +847,12 @@ export default function App() {
     name: "",
     email: "",
     company: "",
-    message: ""
+    phone: "",
+    challenge: "",
+    message: "",
+    preferredContact: "call" // "call" | "videocall" | "email"
   });
+  const [optionalScheduled, setOptionalScheduled] = useState(false);
 
   // Unique layout states requested by USER
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,7 +868,7 @@ export default function App() {
   // Interactive Typewriter state under the Fokus (Expertise) section
   const [fokusCodeText, setFokusCodeText] = useState("");
   const [fokusSuccessVisible, setFokusSuccessVisible] = useState(false);
-  const targetCodeString = "roadmap success: execute: vardalegal.com as legal advisor";
+  const targetCodeString = "company sale: structure founder exit & lock-up phase";
 
   useEffect(() => {
     let typeIndex = 0;
@@ -315,35 +1103,70 @@ export default function App() {
     }
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleIntakeSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (bookingForm.name && bookingForm.email) {
+      const contactMethodLabel = 
+        bookingForm.preferredContact === "call" ? (lang === "DE" ? "Rückruf" : "Phone Call") : 
+        bookingForm.preferredContact === "videocall" ? (lang === "DE" ? "Videocall" : "Video Call") : 
+        (lang === "DE" ? "E-Mail" : "Email");
+
       const subject = encodeURIComponent(
         lang === "DE" 
-          ? `Terminanfrage: Varda Legal - ${selectedMeetingType === "15min" ? "15 Min Fast Check" : "45 Min Strategy Box"}` 
-          : `Booking Request: Varda Legal - ${selectedMeetingType === "15min" ? "15-Min Fast Check" : "45-Min Strategy Box"}`
+          ? `Mandatsanfrage: Varda Legal - ${bookingForm.name}` 
+          : `Inquiry: Varda Legal - ${bookingForm.name}`
       );
       const emailBody = encodeURIComponent(
         lang === "DE"
-          ? `Hallo Dr. Filbinger,\n\nhier ist eine neue Terminanfrage vom Kalendertool:\n\n` +
+          ? `Sehr geehrter Herr Dr. Filbinger,\n\nhier ist eine neue Beratungsanfrage:\n\n` +
             `• Name: ${bookingForm.name}\n` +
             `• E-Mail: ${bookingForm.email}\n` +
-            `• Unternehmen: ${bookingForm.company || "Keine Angabe"}\n` +
-            `• Paket: ${selectedMeetingType === "15min" ? "15 Min. Fast Check" : "45 Min. Strategy Box"}\n` +
-            `• Datum: 2026-05-${selectedDay} um ${selectedTimeSlot} (Europe/Berlin)\n\n` +
-            `Nachricht:\n${bookingForm.message || "Keine Nachricht angegeben"}\n\n` +
-            `Beste Grüße\n${bookingForm.name}`
-          : `Dear Dr. Filbinger,\n\nHere is a new booking request submitted via the calendar tool:\n\n` +
+            `• Telefonnummer: ${bookingForm.phone || "Nicht angegeben"}\n` +
+            `• Unternehmen: ${bookingForm.company || "Nicht angegeben"}\n` +
+            `• Bevorzugter Kontaktweg: ${contactMethodLabel}\n` +
+            `• Anliegen: ${bookingForm.challenge || "Nicht angegeben"}\n\n` +
+            `Nachricht/Details:\n${bookingForm.message || "Keine zusätzlichen Details angegeben"}\n\n` +
+            `Mit freundlichen Grüßen\n${bookingForm.name}`
+          : `Dear Dr. Filbinger,\n\nHere is a new client inquiry:\n\n` +
             `• Name: ${bookingForm.name}\n` +
             `• Email: ${bookingForm.email}\n` +
+            `• Phone Number: ${bookingForm.phone || "Not specified"}\n` +
             `• Company: ${bookingForm.company || "Not specified"}\n` +
-            `• Package: ${selectedMeetingType === "15min" ? "15 Min. Fast Check" : "45 Min. Strategy Box"}\n` +
-            `• Date: 2026-05-${selectedDay} at ${selectedTimeSlot} (Europe/Berlin)\n\n` +
-            `Message:\n${bookingForm.message || "No message provided"}\n\n` +
+            `• Preferred Connection: ${contactMethodLabel}\n` +
+            `• Challenge: ${bookingForm.challenge || "Not specified"}\n\n` +
+            `Details/Notes:\n${bookingForm.message || "No additional details provided"}\n\n` +
             `Best regards,\n${bookingForm.name}`
       );
       window.location.href = `mailto:info@vardalegal.com?subject=${subject}&body=${emailBody}`;
       setBookingStep("success");
+    }
+  };
+
+  const handleScheduleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (selectedDay && selectedTimeSlot) {
+      const subject = encodeURIComponent(
+        lang === "DE" 
+          ? `Terminreservierung (Optional): Varda Legal - ${selectedMeetingType === "15min" ? "15 Min" : "45 Min"} für ${bookingForm.name}` 
+          : `Time Slot Booking (Optional): Varda Legal - ${selectedMeetingType === "15min" ? "15 Min" : "45 Min"} for ${bookingForm.name}`
+      );
+      const emailBody = encodeURIComponent(
+        lang === "DE"
+          ? `Sehr geehrter Herr Dr. Filbinger,\n\nich möchte meinen Termin zusätzlich reservieren:\n\n` +
+            `• Typ: ${selectedMeetingType === "15min" ? "15 Min. Fast Check" : "45 Min. Strategy Box"}\n` +
+            `• Datum: 2026-05-${selectedDay} um ${selectedTimeSlot} Uhr (Europe/Berlin)\n` +
+            `• Name: ${bookingForm.name}\n` +
+            `• E-Mail: ${bookingForm.email}\n\n` +
+            `Bitte bestätigen Sie diesen Termin.`
+          : `Dear Dr. Filbinger,\n\nI would like to additionally reserve my selected time slot:\n\n` +
+            `• Type: ${selectedMeetingType === "15min" ? "15-Min Fast Check" : "45-Min Strategy Box"}\n` +
+            `• Date: 2026-05-${selectedDay} at ${selectedTimeSlot} (Europe/Berlin)\n` +
+            `• Name: ${bookingForm.name}\n` +
+            `• Email: ${bookingForm.email}\n\n` +
+            `Please confirm this appointment.`
+      );
+      window.location.href = `mailto:info@vardalegal.com?subject=${subject}&body=${emailBody}`;
+      setOptionalScheduled(true);
     }
   };
 
@@ -522,10 +1345,10 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 bg-[#1B2A3E] text-[#FAF8F5] flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#FAF8F4] text-charcoal flex flex-col overflow-y-auto border-b border-charcoal/15"
           >
             {/* Elegant micro-grid & abstract strategic legal blueprint overlay in background + Fine Archival Paper Grain Filter */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-[0.05] transition-opacity duration-1000 z-0">
+            <div className="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-[0.22] transition-opacity duration-1000 z-0">
               <svg width="100%" height="100%" className="absolute inset-0" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <filter id="varda-paper-grain">
@@ -533,24 +1356,24 @@ export default function App() {
                     <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0" />
                   </filter>
                   <pattern id="menu-grid-arch" width="60" height="60" patternUnits="userSpaceOnUse">
-                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FAF8F5" strokeWidth="0.4" strokeOpacity="0.4" />
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2C2C2C" strokeWidth="0.4" strokeOpacity="0.08" />
                   </pattern>
                 </defs>
                 {/* Apply Tactile Paper Grain Noise */}
                 <rect width="100%" height="100%" filter="url(#varda-paper-grain)" />
-                {/* Blueprint Elements styled in matching Ivory hue */}
+                {/* Blueprint Elements styled in matching Ivory/Charcoal hue */}
                 <rect width="100%" height="100%" fill="url(#menu-grid-arch)" />
-                <circle cx="75%" cy="45%" r="280" stroke="#FAF8F5" strokeWidth="0.75" fill="none" strokeDasharray="4 8" strokeOpacity="0.3" />
-                <circle cx="75%" cy="45%" r="180" stroke="#FAF8F5" strokeWidth="0.5" fill="none" strokeOpacity="0.2" />
-                <circle cx="75%" cy="45%" r="80" stroke="#FAF8F5" strokeWidth="0.75" fill="none" strokeOpacity="0.4" />
-                <path d="M 120 220 L 420 220 L 520 320 L 920 320" stroke="#FAF8F5" strokeWidth="0.75" fill="none" strokeDasharray="3 3" strokeOpacity="0.3" />
-                <path d="M 320 120 L 320 570" stroke="#FAF8F5" strokeWidth="0.5" fill="none" strokeOpacity="0.2" />
-                <path d="M 520 270 L 520 720" stroke="#FAF8F5" strokeWidth="0.5" fill="none" strokeOpacity="0.2" />
-                <text x="140" y="200" fill="#FAF8F5" fillOpacity="0.3" className="font-mono text-[9px] tracking-[0.2em]">STRATEGIC CAPITAL STRUCTURE LAYER_A</text>
-                <text x="540" y="300" fill="#FAF8F5" fillOpacity="0.3" className="font-mono text-[9px] tracking-[0.2em]">CORPORATE ENTITY REORGANIZATION PROTOCOL : V.L_GEN_04</text>
-                <text x="740" y="405" fill="#FAF8F5" fillOpacity="0.3" className="font-mono text-[9px] tracking-[0.2em]">MUC_HQ / 48.1351 N | 11.5820 E</text>
-                <path d="M 30 30 L 60 30 M 30 30 L 30 60" stroke="#FAF8F5" strokeWidth="1.5" fill="none" strokeOpacity="0.5" />
-                <path d="M 97% 30 L 94% 30 M 97% 30 L 97% 60" stroke="#FAF8F5" strokeWidth="1.5" fill="none" strokeOpacity="0.5" />
+                <circle cx="75%" cy="45%" r="280" stroke="#2C2C2C" strokeWidth="0.75" fill="none" strokeDasharray="4 8" strokeOpacity="0.05" />
+                <circle cx="75%" cy="45%" r="180" stroke="#2C2C2C" strokeWidth="0.5" fill="none" strokeOpacity="0.04" />
+                <circle cx="75%" cy="45%" r="80" stroke="#2C2C2C" strokeWidth="0.75" fill="none" strokeOpacity="0.07" />
+                <path d="M 120 220 L 420 220 L 520 320 L 920 320" stroke="#2C2C2C" strokeWidth="0.75" fill="none" strokeDasharray="3 3" strokeOpacity="0.05" />
+                <path d="M 320 120 L 320 570" stroke="#2C2C2C" strokeWidth="0.5" fill="none" strokeOpacity="0.03" />
+                <path d="M 520 270 L 520 720" stroke="#2C2C2C" strokeWidth="0.5" fill="none" strokeOpacity="0.03" />
+                <text x="140" y="200" fill="#2C2C2C" fillOpacity="0.07" className="font-mono text-[9px] tracking-[0.2em]">STRATEGIC CAPITAL STRUCTURE LAYER_A</text>
+                <text x="540" y="300" fill="#2C2C2C" fillOpacity="0.07" className="font-mono text-[9px] tracking-[0.2em]">CORPORATE ENTITY REORGANIZATION PROTOCOL : V.L_GEN_04</text>
+                <text x="740" y="405" fill="#2C2C2C" fillOpacity="0.07" className="font-mono text-[9px] tracking-[0.2em]">MUC_HQ / 48.1351 N | 11.5820 E</text>
+                <path d="M 30 30 L 60 30 M 30 30 L 30 60" stroke="#2C2C2C" strokeWidth="1.5" fill="none" strokeOpacity="0.1" />
+                <path d="M 97% 30 L 94% 30 M 97% 30 L 97% 60" stroke="#2C2C2C" strokeWidth="1.5" fill="none" strokeOpacity="0.1" />
               </svg>
             </div>
 
@@ -558,20 +1381,20 @@ export default function App() {
             <div className="mx-auto w-full max-w-7xl px-6 py-12 md:px-12 flex-1 flex flex-col justify-between relative z-10">
               
               {/* Header inside the dropdown */}
-              <div className="flex justify-between items-center pb-8 border-b border-[#FAF8F5]/10">
-                <a href="#home" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 font-display text-lg font-bold tracking-widest text-[#FAF8F5]/95">
+              <div className="flex justify-between items-center pb-8 border-b border-charcoal/10">
+                <a href="#home" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 font-display text-lg font-bold tracking-widest text-[#2C2C2C]">
                   <span>VARDA</span>
                   <span className="text-brand-red font-sans text-xl font-black">•</span>
-                  <span className="font-serif italic font-normal tracking-normal text-base text-[#FAF8F5]/80">Legal</span>
+                  <span className="font-serif italic font-normal tracking-normal text-base text-charcoal/85">Legal</span>
                 </a>
 
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="group inline-flex items-center space-x-3 text-[#FAF8F5]/50 hover:text-brand-yellow font-mono text-xs uppercase tracking-widest cursor-pointer transition-all duration-300"
+                  className="group inline-flex items-center space-x-3 text-charcoal/60 hover:text-[#C0823E] font-mono text-xs uppercase tracking-widest cursor-pointer transition-all duration-300"
                 >
                   <span className="font-mono font-medium">{lang === "DE" ? "SCHLIESSEN" : "CLOSE"}</span>
-                  <div className="w-8 h-8 rounded-full border border-[#FAF8F5]/20 flex items-center justify-center bg-[#FAF8F5]/5 group-hover:border-brand-yellow transition-all duration-300">
-                    <X className="h-3.5 w-3.5 text-[#FAF8F5]/70 group-hover:text-brand-yellow transition-colors duration-300" />
+                  <div className="w-8 h-8 rounded-full border border-charcoal/15 flex items-center justify-center bg-transparent group-hover:border-[#C0823E] transition-all duration-300">
+                    <X className="h-3.5 w-3.5 text-charcoal/70 group-hover:text-[#C0823E] transition-colors duration-300" />
                   </div>
                 </button>
               </div>
@@ -580,118 +1403,118 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 py-12 md:py-16 flex-1 items-center">
                 
                 {/* Left Column: Premium Bureau Directory Archive Index */}
-                <div className="lg:col-span-4 lg:border-r border-[#FAF8F5]/10 lg:pr-12 flex flex-col justify-between h-auto lg:h-[480px]">
+                <div className="lg:col-span-4 lg:border-r border-charcoal/10 lg:pr-12 flex flex-col justify-between h-auto lg:h-[480px]">
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <div className="font-mono text-[9px] tracking-widest text-brand-yellow uppercase">[ INTEGRATED COUNSEL ]</div>
-                      <h4 className="font-serif text-2xl font-light text-[#FAF8F5] tracking-tight leading-snug">
+                      <div className="font-mono text-[9px] tracking-widest text-[#C0823E] uppercase">[ INTEGRATED COUNSEL ]</div>
+                      <h4 className="font-serif text-2xl font-light text-charcoal tracking-tight leading-snug">
                         {lang === "DE" ? "Präzision & Diskrete Kompetenz." : "Precision & Pure Discretion."}
                       </h4>
                     </div>
-                    <p className="text-[#FAF8F5]/70 font-sans text-xs md:text-sm leading-relaxed max-w-sm">
+                    <p className="text-charcoal/70 font-sans text-xs md:text-sm leading-relaxed max-w-sm">
                       {lang === "DE" 
                         ? "Varda Legal steht für die absolute Synthese von intellektuellem Anspruch, unternehmerischem Pragmatismus und zeitloser Unabhängigkeit."
                         : "Varda Legal stands for the ultimate synthesis of intellectual rigour, entrepreneurial pragmatism, and timeless independence."}
                     </p>
                   </div>
 
-                  <div className="space-y-4 pt-8 border-t border-[#FAF8F5]/5 font-mono text-[9px] text-[#FAF8F5]/40 uppercase tracking-widest mt-8 lg:mt-0">
+                  <div className="space-y-4 pt-8 border-t border-charcoal/10 font-mono text-[9px] text-charcoal/50 uppercase tracking-widest mt-8 lg:mt-0">
                     <div className="flex justify-between py-1">
-                      <span className="text-[#FAF8F5]/20">[ GRÜNDER / PARTNER ]</span>
-                      <span className="text-[#FAF8F5]/85 text-right font-medium">Dr. Konstantin Filbinger</span>
+                      <span className="text-charcoal/40">[ GRÜNDER / PARTNER ]</span>
+                      <span className="text-charcoal/85 text-right font-medium">Dr. Konstantin Filbinger</span>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-[#FAF8F5]/20">[ HAUPTSITZ / HQ ]</span>
-                      <span className="text-[#FAF8F5]/85 text-right font-medium">München • Germany</span>
+                      <span className="text-charcoal/40">[ HAUPTSITZ / HQ ]</span>
+                      <span className="text-charcoal/85 text-right font-medium">München • Germany</span>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-[#FAF8F5]/20">[ SPEZIALISIERUNG ]</span>
-                      <span className="text-[#FAF8F5]/85 text-right font-medium">M&A • Tech • Corporate</span>
+                      <span className="text-charcoal/40">[ SPEZIALISIERUNG ]</span>
+                      <span className="text-charcoal/85 text-right font-medium">M&A • Tech • Corporate</span>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-[#FAF8F5]/20">[ BERATUNGSSTIL ]</span>
-                      <span className="text-[#FAF8F5]/85 text-right font-medium">Radikal Funktional</span>
+                      <span className="text-[#C0823E]/70">[ BERATUNGSSTIL ]</span>
+                      <span className="text-charcoal/85 text-right font-medium">{lang === "DE" ? "Radikal Funktional" : "Radically Functional"}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Right Column: High-fashion, asymmetrical structured anchors with section symbols & editorial lines */}
+                {/* Right Column: Architectural, calm and understated navigation anchors */}
                 <div className="lg:col-span-8 flex flex-col justify-center w-full">
                   <div className="space-y-3 md:space-y-4 w-full">
                     {[
                       { 
-                        label: "START", 
+                        label: lang === "DE" ? "Start" : "Start", 
                         target: "#home", 
                         subtitle: lang === "DE" ? "00 / Kanzlei-Kuppel" : "00 / Firm Cupola",
-                        sec: "§ 00",
+                        sec: "00",
                         desc: lang === "DE" ? "Initialer Einblick & Kanzleiphilosophie" : "Initial perspective & philosophy"
                       },
                       { 
-                        label: "PROFILE", 
+                        label: lang === "DE" ? "Profil" : "Profile", 
                         target: "#wir", 
                         subtitle: lang === "DE" ? "01 / Über Varda Legal" : "01 / About Varda Legal",
-                        sec: "§ 01",
+                        sec: "01",
                         desc: lang === "DE" ? "Selbstverständnis & Profil des Gründers" : "Executive summary & founder portrait"
                       },
                       { 
-                        label: "EXPERTISE", 
+                        label: lang === "DE" ? "Expertise" : "Expertise", 
                         target: "#fokus", 
                         subtitle: lang === "DE" ? "02 / Kompetenzen & Sektoren" : "02 / Competences & Sectors",
-                        sec: "§ 02",
+                        sec: "02",
                         desc: lang === "DE" ? "Spezialisierte Beratungsschwerpunkte" : "Specialized strategic practice fields"
                       },
                       { 
-                        label: "FORM FOLLOWS FUNCTION", 
+                        label: lang === "DE" ? "Form follows function" : "Form follows function", 
                         target: "#fff", 
                         subtitle: lang === "DE" ? "03 / Kanzlei-Erbauung" : "03 / Firm Building",
-                        sec: "§ 03",
+                        sec: "03",
                         desc: lang === "DE" ? "Ergebnisorientierter Pragmatismus" : "Aesthetic of radical outcome focus"
                       },
                       { 
-                        label: "DENKWERK", 
+                        label: lang === "DE" ? "Denkwerk" : "Denkwerk", 
                         target: "#denkwerk", 
                         subtitle: lang === "DE" ? "04 / Schriften & Leitfäden" : "04 / Writings & Briefings",
-                        sec: "§ 04",
+                        sec: "04",
                         desc: lang === "DE" ? "Wissenschaftlich fundierte Kanzlei-Impulse" : "Intellectual publications & briefings"
                       },
                       { 
-                        label: "FEES", 
+                        label: lang === "DE" ? "Vergütung" : "Fees", 
                         target: "#verguetung", 
                         subtitle: lang === "DE" ? "05 / Vergütungsmodelle" : "05 / Fee Structures",
-                        sec: "§ 05",
+                        sec: "05",
                         desc: lang === "DE" ? "Strikte Preistransparenz & Flatrates" : "Predictable transaction fee modules"
                       },
                       { 
-                        label: "CONTACT", 
+                        label: lang === "DE" ? "Kontakt" : "Contact", 
                         target: "#letsgo", 
                         subtitle: lang === "DE" ? "06 / Online-Reservierung" : "06 / Online Reservation",
-                        sec: "§ 06",
+                        sec: "06",
                         desc: lang === "DE" ? "Direkter digitaler Beratungstermin" : "Immediate secure booking scheduler"
                       }
                     ].map((menuItem, idx) => (
                       <motion.div 
                         key={idx}
-                        whileHover={{ x: 10 }}
-                        className="border-b border-[#FAF8F5]/5 pb-2.5 group transition-all duration-300"
+                        whileHover={{ x: 6 }}
+                        className="border-b border-charcoal/10 pb-2.5 group transition-all duration-300"
                       >
                         <a
                           href={menuItem.target}
                           onClick={() => setIsMenuOpen(false)}
                           className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-1"
                         >
-                          <div className="flex items-center space-x-4">
-                            <span className="font-mono text-[9px] text-brand-yellow font-semibold tracking-wider bg-[#FAF8F5]/5 px-2 py-0.5 rounded-sm select-none border border-[#FAF8F5]/10">
+                          <div className="flex items-center space-x-3.5">
+                            <span className="font-mono text-[10px] text-charcoal/40 tracking-wider select-none font-medium">
                               {menuItem.sec}
                             </span>
-                            <span className="font-serif italic text-2xl sm:text-3xl md:text-3.5xl tracking-tight text-[#FAF8F5]/95 group-hover:text-brand-yellow transition-colors duration-300">
+                            <span className="font-sans text-lg sm:text-xl md:text-2xl font-semibold tracking-tight text-charcoal/90 group-hover:text-[#C0823E] transition-colors duration-200">
                               {menuItem.label}
                             </span>
                           </div>
-                          <div className="flex flex-col items-start sm:items-end pt-1 sm:pt-0">
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand-yellow/65 group-hover:text-[#FAF8F5] font-bold transition-colors">
+                          <div className="flex flex-col items-start sm:items-end pt-0.5 sm:pt-0">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-[#C0823E] group-hover:text-charcoal font-bold transition-colors">
                               {menuItem.subtitle}
                             </span>
-                            <span className="text-[10px] text-[#FAF8F5]/40 font-serif italic mt-0.5 group-hover:text-[#FAF8F5]/60 transition-colors hidden sm:block">
+                            <span className="text-[10px] text-charcoal/50 font-sans mt-0.5 group-hover:text-charcoal/70 transition-colors hidden sm:block">
                               {menuItem.desc}
                             </span>
                           </div>
@@ -704,19 +1527,19 @@ export default function App() {
               </div>
 
               {/* Bottom footer index */}
-              <div className="pt-8 border-t border-[#FAF8F5]/10 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-[#FAF8F5]/40 gap-4">
+              <div className="pt-8 border-t border-charcoal/10 flex flex-col md:flex-row justify-between items-center text-[10px] sm:text-xs font-mono text-charcoal/40 gap-4">
                 <div className="tracking-wide">© 2026 DR. KONSTANTIN FILBINGER • VARDA LEGAL • MUNICH</div>
                 <div className="flex space-x-6 text-[10px]">
                   <button 
                     onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveLegalModal("impressum"); }} 
-                    className="hover:text-[#FAF8F5] transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
+                    className="hover:text-charcoal transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest font-semibold"
                   >
                     IMPRESSUM
                   </button>
                   <span>•</span>
                   <button 
                     onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setActiveLegalModal("datenschutz"); }} 
-                    className="hover:text-[#FAF8F5] transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest"
+                    className="hover:text-charcoal transition-colors cursor-pointer uppercase bg-transparent border-none p-0 tracking-widest font-semibold"
                   >
                     DATENSCHUTZ
                   </button>
@@ -738,21 +1561,13 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start pb-16">
             
             {/* Left Column: High-Impact Varda Headline Stacked */}
-            <div className="lg:col-span-7">
-              <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7.5xl font-semibold text-charcoal leading-[1.05] tracking-tight max-w-2xl select-none">
-                {lang === "DE" ? (
-                  <>
-                    <span className="block">Wirtschaftsrecht.</span>
-                    <span className="block">Pragmatisch. Persönlich.</span>
-                    <span className="block">Klar.</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="block">Corporate Law.</span>
-                    <span className="block">Pragmatic. Personal.</span>
-                    <span className="block">Clear.</span>
-                  </>
-                )}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.25em] text-[#C0823E] uppercase font-bold">
+                <span className="w-1.5 h-1.5 bg-[#C0823E]" />
+                <span>{d.hero.badge}</span>
+              </div>
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-charcoal leading-[1.08] tracking-tight max-w-2xl select-none">
+                {d.hero.title}
               </h1>
             </div>
 
@@ -762,18 +1577,23 @@ export default function App() {
               <div className="hidden lg:block absolute left-0 top-1 bottom-1 w-[1px] bg-charcoal/20" />
               
               <div className="space-y-6 lg:pl-8 flex flex-col justify-center">
-                <p className="font-sans text-base sm:text-lg text-charcoal/85 leading-relaxed max-w-md">
-                  {lang === "DE" 
-                    ? "Varda Legal berät Gründer, Unternehmen und Privatpersonen im Gesellschaftsrecht, Vertragsrecht, M&A und zu Tech-Themen."
-                    : "Varda Legal advises founders, companies and private individuals on corporate law, contract law and tech topics."}
+                <p className="font-sans text-base sm:text-lg text-charcoal/80 leading-relaxed max-w-md">
+                  {d.hero.subtitle}
                 </p>
                 
-                <div>
+                <div className="flex flex-row items-center gap-6 pt-2">
+                  <a
+                    href="#letsgo"
+                    className="inline-flex items-center justify-center bg-charcoal text-white hover:bg-[#C0823E] text-xs font-mono uppercase tracking-widest px-6 py-3.5 transition-colors duration-300 font-bold"
+                  >
+                    <span>{d.hero.cta}</span>
+                  </a>
+                  
                   <a
                     href="#fokus"
                     className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] font-bold text-charcoal border-b border-charcoal/80 pb-1 hover:text-charcoal/60 transition-colors"
                   >
-                    <span>{lang === "DE" ? "Unsere Kompetenzen" : "Our expertise"}</span>
+                    <span>{d.hero.secCta}</span>
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </div>
@@ -782,137 +1602,240 @@ export default function App() {
 
           </div>
 
-          {/* Bottom Tier: Tri-Panel Grid (Left Card Deck | Middle Architecture Frame | Right Specialties Matrix) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12 border-t border-charcoal/10">
+          {/* Bottom Tier: Architectural Blueprint Visualizer & Method Integration */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-12 border-t border-charcoal/10 items-stretch">
             
-            {/* Panel 1: Premium vardalegal_coffeetable Production Asset */}
-            <div className="space-y-3">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-transparent border border-charcoal/15 overflow-hidden rounded group">
+            {/* Left 7 Columns: Fine-grained SVG blueprint mapping Complexity -> Clarity */}
+            <div className="lg:col-span-7 h-full flex flex-col">
+              <DecisionArchitectureBlueprint lang={lang} />
+            </div>
+
+            {/* Right 5 Columns: Trusted Advisor Profile Card */}
+            <div className="lg:col-span-5 bg-[#FAF8F4] border border-charcoal/15 p-6 flex flex-col justify-between group shadow-sm">
+              <div className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[4/3] xl:aspect-[4/3.2] bg-stone-100 border border-charcoal/15 overflow-hidden flex-grow">
                 <img
-                  src={coffeeImage}
-                  alt="Varda Legal - Coffee Table"
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                  src={konstiImage}
+                  alt="Dr. Konstantin Filbinger - Trusted Advisor"
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 pointer-events-none"
                   referrerPolicy="no-referrer"
                 />
               </div>
-            </div>
-
-            {/* Panel 2: Modular Architecture View Frame with Founder Portrait */}
-            <div className="space-y-3">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] bg-[#FAF8F4] border border-charcoal/15 overflow-hidden group">
-                <img
-                  src={konstiArch}
-                  alt="Dr. Konstantin Filbinger - Varda Legal"
-                  className="w-full h-full object-cover sepia-[0.14] saturate-[0.95] contrast-[1.02] opacity-95 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
-                  referrerPolicy="no-referrer"
-                />
-                
-                {/* Subtle warm tint overlay to integrate with page styling */}
-                <div className="absolute inset-0 bg-[#FAF8F4]/10 mix-blend-color-burn pointer-events-none" />
-                
-                {/* High contrast visual indicator overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B19]/50 via-transparent to-transparent pointer-events-none" />
-                
-                {/* Circular precision graphic detail or stamp from image */}
-                <div className="absolute top-4 left-4 bg-[#1C1B19]/85 backdrop-blur-sm px-2.5 py-1 border border-white/10 text-[8px] font-mono text-white/90 uppercase tracking-widest z-10 select-none">
-                  [ FOUNDER PROFILE ]
-                </div>
-
-                <div className="absolute bottom-4 right-4 bg-[#1C1B19]/85 backdrop-blur-sm px-3 py-1 border border-white/10 text-[9px] font-mono text-white uppercase tracking-widest font-bold">
+              <div className="pt-4 text-center">
+                <div className="font-serif text-lg font-medium tracking-wide text-charcoal">
                   Dr. Konstantin Filbinger
                 </div>
+                <div className="font-mono text-[9px] text-[#C0823E] uppercase tracking-widest mt-1 font-semibold">
+                  {lang === "DE" ? "Ihr persönlicher Rechtsberater" : "Your Trusted Advisor"}
+                </div>
               </div>
             </div>
 
-            {/* Panel 3: Specialties Grid Deck and Statement ("enables growth") */}
-            <div className="space-y-6 flex flex-col justify-center h-full pb-8">
-              
-              {/* Majestic central message + Minimal corporate stamp badge */}
-              <div className="space-y-4">
-                <p className="font-sans text-lg sm:text-xl font-medium text-charcoal tracking-tight leading-snug">
-                  {lang === "DE" 
-                    ? "Gute juristische Arbeit schafft Klarheit, reduziert Risiken und ermöglicht Wachstum."
-                    : "Good legal work creates clarity, reduces risk and enables growth."}
-                </p>
+          </div>
 
-                <div className="flex items-center justify-between pt-2">
-                  {/* Circular V Badge that links to the booking calendar (#letsgo) */}
-                  <a
-                    href="#letsgo"
-                    className="w-9 h-9 rounded-full border border-charcoal flex items-center justify-center font-display text-xs font-black text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300 select-none cursor-pointer"
-                  >
-                    V
-                  </a>
+        </section>
+
+        {/* SECTION 2: "WIR" (OUR APPROACH) */}
+        <section id="wir" className="py-20 md:py-28 border-b border-charcoal/10">
+          <div className="space-y-4 mb-16">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#C0823E]">01 / {d.wir.title}</span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-charcoal">{d.wir.subtitle}</h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left 8 Columns: Editorial Copy focusing on outcomes & reality */}
+            <div className="lg:col-span-8 space-y-16">
+              
+              {/* Subsection 1: Contract Intelligence & Executive Clarity */}
+              <div className="space-y-6">
+                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-charcoal tracking-tight">
+                  {lang === "DE" ? "Contract Intelligence & Executive Clarity" : "Contract Intelligence & Executive Clarity"}
+                </h3>
+
+                <div className="space-y-4 font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base max-w-2xl">
+                  {lang === "DE" ? (
+                    <>
+                      <p>Ein Vertrag ist kein Selbstzweck. Er soll Vereinbarungen fixieren und Risiken regeln. Doch in der Praxis sind Entwürfe oft schwer lesbar, überbucht mit juristischen Details und intransparent für die letztendliche Entscheidungsebene.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Varda analysiert Verträge nicht primär – Varda übersetzt Verträge in Entscheidungen.</p>
+                      <p>Mit unserer Methodik der <strong>Contract Intelligence</strong> überführen wir rohe <strong>Vertragsentwürfe</strong> in ein klares, logisches Handlungsdiagramm. Das Ergebnis ist unmittelbare <strong>Executive Clarity</strong> – die vollkommene Gewissheit darüber, welche kaufmännischen Verpflichtungen eingegangen werden, welche Risiken versicherbar sind und welche strategische <strong>Handlung</strong> als Nächstes erfolgen muss.</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>A contract is not an end in itself. Its purpose is to record agreements and govern risks. But in practice, drafts are often complex to read, overloaded with legal jargon, and opaque for executive decision-makers.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Varda does not merely analyze contracts – Varda translates contracts into decisions.</p>
+                      <p>Through our <strong>Contract Intelligence</strong> methodology, we transform raw <strong>contract drafts</strong> into a clean, logical decision outline. The result is immediate <strong>Executive Clarity</strong> – absolute certainty regarding the commercial obligations undertaken, which risks are insurable, and what strategic <strong>action</strong> must be taken next.</p>
+                    </>
+                  )}
+                </div>
+
+                {/* Outcome Contrasts Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-charcoal/10 font-mono text-xs uppercase tracking-wider">
+                  <div className="space-y-1">
+                    <span className="text-charcoal/40 block">{lang === "DE" ? "Methode /" : "Method /"}</span>
+                    <span className="text-brand-red font-bold block">Contract Intelligence</span>
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-charcoal/50 block">{lang === "DE" ? "Fokus /" : "Focus /"}</span>
+                    <span className="text-[#C0823E] font-bold block">Executive Clarity</span>
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-charcoal/40 block">{lang === "DE" ? "Ziel /" : "Destination /"}</span>
+                    <span className="text-charcoal font-bold block">{lang === "DE" ? "Handlungsfähigkeit" : "Strategic Action"}</span>
+                  </div>
                 </div>
               </div>
 
+              {/* Display of new strategic editorial asset "contractintelligence2.png" with generous whitespace, full content width */}
+              <div className="py-8 w-full select-all bg-transparent">
+                <img 
+                  src={contractIntelligenceImage}
+                  alt="Varda Executive Clarity Blueprint"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto object-contain block"
+                />
+              </div>
+
+              {/* Subsection 2: Entrepreneurs make decisions */}
+              <div className="space-y-6 pt-12 border-t border-charcoal/10">
+                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-charcoal tracking-tight">
+                  {lang === "DE" ? "Unternehmer treffen Entscheidungen." : "Entrepreneurs make decisions."}
+                </h3>
+                  
+                {lang === "DE" ? (
+                  <ul className="space-y-3 pl-4 font-serif text-base sm:text-lg border-l border-[#C0823E]/30 text-charcoal">
+                    <li>Sie verkaufen Unternehmen.</li>
+                    <li>Sie verhandeln Verträge.</li>
+                    <li>Sie lösen Konflikte zwischen Gesellschaftern.</li>
+                    <li>Sie erschließen neue Märkte.</li>
+                    <li>Sie investieren Zeit, Kapital und Verantwortung.</li>
+                  </ul>
+                ) : (
+                  <ul className="space-y-3 pl-4 font-serif text-base sm:text-lg border-l border-[#C0823E]/30 text-charcoal">
+                    <li>You sell companies.</li>
+                    <li>You negotiate contracts.</li>
+                    <li>You resolve disputes between shareholders.</li>
+                    <li>You expand into new markets.</li>
+                    <li>You invest time, capital, and responsibility.</li>
+                  </ul>
+                )}
+
+                <div className="space-y-4 font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base max-w-2xl">
+                  {lang === "DE" ? (
+                    <>
+                      <p>Recht spielt dabei eine wichtige Rolle. Die eigentliche Herausforderung liegt jedoch woanders: Sie müssen die richtige Entscheidung treffen.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Varda Legal schafft die Klarheit, die dafür notwendig ist.</p>
+                      <p>Wir strukturieren komplexe Situationen, benennen Risiken und zeigen Optionen auf. So erkennen Sie schneller, worauf es ankommt und welchen Weg Sie einschlagen wollen.</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>Law plays an important role. However, the real challenge lies elsewhere: you must make the right decision.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Varda Legal creates the clarity required for this.</p>
+                      <p>We structure complex situations, identify risks, and map out options. This allows you to recognize faster what matters most and which path you want to take.</p>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Subsection 3: Clarity saves time */}
+              <div className="space-y-6 pt-12 border-t border-charcoal/10">
+                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-charcoal tracking-tight">
+                  {lang === "DE" ? "Klarheit spart Zeit." : "Clarity saves time."}
+                </h3>
+
+                <div className="space-y-4 font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base max-w-2xl">
+                  {lang === "DE" ? (
+                    <>
+                      <p>Viele Unternehmer erhalten juristisch richtige Antworten.</p>
+                      <p className="font-serif text-base text-charcoal font-medium">Trotzdem bleiben Fragen offen.</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>Many entrepreneurs receive legally correct answers.</p>
+                      <p className="font-serif text-base text-charcoal font-medium">Yet, questions remain.</p>
+                    </>
+                  )}
+                </div>
+
+                <div className="my-6 space-y-2.5 pl-4 border-l border-brand-red/20 text-brand-red italic font-serif text-base sm:text-lg">
+                  {lang === "DE" ? (
+                    <>
+                      <p>— Was bedeutet das konkret?</p>
+                      <p>— Wie relevant ist das Risiko?</p>
+                      <p>— Welche Konsequenzen entstehen in der Praxis?</p>
+                      <p>— Was sollten wir jetzt tun?</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>— What does this mean in practice?</p>
+                      <p>— How relevant is the risk?</p>
+                      <p>— What are the consequences in reality?</p>
+                      <p>— What should we do now?</p>
+                    </>
+                  )}
+                </div>
+
+                <div className="space-y-4 font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base max-w-2xl">
+                  {lang === "DE" ? (
+                    <>
+                      <p>Varda beantwortet nicht nur Rechtsfragen.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Wir schaffen Orientierung.</p>
+                      <p>Sie erkennen schneller, welche Themen Aufmerksamkeit verdienen und welche nicht. Sie treffen Entscheidungen mit größerer Sicherheit. Sie gewinnen Zeit für das, was Ihr Unternehmen voranbringt.</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>Varda does not just answer legal questions.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">We provide orientation.</p>
+                      <p>You recognize faster which topics deserve attention and which do not. You make decisions with greater confidence. You gain time for what actually drives your business forward.</p>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Founder Statement Blockquote */}
+              <div className="pt-12 border-t border-charcoal/10 space-y-4">
+                <blockquote className="font-serif text-lg sm:text-xl italic text-charcoal leading-relaxed font-medium">
+                  {lang === "DE" 
+                    ? "„Varda entstand aus einer einfachen Überzeugung: Gute Entscheidungen beginnen mit Klarheit.“"
+                    : "“Varda arose from a simple conviction: Good decisions begin with clarity.”"}
+                </blockquote>
+                <div className="flex items-center space-x-3">
+                  <div className="h-[1px] w-8 bg-[#C0823E]" />
+                  <span className="font-sans font-bold text-xs uppercase tracking-widest text-[#C0823E]">Dr. Konstantin Filbinger</span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Founder Dossier featuring konsticlarity.png (Static) */}
+            <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+              <div className="bg-[#FAF8F4] border border-charcoal/15 p-5 md:p-6 shadow-sm flex flex-col justify-between group">
+                <div className="relative w-full aspect-[3/4] bg-stone-100 border border-charcoal/15 overflow-hidden">
+                  <img
+                    src={konstiClarity}
+                    alt="Dr. Konstantin Filbinger"
+                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 pointer-events-none"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="pt-4 space-y-2 text-left">
+                  <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#C0823E] font-bold">
+                    {lang === "DE" ? "GRÜNDER • RECHTSANWALT" : "FOUNDER • ATTORNEY"}
+                  </div>
+                  <h4 className="font-serif text-xl font-medium text-charcoal">
+                    Dr. Konstantin Filbinger
+                  </h4>
+                  <div className="text-[11px] text-charcoal/70 leading-relaxed font-sans pt-2 border-t border-charcoal/10 space-y-2">
+                    <p>
+                      {lang === "DE" 
+                        ? "Unternehmerische Verantwortung, klare kaufmännische Überzeugung und strategischer Tiefblick."
+                        : "Strategic leadership, professional responsibility, and deep personal conviction."}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
         </section>
-
-        {/* SECTION 2: "WIR" (ABOUT) */}
-        <section id="wir" className="py-16 md:py-24 border-b border-charcoal/10">
-          <div className="space-y-4 mb-12">
-            <span className="font-mono text-xs uppercase tracking-widest text-brand-red">01 / {d.wir.title}</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-charcoal">{d.wir.subtitle}</h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Big Bio Text */}
-            <div className="lg:col-span-8 space-y-8">
-              <div className="space-y-3">
-                <h3 className="font-display text-lg sm:text-xl font-bold text-charcoal leading-snug">
-                  {d.wir.heading}
-                </h3>
-                <p className="font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base">
-                  {d.wir.p1}
-                </p>
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-charcoal/5">
-                <h3 className="font-display text-lg sm:text-xl font-bold text-charcoal leading-snug">
-                  {lang === "DE" ? "Varda Legal spricht Business" : "Varda Legal speaks Business"}
-                </h3>
-                <div className="space-y-3">
-                  <p className="font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base">
-                    {d.wir.p2}
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-charcoal/5">
-                <h3 className="font-display text-lg sm:text-xl font-bold text-charcoal leading-snug">
-                  {lang === "DE" ? "Klarheit bringt Zeit" : "Clarity saves time"}
-                </h3>
-                <div className="space-y-3">
-                  {d.wir.p3.split("\n\n").map((para, idx) => (
-                    <p key={idx} className="font-sans text-charcoal/80 leading-relaxed text-sm sm:text-base">
-                      {para}
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              {/* Signature look */}
-              <div className="pt-4 flex items-center space-x-4">
-                <div className="h-[2px] w-12 bg-charcoal/20" />
-                <div className="font-serif font-semibold tracking-wide italic text-charcoal text-lg">Dr. Konstantin Filbinger</div>
-              </div>
-
-              {/* Display of uploaded asset "contract intelligence.png" under Dr. Konstantin Filbinger */}
-              <div className="mt-8 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
-                <img 
-                  src={contractIntelligenceImage}
-                  alt="Contract Intelligence - Varda Legal"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-auto block rounded shadow border border-charcoal/10"
-                />
-              </div>
-            </div>
-
-        </div>
-      </section>
 
         {/* SECTION 3: "FOKUS" (SPECIALITIES) */}
         <section id="fokus" className="py-16 md:py-24 border-b border-charcoal/10">
@@ -1348,10 +2271,10 @@ export default function App() {
                 <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-charcoal/10 pb-4">
                   <div>
                     <span className="font-display text-[10px] uppercase tracking-[0.2em] text-[#1B2A4A] font-bold">
-                      {lang === "DE" ? "Systematische Umsetzung" : "Systematic Execution"}
+                      {lang === "DE" ? "Strukturierte Transaktionen" : "Structured Transactions"}
                     </span>
                     <p className="text-xs text-charcoal/60 font-sans mt-1">
-                      {lang === "DE" ? "Präzise Strukturierung von Unternehmensprojekten." : "Precise structuring of corporate transactions."}
+                      {lang === "DE" ? "Maßgeschneiderte Absicherung bei M&A, Finanzierungen und Gründungen." : "Tailored structural execution for M&A, financing, and company formations."}
                     </p>
                   </div>
                   
@@ -1382,8 +2305,8 @@ export default function App() {
                       
                       {/* Line 1: Corporate docket information */}
                       <div className="text-charcoal/50 text-[9px] space-y-1 font-mono tracking-wider leading-relaxed">
-                        • TRANSACTION DESIGN WORKFLOW ACTIVE<br />
-                        • AUDITING PORTFOLIO ROADMAP INFRASTRUCTURE
+                        • M&A & EXPANSION WORKFLOW ACTIVE<br />
+                        • STRUCTURED TRANSACTIONS & FOUNDER EXIT CONTRACTS
                       </div>
 
                       {/* Line 2: The actual code typed character-by-character */}
@@ -1415,7 +2338,9 @@ export default function App() {
                             <div className="bg-[#faf8f4] border border-charcoal/15 p-4 rounded-none space-y-2 mt-1 shadow-sm font-sans">
                               <span className="bg-[#1B2A4A] text-white px-2 py-0.5 text-[8px] font-bold tracking-widest font-mono">ACTION OUTCOME</span>
                               <p className="font-serif italic text-xs text-charcoal leading-relaxed tracking-wide">
-                                "executed, clear view, goal near, let's go!"
+                                {lang === "DE" 
+                                  ? "Gesellschafterbeschluss & Lock-up geeint. Kommerzieller Fahrplan zum Unternehmensverkauf ist entscheidungsreif."
+                                  : "Shareholder consent & lock-up aligned. Operational roadmaps for execution are boardroom-ready."}
                               </p>
                             </div>
                           </motion.div>
@@ -1427,7 +2352,7 @@ export default function App() {
                     {/* Operational instructions and re-run buttons */}
                     <div className="pt-4 border-t border-charcoal/10 flex flex-row justify-between items-center text-[9px] text-charcoal/50 font-mono">
                       <div>
-                        LEGAL ARCHITECTURE PLAN • STAGE III
+                        TRANSACTION RESOLUTION PLAN • STAGE III
                       </div>
                       {/* Reset animation button */}
                       <button 
@@ -1905,7 +2830,7 @@ export default function App() {
                   <div className="flex items-center space-x-2">
                     <span className="h-1.5 w-1.5 bg-[#C0823E]" />
                     <span className="text-[#1B2A4A] font-display text-[9px] uppercase tracking-[0.25em] font-bold">
-                      {lang === "DE" ? "KOMPARATIVE RISIKOANALYSE" : "COMPARATIVE RISK BRIEFING"}
+                      {lang === "DE" ? "Klare Risikobewertung" : "Clear Risk Assessment"}
                     </span>
                   </div>
                   <div className="text-charcoal/40 font-mono text-[9px] tracking-widest">FOLIO DE-MUC-7.8</div>
@@ -1917,7 +2842,7 @@ export default function App() {
                   <div className="space-y-4 flex flex-col justify-between">
                     <div>
                       <div className="text-[9px] font-mono tracking-widest text-charcoal/40 uppercase mb-2">
-                        {lang === "DE" ? "01 / TRADIERTES NARRATIV" : "01 / DESCRIPTIVE REPORTING"}
+                        {lang === "DE" ? "01 / REINES RECHTSGUTACHTEN" : "01 / DEFENSIVE LEGAL ADVISORY"}
                       </div>
                       <h4 className="font-serif italic text-lg text-[#1B2A4A] font-medium border-b border-charcoal/10 pb-2 mb-4">
                         {lang === "DE" ? "Andere Rechtsberater" : "Other Legal Advisors"}
@@ -1925,16 +2850,16 @@ export default function App() {
                       <div className="border-l border-charcoal/15 pl-4 py-1">
                         <p className="font-serif italic text-charcoal/70 text-[11px] sm:text-[11.5px] leading-[1.8] text-left tracking-normal">
                           {lang === "DE" 
-                            ? "„Auf Basis der von Ihnen in den E-Mails vom 5., 7. und 11. Mai 2026 sowie den Telefonaten vom 14. und 18. Mai und allen öffentlich verfügbaren Informationen (Abrufdatum: 13. Mai) unter Zugrundelegung, dass diese richtig sind, besteht das Risiko, dass die Regelung in Ziffer 7.8 des Entwurfs des Liefervertrags vom 5. Mai 2026, sollte es zu einem Rechtsstreit kommen, von einem Gericht als unwirksam bewertet wird.“"
-                            : "“Based on the information provided in your emails of May 5th, 7th, and 11th, 2026, as well as the phone calls on May 14th and 18th, and all publicly available info (retrieved: May 13th), assuming its accuracy, there is a risk that the provision in Clause 7.8 of the draft supply agreement dated May 5th, 2026, in the event of a dispute, will be deemed invalid by a court.”"}
+                            ? "„Bezüglich der Haftungsregelung in Ziffer 7.8 des Entwurfs der Lieferantenvereinbarung weisen wir darauf hin, dass die vorgeschlagene Formulierung unwirksam sein könnte. Sollte es zu einem Streitfall kommen, könnte dies zu Nachteilen führen. Wir empfehlen Ihnen daher zu prüfen, ob Sie dieses kaufmännische Risiko eingehen möchten oder eine Anpassung des Wordings anstreben sollen.“"
+                            : "“Regarding the liability rules in Clause 7.8 of the draft supplier agreement, we note that the proposed phrasing might be deemed invalid. If a dispute occurs, this could yield disadvantages. We therefore recommend that you evaluate whether you wish to assume this commercial risk or seek a wording adjustment.”"}
                         </p>
                       </div>
                     </div>
                     {/* Quiet editorial commentary pointing out the effort required to make sense of the paragraph */}
                     <div className="text-[9px] text-charcoal/40 font-mono tracking-wide leading-relaxed pt-4 border-t border-charcoal/5">
                       {lang === "DE" 
-                        ? "* Unprioritisiertes Gutachten. Die Ermittlung tragfähiger Geschäftsentscheidungen verbleibt vollständig beim Mandanten."
-                        : "* Unprioritized advisory. The extraction of strategic business decisions resides entirely with the client."}
+                        ? "* Problembeschreibung ohne Priorisierung. Die kaufmännische Entscheidung verbleibt vollständig beim Gründer."
+                        : "* Background brief with no priority. The strategic commercial decision remains entirely on the founder’s shoulders."}
                     </div>
                   </div>
 
@@ -1942,7 +2867,7 @@ export default function App() {
                   <div className="space-y-6 flex flex-col justify-between md:border-l md:border-charcoal/10 md:pl-8">
                     <div>
                       <div className="text-[9px] font-mono tracking-widest text-[#C0823E] uppercase mb-2">
-                        {lang === "DE" ? "02 / ENTSCHEIDUNGSREIFE" : "02 / DECISION DIRECTIVE"}
+                        {lang === "DE" ? "02 / ENTSCHEIDUNGSREIFE EMPFEHLUNG" : "02 / CLIENT-CENTRIC RECOMMENDATION"}
                       </div>
                       <h4 className="font-sans font-bold uppercase tracking-[0.2em] text-[#1B2A4A] text-xs border-b border-charcoal/10 pb-2 mb-4">
                         Varda Legal
@@ -1958,13 +2883,13 @@ export default function App() {
                               {lang === "DE" ? "ZIFFER 7.8" : "CLAUSE 7.8"}
                             </span>
                             <span className="font-mono text-[8px] uppercase tracking-wider text-charcoal/40">
-                              {lang === "DE" ? "HAFTUNGSRISIKO" : "LIABILITY RISK"}
+                              {lang === "DE" ? "LIEFERANTENVERTRAG" : "SUPPLIER AGREEMENT"}
                             </span>
                           </div>
                           <p className="font-serif italic text-xs text-[#1B2A4A] leading-relaxed">
                             {lang === "DE" 
-                              ? "Unwirksamer Haftungsausschluss, bei aktuellem Wortlaut kein wirksamer Ausschluss für leichte Fahrlässigkeit" 
-                              : "Invalid limitation clause; current phrasing fails to exclude liability for simple negligence."}
+                              ? "Unwirksamer Haftungsausschluss bei Fahrlässigkeit des Kern-Lieferanten." 
+                              : "Invalid liability limitation clause leaving critical supply chain exposed to negligence."}
                           </p>
                         </div>
 
@@ -1975,15 +2900,15 @@ export default function App() {
                               {lang === "DE" ? "Wahrscheinlichkeit" : "PROBABILITY"}
                             </span>
                             <span className="font-serif text-2xl font-light text-[#C0823E] tracking-tight">
-                              20 %
+                              25 %
                             </span>
                           </div>
                           <div>
                             <span className="block font-mono text-[7.5px] uppercase tracking-wider text-charcoal/50">
-                              {lang === "DE" ? "Wirtschaftlicher Impact" : "ECONOMIC IMPACT"}
+                              {lang === "DE" ? "Finanzieller Impact" : "ECONOMIC IMPACT"}
                             </span>
                             <span className="font-serif text-2xl font-light text-[#1B2A4A] tracking-tight">
-                              EUR 120k
+                              EUR 350k
                             </span>
                           </div>
                         </div>
@@ -1995,7 +2920,9 @@ export default function App() {
                           </span>
                           <div className="bg-white border-l-2 border-[#C0823E] p-3 shadow-xs">
                             <p className="font-mono text-[10.5px] sm:text-[11px] font-bold text-[#1B2A4A] tracking-tight">
-                              {lang === "DE" ? "«und Vorsatz» streichen" : "Strike «and intent»"}
+                              {lang === "DE" 
+                                ? "Haftungsausschluss für leichte Fahrlässigkeit präzisieren, Haftung für grobe Fahrlässigkeit auf EUR 400k deckeln." 
+                                : "Limit liability for simple negligence to EUR 50k, cap gross negligence liability at EUR 400k in exchange for SLAs."}
                             </p>
                           </div>
                         </div>
@@ -2036,52 +2963,131 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 5: "DENKWERK" (RESOURCES/BLOG WITH POPUP DETAIL VIEW) */}
-        <section id="denkwerk" className="py-16 md:py-24 border-b border-charcoal/10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-            <div className="space-y-4">
-              <span className="font-mono text-xs uppercase tracking-widest text-brand-red">04 / {d.denkwerk.title}</span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-charcoal">{d.denkwerk.subtitle}</h2>
-            </div>
-            <div className="font-mono text-xs text-charcoal/50 pr-2">
-              [{d.denkwerk.all}: 3 Articles]
-            </div>
+        {/* SECTION 5: "DENKWERK" (A CURATED PORTAL OF STRATEGIC OBSERVATIONS & EXPERIENCES) */}
+        <section id="denkwerk" className="py-20 md:py-32 border-b border-charcoal/10">
+          <div className="space-y-4 mb-10">
+            <span className="font-mono text-xs uppercase tracking-widest text-brand-red font-medium">04 / {d.denkwerk.title}</span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-charcoal">{d.denkwerk.subtitle}</h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {d.denkwerk.articles.map((article) => (
-              <div 
-                key={article.id} 
-                className="border border-charcoal/15 bg-white p-6 md:p-8 flex flex-col justify-between h-full relative"
-              >
-                {/* Meta details */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between font-mono text-[10px] pb-3 border-b border-charcoal/10">
-                    <span className="text-brand-red uppercase font-semibold">{article.category}</span>
-                    <span className="text-charcoal/40">{article.date}</span>
-                  </div>
-                  
-                  <h3 className="font-serif text-xl font-bold tracking-tight text-charcoal line-clamp-2">
-                    {article.title}
-                  </h3>
-                  
-                  <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                </div>
+          {/* Introducing quiet-luxury editorial vision for Denkwerk */}
+          <div className="max-w-4xl mb-16 text-charcoal/80">
+            <p className="font-serif text-lg sm:text-xl md:text-2xl leading-relaxed font-light italic text-[#555] border-l-2 border-[#947444]/20 pl-6">
+              {lang === "DE" 
+                ? "Denkwerk versammelt Beobachtungen, Perspektiven und Erfahrungen aus der Beratung von Unternehmern – verbunden durch ein kohärentes gedankliches Fundament. Jede Säule widmet sich einem Kernprinzip operativer Realität: Token-Recovery fordert Kontrolle, der Unternehmensverkauf verlangt den Umgang mit Unsicherheit, und Verträge stiften Organisation. Gemeinsam spiegeln sie das strategische Denken von Varda wider."
+                : "Denkwerk gathers observations, perspectives, and experiences from advising entrepreneurs – bound together by a coherent intellectual framework. Each column is dedicated to a core principle of operational reality: Token Recovery demands Control, Company Sales navigate Uncertainty, and Contracts establish Organisation. Together, they reveal how Varda thinks."}
+            </p>
+          </div>
 
-                <div className="pt-6 mt-6 border-t border-charcoal/5 flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-charcoal/40">{article.readingTime}</span>
-                  <button
-                    onClick={() => setSelectedArticle(article)}
-                    className="inline-flex items-center space-x-1.5 font-mono text-xs text-brand-red hover:text-charcoal transition-colors group cursor-pointer"
-                  >
-                    <span>{d.denkwerk.readMore}</span>
-                    <ChevronRight className="h-3 transition-transform group-hover:translate-x-1" />
-                  </button>
-                </div>
+          {/* The Curated Library Board - Clean Columns, strict layout rules, zero clutter, no standard blog cards/thumbnails */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-10 border-t border-charcoal/10">
+            {(() => {
+              const cols = lang === "DE" 
+                ? [
+                    { id: "decisions", label: "01 / Entscheidungen", key: "01 / Entscheidungen" },
+                    { id: "contracts", label: "02 / Verträge", key: "02 / Verträge" },
+                    { id: "tech", label: "03 / Technologie", key: "03 / Technologie" }
+                  ]
+                : [
+                    { id: "decisions", label: "01 / Decisions", key: "01 / Decisions" },
+                    { id: "contracts", label: "02 / Contracts", key: "02 / Contracts" },
+                    { id: "tech", label: "03 / Technology", key: "03 / Technology" }
+                  ];
+
+              return cols.map((col) => {
+                const article = d.denkwerk.articles.find(a => a.category === col.key);
+                
+                return (
+                  <div key={col.id} className="flex flex-col justify-between space-y-8 h-full border-b lg:border-b-0 lg:border-r border-charcoal/10 pb-8 lg:pb-0 lg:pr-8 last:border-none last:pr-0">
+                    <div className="space-y-6">
+                      {/* Architectural Category Tagline */}
+                      <div className="font-mono text-[10px] tracking-widest text-[#947444] uppercase font-semibold border-b border-charcoal/10 pb-2 flex justify-between items-center select-none">
+                        <span>{col.label}</span>
+                        <span className="font-serif italic text-charcoal/50 text-[10px] tracking-normal font-light lowercase">
+                          {col.id === "decisions" ? (lang === "DE" ? "prinzip: unsicherheit" : "principle: uncertainty") :
+                           col.id === "contracts" ? (lang === "DE" ? "prinzip: organisation" : "principle: organisation") :
+                           (lang === "DE" ? "prinzip: kontrolle" : "principle: control")}
+                        </span>
+                      </div>
+
+                      {article ? (
+                        <div className="space-y-4">
+                          <h3 
+                            className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-charcoal leading-snug hover:text-brand-red transition-colors duration-300 cursor-pointer" 
+                            onClick={() => setSelectedArticle(article)}
+                          >
+                            {article.title}
+                          </h3>
+                          
+                          <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-light">
+                            {article.excerpt}
+                          </p>
+
+                          <div className="pt-2 flex items-center space-x-3 font-mono text-[9px] text-charcoal/40 uppercase tracking-widest">
+                            <span>{article.readingTime}</span>
+                            <span>•</span>
+                            <span className="italic">{lang === "DE" ? "Schriftenreihe Varda" : "Varda Publications"}</span>
+                          </div>
+                        </div>
+                      ) : (
+                        /* Beautiful and intentional premium placeholder */
+                        <div className="space-y-4 py-4">
+                          <p className="font-serif text-sm italic text-charcoal/45 font-light leading-relaxed">
+                            {lang === "DE" 
+                              ? (col.id === "contracts" 
+                                  ? "Weitere Beiträge folgen. Derzeit in wissenschaftlicher und gesellschaftsrechtlicher Redaktion." 
+                                  : "Beitrag im Aufbau. Orientierungshilfen zu IT-Governance, KI-Kryptotextur und Web3-Katalysatoren folgen.")
+                              : (col.id === "contracts"
+                                  ? "Additional perspectives to follow. Currently in research and societal-law editorial."
+                                  : "Under development. Strategic briefs on IT governance and cyber-architectures are in preparation.")}
+                          </p>
+                          <span className="inline-block font-mono text-[8px] uppercase tracking-widest text-charcoal/30 bg-charcoal/5 px-2 py-0.5 rounded-[1px]">
+                            {lang === "DE" ? "Im Aufbau" : "Under development"}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {article && (
+                      <div className="pt-2">
+                        <button
+                          onClick={() => setSelectedArticle(article)}
+                          className="inline-flex items-center space-x-1.5 font-mono text-[10px] uppercase tracking-widest text-brand-red hover:text-charcoal transition-colors group cursor-pointer border-b border-brand-red/10 hover:border-charcoal/30 pb-0.5"
+                        >
+                          <span>{d.denkwerk.readMore}</span>
+                          <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              });
+            })()}
+          </div>
+
+          {/* Restrained but highly visible Entrance Block to the digital legal archive "Kompendium" */}
+          <div className="mt-24 border border-charcoal/15 bg-[#FAF8F5] p-8 md:p-12 relative flex flex-col md:flex-row justify-between items-start md:items-center gap-8 rounded-[1px]">
+            <div className="space-y-3 max-w-2xl">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-[#947444] font-semibold">
+                {lang === "DE" ? "04.1 / KANZELEI-ARCHIV" : "04.1 / LIBRARY SERVICES"}
               </div>
-            ))}
+              <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-charcoal">
+                {lang === "DE" ? "Das Kompendium" : "The Compendium"}
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-light">
+                {lang === "DE"
+                  ? "Erhalten Sie lückenlosen Zugriff auf unser geschütztes Portal für vertiefende Analysen, Handbücher und wissenschaftlich fundierte Abhandlungen zu VC-Transaktionen, Gesellschaftsstreitbeilegung und digitalem Datenschutz."
+                  : "Access our protected research vault of academic legal papers, operational handbook models, and strategic breakdowns of corporate structural disputes and digital asset transaction protocols."}
+              </p>
+            </div>
+            <div className="shrink-0 w-full md:w-auto">
+              <button
+                onClick={() => setIsKompendiumOpen(true)}
+                className="w-full md:w-auto bg-charcoal text-white hover:bg-[#947444] px-8 py-3.5 font-mono text-xs uppercase tracking-widest transition-colors duration-300 rounded-[1px] cursor-pointer shadow-sm active:translate-y-0.5 text-center"
+              >
+                {lang === "DE" ? "Bibliothek betreten" : "Enter Library"} →
+              </button>
+            </div>
           </div>
 
           {/* DETAILED ARTICLE EXPANSION DRAWER/MODAL (Unmistakably Premium European Publication Style) */}
@@ -2165,39 +3171,149 @@ export default function App() {
                         {/* Core Content Reading Pillar */}
                         <div className="lg:col-span-8 space-y-8">
                           {/* Excerpt */}
-                          <div className="font-serif italic text-base sm:text-lg text-charcoal/70 leading-relaxed pl-5 border-l-4 border-[#947444]/40 bg-white/50 p-4 rounded-sm">
+                          <div className="font-serif text-lg sm:text-xl text-charcoal/85 leading-relaxed font-light italic py-2 bg-transparent select-text">
                             {selectedArticle.excerpt}
                           </div>
 
                           {/* Render Rich Body Sections */}
-                          <div className="prose prose-stone max-w-none text-charcoal/85 leading-relaxed font-sans text-sm sm:text-base space-y-6">
+                          <div className="prose prose-stone max-w-none text-charcoal/85 leading-relaxed font-sans text-sm sm:text-base space-y-6 select-text">
                             {selectedArticle.content.split("\n\n").map((para, pIdx) => {
-                              if (para.startsWith("### ")) {
+                              const cleanPara = para.replace(/[„“"']/g, "").trim();
+
+                              const isTokenPullQuote = cleanPara.includes("Token-Recovery-Fälle sind keine Technologie-Probleme") || 
+                                                       cleanPara.includes("Token recovery cases are not technology problems");
+
+                              const isUnternehmensPullQuote = cleanPara.includes("Ein Unternehmenskauf beginnt mit Dokumenten") || 
+                                                              cleanPara.includes("A company sale begins with documents");
+
+                              const isVertraegePullQuote = cleanPara.includes("Gute Verträge entstehen nicht am Verhandlungstisch") ||
+                                                           cleanPara.includes("Good contracts are not created at the negotiating table");
+
+                              if (isTokenPullQuote || isUnternehmensPullQuote || isVertraegePullQuote) {
                                 return (
-                                  <h3 key={pIdx} className="font-serif text-lg sm:text-xl font-medium text-charcoal pt-6 border-b border-charcoal/10 pb-2">
-                                    {para.replace("### ", "")}
-                                  </h3>
+                                  <div key={pIdx} className="py-20 sm:py-28 my-14 sm:my-20 text-center select-all bg-transparent w-full">
+                                    <div className="max-w-4xl mx-auto px-6">
+                                      <p className="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal/90 leading-[1.6] font-light tracking-tight italic">
+                                        {cleanPara}
+                                      </p>
+                                    </div>
+                                  </div>
+                                );
+                              }
+
+                              if (para.startsWith("### ")) {
+                                const isTokenFirstHeading = para.startsWith("### Wer beherrscht das Problem?") || 
+                                                            para.startsWith("### Who Controls the Problem?");
+                                                            
+                                const isMnaFirstHeading = para.startsWith("### Ein guter Datenraum entsteht Jahre vor dem Verkauf") ||
+                                                          para.startsWith("### A Good Data Room is Built Years Before the Sale");
+                                                          
+                                const isVertraegeFirstHeading = para.startsWith("### Zwei Funktionen eines Vertrags") ||
+                                                                para.startsWith("### Two Functions of a Contract");
+                                                                
+                                const isMnaInteractiveHeading = para.startsWith("### Gesunde Dynamik ist ein Asset") || 
+                                                                para.startsWith("### Healthy Momentum is an Asset");
+                                return (
+                                  <React.Fragment key={pIdx}>
+                                    {isTokenFirstHeading && (
+                                      <div className="py-12 sm:py-20 my-8 flex flex-col items-center w-full select-all bg-transparent">
+                                        <img 
+                                          src={tokenRecoveryImage} 
+                                          alt="Varda Decision Architecture No. 01: Token Recovery" 
+                                          className="w-full max-w-4xl h-auto object-contain"
+                                          referrerPolicy="no-referrer"
+                                        />
+                                      </div>
+                                    )}
+                                    {isMnaFirstHeading && (
+                                      <div className="py-12 sm:py-20 my-8 flex flex-col items-center w-full select-all bg-transparent">
+                                        <img 
+                                          src={unternehmensverkaufImage} 
+                                          alt="Varda Decision Architecture No. 02: Der Unternehmensverkauf" 
+                                          className="w-full max-w-4xl h-auto object-contain"
+                                          referrerPolicy="no-referrer"
+                                        />
+                                      </div>
+                                    )}
+                                    {isVertraegeFirstHeading && (
+                                      <div className="py-12 sm:py-20 my-8 flex flex-col items-center w-full select-all bg-transparent">
+                                        <img 
+                                          src={vertraegeImage} 
+                                          alt="Varda Decision Architecture No. 03: Verträge" 
+                                          className="w-full max-w-4xl h-auto object-contain"
+                                          referrerPolicy="no-referrer"
+                                        />
+                                      </div>
+                                    )}
+                                    {isMnaInteractiveHeading && (
+                                      <div className="py-12 sm:py-24 my-10 flex flex-col items-center w-full select-all bg-transparent">
+                                        <div className="w-full max-w-4xl mx-auto">
+                                          <MnaDecisionArchitecture lang={lang} />
+                                        </div>
+                                      </div>
+                                    )}
+                                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-charcoal pt-8 border-b border-charcoal/10 pb-2 mb-4 leading-normal">
+                                      {para.replace("### ", "")}
+                                    </h3>
+                                  </React.Fragment>
                                 );
                               }
                               if (para.startsWith("#### ")) {
                                 return (
-                                  <h4 key={pIdx} className="font-serif text-base font-semibold text-charcoal pt-4 italic">
+                                  <h4 key={pIdx} className="font-serif text-base font-semibold text-charcoal pt-6 italic">
                                     {para.replace("#### ", "")}
                                   </h4>
                                 );
                               }
-                              if (para.startsWith("- ") || para.startsWith("* ")) {
-                                const listItems = para.split("\n");
+                              if (para.includes("\n- ") || para.includes("\n* ") || para.startsWith("- ") || para.startsWith("* ")) {
+                                const lines = para.split("\n");
                                 return (
-                                  <ul key={pIdx} className="list-disc pl-5 space-y-2 text-charcoal/80 text-sm">
-                                    {listItems.map((li, liIdx) => (
-                                      <li key={liIdx}>{li.replace(/^[\-\*]\s+/, "")}</li>
-                                    ))}
-                                  </ul>
+                                  <div key={pIdx} className="space-y-3 font-sans text-sm sm:text-base text-charcoal/85 leading-relaxed font-light my-4">
+                                    {lines.map((line, lIdx) => {
+                                      if (line.trim().startsWith("- ") || line.trim().startsWith("* ")) {
+                                        return (
+                                          <div key={lIdx} className="flex items-start space-x-3 pl-4 sm:pl-6 leading-relaxed">
+                                            <span className="text-[#947444] text-[10px] mt-2 select-none">•</span>
+                                            <span className="flex-1 text-charcoal/80">{line.trim().replace(/^[\-\*]\s+/, "")}</span>
+                                          </div>
+                                        );
+                                      }
+                                      return (
+                                        <p key={lIdx} className="mb-2 text-charcoal/85 font-light">
+                                          {line}
+                                        </p>
+                                      );
+                                    })}
+                                  </div>
+                                );
+                              }
+                              if (para.match(/^\d+\.\s+/) || para.includes("\n1. ") || para.includes("\n2. ")) {
+                                const lines = para.split("\n");
+                                return (
+                                  <div key={pIdx} className="space-y-3 font-sans text-sm sm:text-base text-charcoal/85 leading-relaxed font-light my-4">
+                                    {lines.map((line, lIdx) => {
+                                      const match = line.trim().match(/^(\d+)\.\s+(.*)$/);
+                                      if (match) {
+                                        return (
+                                          <div key={lIdx} className="flex items-start space-x-3 pl-4 sm:pl-6 leading-relaxed">
+                                            <span className="font-mono text-xs text-[#947444] mt-0.5 select-none font-semibold">
+                                              {match[1].padStart(2, "0")} /
+                                            </span>
+                                            <span className="flex-1 text-charcoal/80">{match[2]}</span>
+                                          </div>
+                                        );
+                                      }
+                                      return (
+                                        <p key={lIdx} className="mb-2 text-charcoal/85 font-light">
+                                          {line}
+                                        </p>
+                                      );
+                                    })}
+                                  </div>
                                 );
                               }
                               return (
-                                <p key={pIdx} className="text-charcoal/80 leading-relaxed text-sm sm:text-base font-sans">
+                                <p key={pIdx} className="text-charcoal/80 leading-relaxed text-sm sm:text-base font-sans font-light">
                                   {para}
                                 </p>
                               );
@@ -2206,6 +3322,33 @@ export default function App() {
                         </div>
 
                       </div>
+
+                      {/* APPENDIX / FAQ MODULE (Beautiful, architectural separate editorial section) */}
+                      {selectedArticle.faq && selectedArticle.faq.length > 0 && (
+                        <div className="mt-16 pt-12 border-t border-charcoal/15 space-y-8 select-text">
+                          <div className="space-y-2">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-[#947444] font-semibold">
+                              {lang === "DE" ? "ANHANG / FAQ" : "APPENDIX / FAQ"}
+                            </span>
+                            <h3 className="font-serif text-xl md:text-2xl font-medium tracking-tight text-charcoal">
+                              {lang === "DE" ? "Häufige Fragen & Erläuterungen" : "Frequent Queries & Annotations"}
+                            </h3>
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                            {selectedArticle.faq.map((item, idx) => (
+                              <div key={idx} className="space-y-3 border-l-2 border-[#947444]/10 pl-4">
+                                <h4 className="font-serif text-sm sm:text-base font-bold text-charcoal leading-snug">
+                                  {item.question}
+                                </h4>
+                                <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-light">
+                                  {item.answer}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -2226,6 +3369,149 @@ export default function App() {
                       {lang === "DE" 
                         ? "HINWEIS: Dieser Fachbeitrag dient lediglich der allgemeinen Information und wissenschaftlichen Orientierung. Er stellt zu keinem Zeitpunkt eine steuerliche oder rechtsverbindliche Beratung dar und begründet kein Mandatsverhältnis." 
                         : "DISCLAIMER: This thought piece serves for general instructional and scientific orientation only. It constitutes no structural tax or legal binding advice and does not initiate a client-attorney relationship."}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+
+            {isKompendiumOpen && (
+              <div 
+                className="fixed inset-0 z-50 overflow-y-auto bg-charcoal/40 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10"
+                onClick={() => setIsKompendiumOpen(false)}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.98, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.98, y: 15 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full max-w-4xl bg-[#FAF8F5] border border-charcoal/15 p-6 sm:p-10 md:p-16 shadow-2xl flex flex-col justify-between rounded-[2px] max-h-[92vh] overflow-y-auto relative"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="space-y-10">
+                    {/* Editorial Top bar */}
+                    <div className="flex justify-between items-center pb-6 border-b border-charcoal/10 font-mono text-[10px] uppercase tracking-widest text-charcoal/40">
+                      <button
+                        onClick={() => setIsKompendiumOpen(false)}
+                        className="group inline-flex items-center space-x-2 text-charcoal/60 hover:text-charcoal transition-colors focus:outline-none cursor-pointer"
+                      >
+                        <span className="text-sm font-light tracking-normal transition-transform group-hover:-translate-x-1">←</span>
+                        <span className="font-mono font-medium">{lang === "DE" ? "ZURÜCK ZUM PORTAL" : "BACK TO PORTAL"}</span>
+                      </button>
+                      <div className="border border-[#947444]/30 px-3 py-1 font-mono font-semibold text-[#947444] bg-transparent rounded-sm uppercase tracking-wider">
+                        [ {lang === "DE" ? "WISSENSCHAFTLICHE BIBLIOTHEK" : "ACADEMIC PAPERS"} ]
+                      </div>
+                    </div>
+
+                    {/* Header */}
+                    <div className="space-y-4">
+                      <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-charcoal leading-[1.1] max-w-2xl">
+                        {lang === "DE" ? "Kanzlei-Kompendium" : "Firm Compendium"}
+                      </h1>
+                      <p className="font-serif text-base italic text-charcoal/60 font-light max-w-2xl leading-relaxed">
+                        {lang === "DE" 
+                          ? "Wissenschaftlich fundierte Leitfäden, rechtssichere Ablaufmodelle und praxisnahe Abhandlungen für Gesellschafter und Geschäftsführer."
+                          : "Academic-level governance guidelines, secure structural templates, and research-focused legal briefs for board members and enterprise directors."}
+                      </p>
+                    </div>
+
+                    <div className="h-[1px] w-28 bg-[#947444]/30" />
+
+                    {/* Evergreens Grid of Academic Guidelines */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                      
+                      {/* Document 1 */}
+                      <div className="border border-charcoal/10 p-6 bg-white space-y-4">
+                        <span className="font-mono text-[10px] text-[#947444] tracking-widest uppercase font-semibold block">01 / CORPORATE LAW</span>
+                        <h3 className="font-serif text-lg font-medium text-charcoal">
+                          {lang === "DE" 
+                            ? "Der Gesellschafterbeschluss: Mustersicherer Ablauf" 
+                            : "The Shareholder Resolution: Risk-Free Protocols"}
+                        </h3>
+                        <p className="font-sans text-xs text-charcoal/70 leading-relaxed font-light">
+                          {lang === "DE"
+                            ? "Fehlersichere Beschlussfassungen unter Berücksichtigung von Anfechtungsfristen, Gesellschafterstimmverboten und BGH-Vorgaben."
+                            : "Meticulous documentation standards avoiding voided voting procedures, conflict of interest exclusions, and Supreme Court protocols."}
+                        </p>
+                        <div className="pt-2 font-mono text-[9px] text-[#947444] uppercase tracking-wider">
+                          [ {lang === "DE" ? "Im Kanzlei-Intranet verfügbar" : "Available in Intranet DB"} ]
+                        </div>
+                      </div>
+
+                      {/* Document 2 */}
+                      <div className="border border-charcoal/10 p-6 bg-white space-y-4">
+                        <span className="font-mono text-[10px] text-[#947444] tracking-widest uppercase font-semibold block">02 / CAPITAL METRICS</span>
+                        <h3 className="font-serif text-lg font-medium text-charcoal">
+                          {lang === "DE" 
+                            ? "Founder Vesting im deutschen Steuerrecht" 
+                            : "Founder Vesting in German Fiscal Law"}
+                        </h3>
+                        <p className="font-sans text-xs text-charcoal/70 leading-relaxed font-light">
+                          {lang === "DE"
+                            ? "Eine steuerrechtliche Untersuchung von Dynamic Vesting Modellen, Schenkungsteuer-Abmilderungen und Haltefristen."
+                            : "A fiscal analysis of exit-linked forfeiture provisions, dry-income tax risks, and capitalization timing structures."}
+                        </p>
+                        <div className="pt-2 font-mono text-[9px] text-[#947444] uppercase tracking-wider">
+                          [ {lang === "DE" ? "Im Kanzlei-Intranet verfügbar" : "Available in Intranet DB"} ]
+                        </div>
+                      </div>
+
+                      {/* Document 3 */}
+                      <div className="border border-charcoal/10 p-6 bg-white space-y-4">
+                        <span className="font-mono text-[10px] text-[#947444] tracking-widest uppercase font-semibold block">03 / IP RESTRUCTURING</span>
+                        <h3 className="font-serif text-lg font-medium text-charcoal">
+                          {lang === "DE" 
+                            ? "IP-Migrationen & Code-Transfers im SaaS-Sektor" 
+                            : "IP Migrations & Code Transfer Protocols"}
+                        </h3>
+                        <p className="font-sans text-xs text-charcoal/70 leading-relaxed font-light">
+                          {lang === "DE"
+                            ? "Strukturierungsregelungen zur sauberen Ausgliederung und Übertragung von proprietärem Programmcode bei Umstrukturierungen."
+                            : "Structural guidelines ensuring seamless intellectual property assignments and software copyright transfers during spin-offs."}
+                        </p>
+                        <div className="pt-2 font-mono text-[9px] text-[#947444] uppercase tracking-wider">
+                          [ {lang === "DE" ? "Im Kanzlei-Intranet verfügbar" : "Available in Intranet DB"} ]
+                        </div>
+                      </div>
+
+                      {/* Document 4 */}
+                      <div className="border border-charcoal/10 p-6 bg-white space-y-4">
+                        <span className="font-mono text-[10px] text-[#947444] tracking-widest uppercase font-semibold block">04 / GOVERNANCE COMPLIANCE</span>
+                        <h3 className="font-serif text-lg font-medium text-charcoal">
+                          {lang === "DE" 
+                            ? "Geschäftsführer-Enthaftung in Sondersituationen" 
+                            : "Director Liability Mitigation on Special Exits"}
+                        </h3>
+                        <p className="font-sans text-xs text-charcoal/70 leading-relaxed font-light">
+                          {lang === "DE"
+                            ? "Proaktive Haftungsausschlüsse und Business Judgment Rule Nachweise während risikoreicher Restrukturierungen."
+                            : "Officer protection policies and business judgment records to defend personal assets during emergency turnarounds."}
+                        </p>
+                        <div className="pt-2 font-mono text-[9px] text-[#947444] uppercase tracking-wider">
+                          [ {lang === "DE" ? "Im Kanzlei-Intranet verfügbar" : "Available in Intranet DB"} ]
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Closure & Legal Stamp footer */}
+                  <div className="mt-12 pt-8 border-t border-charcoal/10 space-y-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono gap-4">
+                      <span className="text-charcoal/50">© 2026 VARDA LEGAL • ARCHIVAL SERVICES ONLY</span>
+                      <a 
+                        href="#letsgo" 
+                        onClick={() => setIsKompendiumOpen(false)}
+                        className="inline-flex items-center space-x-1 text-[#947444] font-bold hover:text-charcoal uppercase tracking-widest transition-colors font-mono"
+                      >
+                        <span>{lang === "DE" ? "Bibliothek-Zugang anfordern" : "Request Archival Vault Access"}</span>
+                        <span className="text-sm">→</span>
+                      </a>
+                    </div>
+                    <p className="text-[10px] text-charcoal/40 leading-relaxed font-mono">
+                      {lang === "DE" 
+                        ? "HINWEIS: Das Kompendium dient der wissenschaftlichen Einordnung und Information für Bestandsmandanten. Eine Vervielfältigung oder Weitergabe erfordert die schriftliche Freigabe durch Dr. Konstantin Filbinger." 
+                        : "NOTICE: The library is optimized for scientific purposes and existing enterprise clients. Any duplication or redistribution requires prior written consent from Dr. Konstantin Filbinger."}
                     </p>
                   </div>
                 </motion.div>
@@ -2278,225 +3564,370 @@ export default function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Left Hand Side: Embedded Interactive Scheduling Calendar */}
-            <div className="lg:col-span-7 bg-white border border-charcoal/15 p-6 md:p-8 shadow-sm">
-              <div className="space-y-4 mb-6">
-                <h3 className="font-display font-extrabold text-sm uppercase tracking-widest text-charcoal flex items-center gap-2">
-                  <Calendar className="h-4 text-brand-red" />
-                  {d.letsgo.calendarTitle}
-                </h3>
-                <p className="font-sans text-xs text-charcoal/70">
-                  {d.letsgo.calendarDesc}
-                </p>
-
-                {/* Inline Meeting Type Selector Selector */}
-                <div className="grid grid-cols-2 gap-3 border border-charcoal/10 p-1 bg-paper-light">
-                  <button
-                    onClick={() => {
-                      setSelectedMeetingType("15min");
-                      if (bookingStep === "success") setBookingStep("slot");
-                    }}
-                    className={`py-2 text-center text-xs font-mono uppercase transition-all ${
-                      selectedMeetingType === "15min" 
-                        ? "bg-charcoal text-white font-bold" 
-                        : "text-charcoal/50 hover:text-charcoal"
-                    }`}
-                  >
-                    15 Min. Fast Check
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedMeetingType("45min");
-                      if (bookingStep === "success") setBookingStep("slot");
-                    }}
-                    className={`py-2 text-center text-xs font-mono uppercase transition-all ${
-                      selectedMeetingType === "45min" 
-                        ? "bg-charcoal text-white font-bold" 
-                        : "text-charcoal/50 hover:text-charcoal"
-                    }`}
-                  >
-                    45 Min. Strategy Box
-                  </button>
-                </div>
-              </div>
-
-              {/* Dynamic steps of scheduler booking */}
-              {bookingStep === "slot" && (
-                <div className="space-y-6">
-                  {/* Select Day Row */}
-                  <div className="space-y-2">
-                    <span className="font-mono text-[10px] uppercase text-charcoal/50">Step 1: Select Date (May 2026)</span>
-                    <div className="grid grid-cols-5 gap-2">
-                      {mockDays.map((dayObj, i) => (
-                        <button
-                          key={i}
-                          onClick={() => {
-                            setSelectedDay(dayObj.day);
-                            setSelectedTimeSlot(null);
-                          }}
-                          className={`p-3 border flex flex-col items-center justify-center transition-all ${
-                            selectedDay === dayObj.day 
-                              ? "border-brand-red bg-charcoal text-white" 
-                              : "border-charcoal/10 hover:border-charcoal/60 bg-paper-light"
-                          }`}
-                        >
-                          <span className="text-[10px] font-mono opacity-50 uppercase">{dayObj.label}</span>
-                          <span className="font-mono font-bold text-sm mt-0.5">{dayObj.day}</span>
-                        </button>
-                      ))}
-                    </div>
+            {/* Left Hand Side: Redesigned Consultative Intake & Optional Booking Journey */}
+            <div className="lg:col-span-12 xl:col-span-7 bg-white border border-charcoal/15 p-6 md:p-8 shadow-sm">
+              
+              {bookingStep === "intake" ? (
+                /* STEP 1 & 2 & 3: Refined Intake Experience */
+                <form onSubmit={handleIntakeSubmit} className="space-y-6">
+                  <div className="space-y-3 pb-6 border-b border-charcoal/10">
+                    <h3 className="font-serif text-xl md:text-2xl font-medium text-charcoal">
+                      {lang === "DE" ? "Lassen Sie uns Ihr Anliegen verstehen." : "Let us understand your challenge."}
+                    </h3>
+                    <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed">
+                      {lang === "DE" 
+                        ? "Unser Anspruch ist strategische Klarheit und präzise Risikobewertung ab dem ersten Kontakt. Beschreiben Sie kurz Ihr transaktionales Vorhaben – wir melden uns innerhalb von 24 Stunden."
+                        : "Our standard is strategic clarity and meticulous risk assessment from the very first contact. Briefly outline your project – we typically respond within 24 hours."}
+                    </p>
                   </div>
 
-                  {/* Select Timings (shown dynamically if day selected) */}
-                  {selectedDay ? (
-                    <div className="space-y-3">
-                      <span className="font-mono text-[10px] uppercase text-charcoal/50">Step 2: Available Slots for May {selectedDay}th</span>
-                      <div className="grid grid-cols-3 gap-2">
-                        {mockDays.find(d => d.day === selectedDay)?.slots.map((slot) => (
-                          <button
-                            key={slot}
-                            onClick={() => setSelectedTimeSlot(slot)}
-                            className={`py-2 text-center text-xs font-mono border transition-all ${
-                              selectedTimeSlot === slot 
-                                ? "bg-brand-red border-brand-red text-white font-bold" 
-                                : "bg-white border-charcoal/10 hover:border-charcoal hover:bg-paper-light"
-                            }`}
-                          >
-                            {slot}
-                          </button>
-                        ))}
+                  {/* Form fields */}
+                  <div className="space-y-4">
+                    {/* Name & Company */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="block text-[10px] uppercase font-mono tracking-wider text-charcoal/60">{d.letsgo.inputs.name} *</label>
+                        <input
+                          type="text"
+                          required
+                          value={bookingForm.name}
+                          onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
+                          className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-[#C0823E] focus:outline-none transition-all placeholder-charcoal/35"
+                          placeholder="z.B. Dr. Alexander Weber"
+                        />
                       </div>
-
-                      {/* Proceed Trigger */}
-                      {selectedTimeSlot && (
-                        <div className="pt-4 text-right">
-                          <button
-                            onClick={() => setBookingStep("details")}
-                            className="bg-charcoal text-paper-light py-2 px-6 font-mono text-xs uppercase tracking-wider hover:bg-brand-red transition-all cursor-pointer"
-                          >
-                            <span>{lang === "DE" ? "Weiter zu Details" : "Next: Enter Details"}</span>
-                          </button>
-                        </div>
-                      )}
+                      <div className="space-y-1">
+                        <label className="block text-[10px] uppercase font-mono tracking-wider text-charcoal/60">{d.letsgo.inputs.company}</label>
+                        <input
+                          type="text"
+                          value={bookingForm.company}
+                          onChange={(e) => setBookingForm({...bookingForm, company: e.target.value})}
+                          className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-[#C0823E] focus:outline-none transition-all placeholder-charcoal/35"
+                          placeholder="z.B. CoreTech GmbH"
+                        />
+                      </div>
                     </div>
-                  ) : (
-                    <div className="border border-dashed border-charcoal/15 bg-paper-light/30 p-6 text-center">
-                      <span className="text-xs font-mono text-charcoal/40 italic">
-                        {lang === "DE" ? "Bitte wählen Sie erst ein Datum oben." : "Please select an available booking date first."}
-                      </span>
+
+                    {/* Email & Phone */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="block text-[10px] uppercase font-mono tracking-wider text-charcoal/60">{d.letsgo.inputs.email} *</label>
+                        <input
+                          type="email"
+                          required
+                          value={bookingForm.email}
+                          onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})}
+                          className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-[#C0823E] focus:outline-none transition-all placeholder-charcoal/35"
+                          placeholder="weber[at]coretech.io"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="block text-[10px] uppercase font-mono tracking-wider text-charcoal/60">{d.letsgo.inputs.phone}</label>
+                        <input
+                          type="tel"
+                          value={bookingForm.phone}
+                          onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
+                          className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-[#C0823E] focus:outline-none transition-all placeholder-charcoal/35"
+                          placeholder="z.B. +49 89 1234567"
+                        />
+                      </div>
                     </div>
-                  )}
-                </div>
-              )}
 
-              {/* Form Step Details */}
-              {bookingStep === "details" && (
-                <form onSubmit={handleBookingSubmit} className="space-y-4">
-                  <div className="flex items-center justify-between font-mono text-[10px] text-charcoal/60 border-b border-charcoal/10 pb-2">
-                    <span>Meeting: {selectedMeetingType === "15min" ? "15 Min Fast Check" : "45 Min Strategy Grid"}</span>
-                    <span>Date: May {selectedDay}th at {selectedTimeSlot}</span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[10px] uppercase font-mono text-charcoal/60 mb-1">{d.letsgo.inputs.name} *</label>
+                    {/* Highlighted Core Challenge Intake field */}
+                    <div className="space-y-1.5 p-4 border border-charcoal/15 bg-paper-light/40 rounded-none shadow-xs">
+                      <label className="block text-[10px] uppercase font-mono tracking-widest text-[#1B2A4A] font-bold">
+                        {d.letsgo.inputs.challenge} *
+                      </label>
                       <input
                         type="text"
                         required
-                        value={bookingForm.name}
-                        onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
-                        className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-brand-red focus:outline-none"
-                        placeholder="John Doe"
+                        value={bookingForm.challenge}
+                        onChange={(e) => setBookingForm({...bookingForm, challenge: e.target.value})}
+                        className="w-full bg-white border border-charcoal/20 px-3 py-2 text-xs font-serif italic text-[#1B2A4A] focus:border-[#C0823E] focus:outline-none transition-all"
+                        placeholder={d.letsgo.inputs.challengePlaceholder}
                       />
                     </div>
-                    <div>
-                      <label className="block text-[10px] uppercase font-mono text-charcoal/60 mb-1">{d.letsgo.inputs.email} *</label>
-                      <input
-                        type="email"
-                        required
-                        value={bookingForm.email}
-                        onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})}
-                        className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-brand-red focus:outline-none"
-                        placeholder="john[at]startup.com"
+
+                    {/* Preferred Contact Method Selection Step 3 */}
+                    <div className="space-y-2 pt-2">
+                      <span className="block text-[10px] uppercase font-mono tracking-wider text-charcoal/60">
+                        {d.letsgo.inputs.preferredContact}
+                      </span>
+                      <div className="grid grid-cols-3 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setBookingForm({...bookingForm, preferredContact: "call"})}
+                          className={`flex flex-col items-center justify-center p-3 border transition-all text-center gap-1 cursor-pointer ${
+                            bookingForm.preferredContact === "call"
+                              ? "border-[#C0823E] bg-charcoal text-white font-bold"
+                              : "border-charcoal/10 hover:border-charcoal/50 bg-paper-light/35 text-charcoal/70 font-medium"
+                          }`}
+                        >
+                          <Phone className="h-4 w-4" />
+                          <span className="font-mono text-[10px] tracking-wide uppercase">
+                            {d.letsgo.inputs.contactCallback}
+                          </span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setBookingForm({...bookingForm, preferredContact: "videocall"})}
+                          className={`flex flex-col items-center justify-center p-3 border transition-all text-center gap-1 cursor-pointer ${
+                            bookingForm.preferredContact === "videocall"
+                              ? "border-[#C0823E] bg-charcoal text-white font-bold"
+                              : "border-charcoal/10 hover:border-charcoal/50 bg-paper-light/35 text-charcoal/70 font-medium"
+                          }`}
+                        >
+                          <Camera className="h-4 w-4" />
+                          <span className="font-mono text-[10px] tracking-wide uppercase">
+                            {d.letsgo.inputs.contactVideo}
+                          </span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setBookingForm({...bookingForm, preferredContact: "email"})}
+                          className={`flex flex-col items-center justify-center p-3 border transition-all text-center gap-1 cursor-pointer ${
+                            bookingForm.preferredContact === "email"
+                              ? "border-[#C0823E] bg-charcoal text-white font-bold"
+                              : "border-charcoal/10 hover:border-charcoal/50 bg-paper-light/35 text-charcoal/70 font-medium"
+                          }`}
+                        >
+                          <Mail className="h-4 w-4" />
+                          <span className="font-mono text-[10px] tracking-wide uppercase">
+                            {d.letsgo.inputs.contactEmail}
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Additional Message Details */}
+                    <div className="space-y-1">
+                      <label className="block text-[10px] uppercase font-mono tracking-wider text-charcoal/60">{d.letsgo.inputs.message}</label>
+                      <textarea
+                        rows={3}
+                        value={bookingForm.message}
+                        onChange={(e) => setBookingForm({...bookingForm, message: e.target.value})}
+                        className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-[#C0823E] focus:outline-none transition-all placeholder-charcoal/35"
+                        placeholder={lang === "DE" ? "z.B. Beteiligungsvertrag der Serie A liegt vor, Prüfung bis Ende nächster Woche gewünscht." : "e.g., Series A investment agreement drafted, review required by end of next week."}
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-[10px] uppercase font-mono text-charcoal/60 mb-1">{d.letsgo.inputs.company}</label>
-                    <input
-                      type="text"
-                      value={bookingForm.company}
-                      onChange={(e) => setBookingForm({...bookingForm, company: e.target.value})}
-                      className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-brand-red focus:outline-none"
-                      placeholder="NextScale GmbH"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] uppercase font-mono text-charcoal/60 mb-1">{d.letsgo.inputs.message}</label>
-                    <textarea
-                      rows={3}
-                      value={bookingForm.message}
-                      onChange={(e) => setBookingForm({...bookingForm, message: e.target.value})}
-                      className="w-full bg-paper-light border border-charcoal/20 px-3 py-2 text-xs focus:border-brand-red focus:outline-none"
-                      placeholder="Z.B.: Aufsetzen eines Series A Term Sheets..."
-                    />
-                  </div>
-
-                  <div className="flex justify-between items-center pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setBookingStep("slot")}
-                      className="text-xs text-charcoal/60 hover:text-brand-red font-mono py-1"
-                    >
-                      {lang === "DE" ? "← Zurück" : "← Back"}
-                    </button>
-                    <button
-                      type="submit"
-                      className="bg-brand-red text-white py-2.5 px-6 font-mono text-xs uppercase tracking-wider hover:bg-charcoal transition-all"
-                    >
-                      {d.letsgo.inputs.submit}
-                    </button>
+                  {/* Submission and Reassurance */}
+                  <div className="pt-4 border-t border-charcoal/10 space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="text-[11px] font-mono text-charcoal/55 italic">
+                        {lang === "DE" 
+                          ? "• Wir melden uns in der Regel innerhalb von 24 Stunden mit einem passenden nächsten Schritt."
+                          : "• We typically reply within 24 hours with a custom next step."}
+                      </div>
+                      <button
+                        type="submit"
+                        className="bg-charcoal text-white hover:bg-[#C0823E] transition-all px-8 py-3 font-mono text-xs uppercase tracking-widest font-bold self-end md:self-auto cursor-pointer shadow-sm border border-charcoal/10 shadow-stone-100"
+                      >
+                        {d.letsgo.inputs.submit}
+                      </button>
+                    </div>
                   </div>
                 </form>
-              )}
+              ) : (
+                /* STEP 4: Success State with UNLOCKED optional calendar routing */
+                <div className="space-y-8">
+                  
+                  {/* Success Notification Banner */}
+                  <div className="bg-[#FAF8F4] border border-[#C0823E]/30 p-6 md:p-8 space-y-4 shadow-sm relative overflow-hidden">
+                    {/* Corner architectural style tag */}
+                    <div className="absolute top-0 right-0 bg-[#C0823E] text-white font-mono text-[8.5px] uppercase tracking-widest px-3 py-1 font-bold">
+                      {lang === "DE" ? "ANFRAGE ERFASST" : "INQUIRY REGISTERED"}
+                    </div>
 
-              {/* Success Result ticket */}
-              {bookingStep === "success" && (
-                <div className="py-6 text-center space-y-4">
-                  <div className="inline-flex items-center justify-center h-12 w-12 bg-green-100 text-green-600 rounded-full mb-2">
-                    <CheckCircle2 className="h-6 w-6" />
+                    <div className="flex items-start gap-4">
+                      <div className="h-10 w-10 rounded-full bg-amber-50 border border-[#C0823E]/20 flex items-center justify-center text-[#C0823E] flex-shrink-0">
+                        <Check className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2 text-left">
+                        <h4 className="font-serif text-lg md:text-xl font-bold text-charcoal leading-tight">
+                          {lang === "DE" ? "Herzlichen Dank." : "Thank you very much."}
+                        </h4>
+                        <p className="font-sans text-xs sm:text-sm text-charcoal/80 leading-relaxed">
+                          {d.letsgo.successMessage}
+                        </p>
+                        <p className="font-mono text-[11px] text-[#C0823E] font-semibold italic">
+                          {lang === "DE" 
+                            ? "Wir analysieren Ihre Daten und kontaktieren Sie innerhalb von 24 Stunden bezüglich des nächsten Schrittes."
+                            : "We serve strategic diagnostics on your inquiry and will connect with you within 24 hours."}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="font-display font-extrabold text-basem uppercase tracking-wide">
-                    {lang === "DE" ? "Terminerfassung erfolgreich!" : "Slot Reserved!"}
-                  </h4>
-                  <p className="font-sans text-xs text-charcoal/80 max-w-md mx-auto leading-relaxed">
-                    {d.letsgo.successMessage}
-                  </p>
 
-                  <div className="bg-paper-light p-4 border border-dashed border-charcoal/10 text-xs font-mono inline-block text-left mx-auto max-w-sm space-y-1">
-                    <p className="font-bold flex justify-between gap-6 border-b border-charcoal/10 pb-1 mb-1">
-                      <span>Varda Legal Confirmation</span> 
-                      <span className="text-brand-red">#ST-{Math.floor(Math.random() * 90000) + 10000}</span>
-                    </p>
-                    <p><strong>Consultant:</strong> Dr. Konstantin Filbinger</p>
-                    <p><strong>Type:</strong> {selectedMeetingType === "15min" ? "15-Min Fast Check" : "45-Min Strategy Box"}</p>
-                    <p><strong>Date:</strong> 2026-05-{selectedDay} at {selectedTimeSlot} (Europe/Berlin)</p>
-                    <p><strong>Client:</strong> {bookingForm.name} ({bookingForm.company || "Private Client"})</p>
+                  {/* Redirection / Copy ticket */}
+                  <div className="border border-charcoal/12 bg-white p-4 font-mono text-[11px] text-charcoal/85 max-w-xl space-y-2">
+                    <div className="flex justify-between border-b border-charcoal/10 pb-2 font-bold uppercase tracking-wider text-[10px]">
+                      <span>VARDA LEGAL DOCKET REF</span>
+                      <span className="text-[#C0823E]">#VL-{Math.floor(Math.random() * 90000) + 10000}</span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
+                      <p><strong>{lang === "DE" ? "Kompagnon" : "Correspondent"}:</strong> {bookingForm.name}</p>
+                      <p><strong>{lang === "DE" ? "Kanzlei / Firma" : "Entity"}:</strong> {bookingForm.company || "Private Advisory"}</p>
+                      <p><strong>E-Mail:</strong> {bookingForm.email}</p>
+                      <p><strong>{lang === "DE" ? "Telefon" : "Direct Dial"}:</strong> {bookingForm.phone || "N/A"}</p>
+                      <p className="col-span-1 sm:col-span-2"><strong>{lang === "DE" ? "Büromodus" : "Preferred Method"}:</strong> {
+                        bookingForm.preferredContact === "call" ? (lang === "DE" ? "Rückruf" : "Phone Callback") : 
+                        bookingForm.preferredContact === "videocall" ? (lang === "DE" ? "Videocall (Teams)" : "Video Conference") : 
+                        "E-Mail"
+                      }</p>
+                      <p className="col-span-1 sm:col-span-2 border-t border-charcoal/5 pt-2"><strong>{lang === "DE" ? "Zentrales Anliegen" : "Matter Core"}:</strong> <br/><span className="text-charcoal italic">"{bookingForm.challenge}"</span></p>
+                    </div>
                   </div>
 
-                  <div>
+                  {/* UNLOCKED OPTIONAL CALENDAR BLOCK */}
+                  <div className="border-t border-charcoal/15 pt-8 space-y-6">
+                    <div className="space-y-2 text-left">
+                      <h3 className="font-serif text-lg md:text-xl font-medium text-charcoal flex items-center gap-2">
+                        <Calendar className="h-5 text-[#C0823E]" />
+                        {d.letsgo.calendarTitle}
+                      </h3>
+                      <p className="font-sans text-xs text-charcoal/65 leading-relaxed">
+                        {d.letsgo.calendarDesc}
+                      </p>
+                    </div>
+
+                    {!optionalScheduled ? (
+                      <div className="space-y-6 bg-paper-light/35 p-5 border border-charcoal/10 text-left">
+                        {/* Selector of duration for optional call */}
+                        <div className="space-y-2">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-charcoal/55">Select Meeting Scope:</span>
+                          <div className="grid grid-cols-2 gap-3">
+                            <button
+                              onClick={() => setSelectedMeetingType("15min")}
+                              className={`py-2 text-center text-xs font-mono uppercase transition-all border cursor-pointer ${
+                                selectedMeetingType === "15min" 
+                                  ? "bg-charcoal text-white border-charcoal font-bold" 
+                                  : "bg-white text-charcoal/50 border-charcoal/15 hover:text-charcoal hover:border-charcoal/30"
+                              }`}
+                            >
+                              15 Min • Initial Quick Check
+                            </button>
+                            <button
+                              onClick={() => setSelectedMeetingType("45min")}
+                              className={`py-2 text-center text-xs font-mono uppercase transition-all border cursor-pointer ${
+                                selectedMeetingType === "45min" 
+                                  ? "bg-charcoal text-white border-charcoal font-bold" 
+                                  : "bg-white text-charcoal/50 border-charcoal/15 hover:text-charcoal hover:border-charcoal/30"
+                              }`}
+                            >
+                              45 Min • Detailed Diagnostic
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Booking calendar details */}
+                        <div className="space-y-4">
+                          <div className="space-y-2">
+                            <span className="font-mono text-[9px] uppercase tracking-wider text-charcoal/55">
+                              {lang === "DE" ? "Datum wählen (Mai 2026)" : "Select Date (May 2026)"}
+                            </span>
+                            <div className="grid grid-cols-5 gap-2">
+                              {mockDays.map((dayObj, i) => (
+                                <button
+                                  key={i}
+                                  onClick={() => {
+                                    setSelectedDay(dayObj.day);
+                                    setSelectedTimeSlot(null);
+                                  }}
+                                  className={`p-3 border flex flex-col items-center justify-center transition-all cursor-pointer ${
+                                    selectedDay === dayObj.day 
+                                      ? "border-[#C0823E] bg-charcoal text-white font-bold" 
+                                      : "border-charcoal/10 hover:border-charcoal/60 bg-white text-charcoal/70"
+                                  }`}
+                                >
+                                  <span className="text-[10px] font-mono opacity-50 uppercase">{dayObj.label}</span>
+                                  <span className="font-mono font-bold text-sm mt-0.5">{dayObj.day}</span>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Time selection */}
+                          {selectedDay ? (
+                            <div className="space-y-3 animate-fade-in">
+                              <span className="font-mono text-[9px] uppercase tracking-wider text-charcoal/55">
+                                {lang === "DE" ? `Verfügbare Uhrzeiten am ${selectedDay}. Mai` : `Available slots on May ${selectedDay}th`}
+                              </span>
+                              <div className="grid grid-cols-3 gap-2">
+                                {mockDays.find(d => d.day === selectedDay)?.slots.map((slot) => (
+                                  <button
+                                    key={slot}
+                                    onClick={() => setSelectedTimeSlot(slot)}
+                                    className={`py-2 text-center text-xs font-mono border transition-all cursor-pointer ${
+                                      selectedTimeSlot === slot 
+                                        ? "bg-[#C0823E] border-[#C0823E] text-white font-bold" 
+                                        : "bg-white border-charcoal/10 hover:border-charcoal text-charcoal/80"
+                                    }`}
+                                  >
+                                    {slot}
+                                  </button>
+                                ))}
+                              </div>
+
+                              {/* Trigger Booking confirmation */}
+                              {selectedTimeSlot && (
+                                <div className="pt-4 text-right">
+                                  <button
+                                    onClick={() => handleScheduleSubmit()}
+                                    className="bg-charcoal text-white hover:bg-[#C0823E] py-2.5 px-6 font-mono text-xs uppercase tracking-widest font-bold transition-all cursor-pointer shadow-sm border border-charcoal/10"
+                                  >
+                                    <span>{lang === "DE" ? "Terminerfassung abschließen" : "Reserve Time Slot"}</span>
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="border border-dashed border-charcoal/15 bg-white p-6 text-center">
+                              <span className="text-xs font-mono text-charcoal/40 italic">
+                                {lang === "DE" ? "Bitte wählen Sie erst ein Datum oben." : "Please select an available booking date first."}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      /* Scheduled Success Ticket */
+                      <div className="bg-[#FAF8F4] border border-[#C0823E]/40 p-5 space-y-3 text-left shadow-sm">
+                        <span className="bg-[#C0823E] text-white px-2 py-0.5 text-[9px] font-bold tracking-widest font-mono uppercase">
+                          {lang === "DE" ? "ZEITFENSTER RESERVIERT" : "TIME SLOT CAPTURED"}
+                        </span>
+                        <h4 className="font-serif text-base font-bold text-charcoal">
+                          {lang === "DE" ? "Terminslot im Kalender vorgemerkt!" : "Advisory slot captured!"}
+                        </h4>
+                        <div className="font-sans text-xs text-charcoal/85 space-y-1.5 pt-2 border-t border-charcoal/10">
+                          <p><strong>{lang === "DE" ? "Typ" : "Meeting Scope"}:</strong> {selectedMeetingType === "15min" ? "15-Min Fast Check" : "45-Min Strategy Diagnostic"}</p>
+                          <p><strong>{lang === "DE" ? "Uhrzeit" : "Schedule"}:</strong> 2026-05-{selectedDay} um {selectedTimeSlot} Uhr (Europe/Berlin)</p>
+                          <p className="text-charcoal/60 pt-2 italic text-[11px]">
+                            {lang === "DE" 
+                              ? "* Dieser Termin wurde in unseren Systemen blockiert. Nach erfolgreicher diagnostischer Prüfung des intake-Anliegens erhalten Sie eine offizielle digitale Kalendereinladung."
+                              : "* This spot has been locked in our docket. Upon diagnostic alignment on your project core, you will receive a secure calendar invite."}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Reset form view trigger */}
+                  <div className="pt-4 border-t border-charcoal/5 text-right">
                     <button
                       onClick={() => {
-                        setBookingStep("slot");
+                        setBookingStep("intake");
                         setSelectedDay(null);
                         setSelectedTimeSlot(null);
-                        setBookingForm({ name: "", email: "", company: "", message: "" });
+                        setOptionalScheduled(false);
+                        setBookingForm({ name: "", email: "", company: "", phone: "", challenge: "", message: "", preferredContact: "call" });
                       }}
-                      className="text-xs font-mono text-charcoal/60 hover:text-brand-red underline py-2 cursor-pointer"
+                      className="text-xs font-mono text-[#C0823E] hover:text-charcoal border border-[#C0823E]/35 hover:border-charcoal px-3 py-1.5 transition-all cursor-pointer font-semibold uppercase tracking-wider"
                     >
-                      {lang === "DE" ? "Einen weiteren Termin buchen" : "Reserve another session"}
+                      {lang === "DE" ? "Zurück zum Hauptformular" : "New Request"}
                     </button>
                   </div>
                 </div>
@@ -2514,6 +3945,31 @@ export default function App() {
 
             {/* Right Hand Side: Address / Legal Contact coordinates */}
             <div className="lg:col-span-5 space-y-8">
+              
+              {/* Approachable Founder Contact Card */}
+              <div className="border border-charcoal/15 bg-white p-5 md:p-6 space-y-4 group">
+                <div className="relative w-full aspect-square bg-[#FAF8F4] overflow-hidden border border-charcoal/10">
+                  <img
+                    src={konstiImage}
+                    alt="Dr. Konstantin Filbinger - Direct Contact"
+                    className="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-500 pointer-events-none"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="space-y-1.5 text-left">
+                  <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#C0823E] font-bold">
+                    {lang === "DE" ? "DIREKTER KONTAKT" : "DIRECT DIAL"}
+                  </div>
+                  <h4 className="font-serif text-lg font-bold text-charcoal">
+                    Dr. Konstantin Filbinger
+                  </h4>
+                  <p className="font-sans text-xs text-charcoal/70 leading-relaxed">
+                    {lang === "DE" 
+                      ? "Mandatsanfragen prüfe ich immer persönlich. Lassen Sie uns unkompliziert über Ihr Vorhaben sprechen."
+                      : "I review all inbound inquiries personally. Let's arrange a straightforward call to map out the next steps for your project."}
+                  </p>
+                </div>
+              </div>
               
               {/* Munich HQ Station */}
               <div className="border border-charcoal/15 bg-white p-6 md:p-8 space-y-4">
@@ -2561,7 +4017,7 @@ export default function App() {
         <div className="mt-16 sm:mt-24 mb-16 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
           {/* The Static Navigation Image in full size, uncropped, clean display */}
           <img 
-            src={munichImage}
+            src={vardalegalEndframe}
             alt="Strategic Navigation and Precision - Varda Legal"
             referrerPolicy="no-referrer"
             className="w-full h-auto block rounded shadow border border-charcoal/10"
