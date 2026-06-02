@@ -1659,8 +1659,8 @@ export default function App() {
                   {lang === "DE" ? (
                     <>
                       <p>Ein Vertrag ist kein Selbstzweck. Er soll Vereinbarungen fixieren und Risiken regeln. Doch in der Praxis sind Entwürfe oft schwer lesbar, überbucht mit juristischen Details und intransparent für die letztendliche Entscheidungsebene.</p>
-                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Varda analysiert Verträge nicht primär – Varda übersetzt Verträge in Entscheidungen.</p>
-                      <p>Mit unserer Methodik der <strong>Contract Intelligence</strong> überführen wir rohe <strong>Vertragsentwürfe</strong> in ein klares, logisches Handlungsdiagramm. Das Ergebnis ist unmittelbare <strong>Executive Clarity</strong> – die vollkommene Gewissheit darüber, welche kaufmännischen Verpflichtungen eingegangen werden, welche Risiken versicherbar sind und welche strategische <strong>Handlung</strong> als Nächstes erfolgen muss.</p>
+                      <p className="font-serif text-base sm:text-lg text-charcoal font-medium pt-2">Varda analysiert Vertragsentwürfe  – und übersetzt diese in Entscheidungen.</p>
+                      <p>Eine verständliche Vertragsanalyse überführt Herausforderungen in logische, intuitiv verständliche Handlungsdiagramme. Das Ergebnis ist unmittelbare <strong>Executive Clarity</strong> – die Klarheit darüber, welche kaufmännischen Verpflichtungen eingegangen werden, welche Risiken versicherbar sind und welche strategische <strong>Handlung</strong> als Nächstes erfolgen muss.</p>
                     </>
                   ) : (
                     <>
@@ -2978,7 +2978,7 @@ export default function App() {
           <div className="max-w-4xl mb-16 text-charcoal/80">
             <p className="font-serif text-lg sm:text-xl md:text-2xl leading-relaxed font-light italic text-[#555] border-l-2 border-[#947444]/20 pl-6">
               {lang === "DE" 
-                ? "Denkwerk versammelt Beobachtungen, Perspektiven und Erfahrungen aus der Beratung von Unternehmern – verbunden durch ein kohärentes gedankliches Fundament. Jede Säule widmet sich einem Kernprinzip operativer Realität: Token-Recovery fordert Kontrolle, der Unternehmensverkauf verlangt den Umgang mit Unsicherheit, und Verträge stiften Organisation. Gemeinsam spiegeln sie das strategische Denken von Varda wider."
+                ? "Denkwerk versammelt Beobachtungen, Perspektiven und Erfahrungen aus der Beratung von Unternehmern – verbunden durch ein kohärentes gedankliches Fundament. Jede Säule widmet sich einem Kernprinzip operativer Realität: Token-Recovery fordert Kontrolle, der Unternehmensverkauf verlangt den Umgang mit Unsicherheit, und Verträge begründen Ordnung. Gemeinsam spiegeln sie das strategische Denken von Varda wider."
                 : "Denkwerk gathers observations, perspectives, and experiences from advising entrepreneurs – bound together by a coherent intellectual framework. Each column is dedicated to a core principle of operational reality: Token Recovery demands Control, Company Sales navigate Uncertainty, and Contracts establish Organisation. Together, they reveal how Varda thinks."}
             </p>
           </div>
@@ -3073,14 +3073,14 @@ export default function App() {
           <div className="mt-24 border border-charcoal/15 bg-[#FAF8F5] p-8 md:p-12 relative flex flex-col md:flex-row justify-between items-start md:items-center gap-8 rounded-[1px]">
             <div className="space-y-3 max-w-2xl">
               <div className="font-mono text-[10px] uppercase tracking-widest text-[#947444] font-semibold">
-                {lang === "DE" ? "04.1 / KANZELEI-ARCHIV" : "04.1 / LIBRARY SERVICES"}
+                {lang === "DE" ? "04.1 / WISSEN" : "04.1 / LIBRARY SERVICES"}
               </div>
               <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-charcoal">
                 {lang === "DE" ? "Das Kompendium" : "The Compendium"}
               </h3>
               <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-light">
                 {lang === "DE"
-                  ? "Erhalten Sie lückenlosen Zugriff auf unser geschütztes Portal für vertiefende Analysen, Handbücher und wissenschaftlich fundierte Abhandlungen zu VC-Transaktionen, Gesellschaftsstreitbeilegung und digitalem Datenschutz."
+                  ? "Geschütztes Portal für vertiefte Analysen."
                   : "Access our protected research vault of academic legal papers, operational handbook models, and strategic breakdowns of corporate structural disputes and digital asset transaction protocols."}
               </p>
             </div>
