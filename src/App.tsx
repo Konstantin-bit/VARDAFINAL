@@ -34,6 +34,7 @@ import {
 import { content, Language, Article } from "./types";
 
 import contractIntelligenceImage from "./assets/images/contractintelligence2.png"
+import contractIntelligenceImageEng from "./assets/images/contractintelligence2eng.png"
 
 import munichImage from "./assets/images/vardalegal_munich.png"
 
@@ -46,8 +47,11 @@ import linkedinImage from "./assets/images/linkedin.png"
 
 import coffeeImage from "./assets/images/vardalegal_coffeetable.png"
 import tokenRecoveryImage from "./assets/images/tokenrecovery.png.png"
+import tokenRecoveryImageEng from "./assets/images/tokenrecoveryeng.png"
 import unternehmensverkaufImage from "./assets/images/unternehmensverkauf.png"
+import unternehmensverkaufImageEng from "./assets/images/unternehmensverkaufeng.png"
 import vertraegeImage from "./assets/images/vertraege.png"
+import vertraegeImageEng from "./assets/images/vertraegeeng-1.png"
 
 function DecisionArchitectureBlueprint({ lang }: { lang: Language }) {
   const [activeNode, setActiveNode] = useState<string | null>(null);
@@ -1687,7 +1691,7 @@ export default function App() {
               {/* Display of new strategic editorial asset "contractintelligence2.png" with generous whitespace, full content width */}
               <div className="py-8 w-full select-all bg-transparent">
                 <img 
-                  src={contractIntelligenceImage}
+                  src={lang === "DE" ? contractIntelligenceImage : contractIntelligenceImageEng}
                   alt="Varda Executive Clarity Blueprint"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain block"
@@ -3218,8 +3222,7 @@ export default function App() {
                                     {isTokenFirstHeading && (
                                       <div className="py-12 sm:py-20 my-8 flex flex-col items-center w-full select-all bg-transparent">
                                         <img 
-                                          src={tokenRecoveryImage} 
-                                          alt="Varda Decision Architecture No. 01: Token Recovery" 
+                                          src={lang === "DE" ? tokenRecoveryImage : tokenRecoveryImageEng}                                          alt="Varda Decision Architecture No. 01: Token Recovery" 
                                           className="w-full max-w-4xl h-auto object-contain"
                                           referrerPolicy="no-referrer"
                                         />
@@ -3228,8 +3231,7 @@ export default function App() {
                                     {isMnaFirstHeading && (
                                       <div className="py-12 sm:py-20 my-8 flex flex-col items-center w-full select-all bg-transparent">
                                         <img 
-                                          src={unternehmensverkaufImage} 
-                                          alt="Varda Decision Architecture No. 02: Der Unternehmensverkauf" 
+                                          src={lang === "DE" ? unternehmensverkaufImage : unternehmensverkaufImageEng}                                          alt="Varda Decision Architecture No. 02: Der Unternehmensverkauf" 
                                           className="w-full max-w-4xl h-auto object-contain"
                                           referrerPolicy="no-referrer"
                                         />
@@ -3238,8 +3240,7 @@ export default function App() {
                                     {isVertraegeFirstHeading && (
                                       <div className="py-12 sm:py-20 my-8 flex flex-col items-center w-full select-all bg-transparent">
                                         <img 
-                                          src={vertraegeImage} 
-                                          alt="Varda Decision Architecture No. 03: Verträge" 
+                                          src={lang === "DE" ? vertraegeImage : vertraegeImageEng}                                          alt="Varda Decision Architecture No. 03: Verträge" 
                                           className="w-full max-w-4xl h-auto object-contain"
                                           referrerPolicy="no-referrer"
                                         />
