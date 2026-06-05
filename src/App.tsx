@@ -3100,7 +3100,7 @@ export default function App() {
           <AnimatePresence>
             {selectedArticle && (
               <div 
-                className="fixed inset-0 z-50 overflow-y-auto bg-charcoal/40 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 md:p-10"
+                className="fixed inset-0 z-50 overflow-y-auto bg-charcoal/40 backdrop-blur-sm flex items-start md:items-center justify-center pt-24 pb-6 px-4 sm:pt-28 sm:pb-8 sm:px-6 md:p-10"
                 onClick={() => setSelectedArticle(null)}
               >
                 <motion.div
@@ -3108,7 +3108,7 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98, y: 15 }}
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full max-w-4xl bg-[#FAF8F5] border border-charcoal/15 p-6 sm:p-10 md:p-16 shadow-2xl flex flex-col justify-between rounded-[2px] max-h-[92vh] overflow-y-auto relative"
+                  className="w-full max-w-4xl bg-[#FAF8F5] border border-charcoal/15 p-6 sm:p-10 md:p-16 shadow-2xl flex flex-col justify-between rounded-[2px] max-h-[78vh] sm:max-h-[82vh] md:max-h-[92vh] overflow-y-auto relative"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="space-y-10">
