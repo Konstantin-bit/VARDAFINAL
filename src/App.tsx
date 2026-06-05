@@ -3358,7 +3358,7 @@ export default function App() {
                   {/* Closure & Legal Stamp footer */}
                   <div className="mt-12 pt-8 border-t border-charcoal/10 space-y-4">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono gap-4">
-                      <span className="text-charcoal/50">© 2026 VARDA LEGAL • GENTLEMANS AGREEMENT INSPIRED</span>
+                      <span className="text-charcoal/50">© 2026 VARDA LEGAL • VARDA LEGAL</span>
                       <a 
                         href="#letsgo" 
                         onClick={() => setSelectedArticle(null)}
