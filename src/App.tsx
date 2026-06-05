@@ -42,6 +42,7 @@ import vardalegalEndframe from "./assets/images/vardalegal_endframe.png"
 
 import konstiArch from "./assets/images/konsti2024_arch.png"
 import konstiImage from "./assets/images/konsti.png"
+import konstineuImage from "./assets/images/konstineu.png"
 import konstiClarity from "./assets/images/konsticlarity.png"
 import linkedinImage from "./assets/images/linkedin.png"
 
@@ -1518,7 +1519,7 @@ export default function App() {
                             <span className="font-mono text-[9px] uppercase tracking-widest text-[#C0823E] group-hover:text-charcoal font-bold transition-colors">
                               {menuItem.subtitle}
                             </span>
-                            <span className="text-[10px] text-charcoal/50 font-sans mt-0.5 group-hover:text-charcoal/70 transition-colors hidden sm:block">
+                            <span className="text-[10px] text-charcoal/50 font-sans mt-0.5 group-hover:text-charcoal/70 transition-colors block">
                               {menuItem.desc}
                             </span>
                           </div>
@@ -1618,7 +1619,7 @@ export default function App() {
             <div className="lg:col-span-5 bg-[#FAF8F4] border border-charcoal/15 p-6 flex flex-col justify-between group shadow-sm">
               <div className="relative w-full aspect-[4/3] sm:aspect-square lg:aspect-[4/3] xl:aspect-[4/3.2] bg-stone-100 border border-charcoal/15 overflow-hidden flex-grow">
                 <img
-                  src={konstiImage}
+                  src={konstineuImage}
                   alt="Dr. Konstantin Filbinger - Trusted Advisor"
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 pointer-events-none"
                   referrerPolicy="no-referrer"
@@ -3838,7 +3839,7 @@ export default function App() {
                                     setSelectedDay(dayObj.day);
                                     setSelectedTimeSlot(null);
                                   }}
-                                  className={`p-3 border flex flex-col items-center justify-center transition-all cursor-pointer ${
+                                  className={`p-1.5 sm:p-3 border flex flex-col items-center justify-center transition-all cursor-pointer ${
                                     selectedDay === dayObj.day 
                                       ? "border-[#C0823E] bg-charcoal text-white font-bold" 
                                       : "border-charcoal/10 hover:border-charcoal/60 bg-white text-charcoal/70"
@@ -4104,7 +4105,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-charcoal/85 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-charcoal/40 backdrop-blur-sm"
             onClick={() => setActiveLegalModal(null)}
           >
             <motion.div 
