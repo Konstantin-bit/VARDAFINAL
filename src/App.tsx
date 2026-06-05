@@ -39,6 +39,7 @@ import contractIntelligenceImageEng from "./assets/images/contractintelligence2e
 import munichImage from "./assets/images/vardalegal_munich.png"
 
 import vardalegalEndframe from "./assets/images/vardalegal_endframe.png"
+import vardalegalEndframeEng from "./assets/images/vardalegal_endframeeng.png"
 
 import konstiArch from "./assets/images/konsti2024_arch.png"
 import konstiImage from "./assets/images/konsti.png"
@@ -1519,7 +1520,7 @@ export default function App() {
                             <span className="font-mono text-[9px] uppercase tracking-widest text-[#C0823E] group-hover:text-charcoal font-bold transition-colors">
                               {menuItem.subtitle}
                             </span>
-                            <span className="text-[10px] text-charcoal/50 font-sans mt-0.5 group-hover:text-charcoal/70 transition-colors block">
+                            <span className="text-[10px] text-charcoal/50 font-sans mt-0.5 group-hover:text-charcoal/70 transition-colors hidden sm:block">
                               {menuItem.desc}
                             </span>
                           </div>
@@ -3839,7 +3840,7 @@ export default function App() {
                                     setSelectedDay(dayObj.day);
                                     setSelectedTimeSlot(null);
                                   }}
-                                  className={`p-1.5 sm:p-3 border flex flex-col items-center justify-center transition-all cursor-pointer ${
+                                  className={`p-3 border flex flex-col items-center justify-center transition-all cursor-pointer ${
                                     selectedDay === dayObj.day 
                                       ? "border-[#C0823E] bg-charcoal text-white font-bold" 
                                       : "border-charcoal/10 hover:border-charcoal/60 bg-white text-charcoal/70"
@@ -4019,7 +4020,7 @@ export default function App() {
         <div className="mt-16 sm:mt-24 mb-16 border border-charcoal/15 bg-[#faf8f4] p-4 md:p-6 shadow-sm">
           {/* The Static Navigation Image in full size, uncropped, clean display */}
           <img 
-            src={vardalegalEndframe}
+            src={lang === "DE" ? vardalegalEndframe : vardalegalEndframeEng}
             alt="Strategic Navigation and Precision - Varda Legal"
             referrerPolicy="no-referrer"
             className="w-full h-auto block rounded shadow border border-charcoal/10"
@@ -4105,7 +4106,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-charcoal/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-charcoal/85 backdrop-blur-md"
             onClick={() => setActiveLegalModal(null)}
           >
             <motion.div 
