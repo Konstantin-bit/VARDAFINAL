@@ -32,6 +32,7 @@ import {
   Camera
 } from "lucide-react";
 import { content, Language, Article } from "./types";
+import GruenderstrukturCheck from "./components/GruenderstrukturCheck";
 
 import contractIntelligenceImage from "./assets/images/contractintelligence2.png"
 import contractIntelligenceImageEng from "./assets/images/contractintelligence2eng.png"
@@ -858,6 +859,14 @@ export default function App() {
     message: "",
     preferredContact: "call" // "call" | "videocall" | "email"
   });
+
+  const handleNavigateToConsult = (msg: string) => {
+    setBookingForm(prev => ({
+      ...prev,
+      challenge: msg
+    }));
+    document.getElementById("letsgo")?.scrollIntoView({ behavior: "smooth" });
+  };
   const [optionalScheduled, setOptionalScheduled] = useState(false);
 
   // Unique layout states requested by USER
@@ -1841,6 +1850,9 @@ export default function App() {
             </div>
 
           </div>
+
+          {/* Interactive Gründerstruktur / Founder Structure Check App */}
+          <GruenderstrukturCheck lang={lang} onNavigateToConsult={handleNavigateToConsult} />
         </section>
 
         {/* SECTION 3: "FOKUS" (SPECIALITIES) */}
