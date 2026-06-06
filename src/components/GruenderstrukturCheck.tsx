@@ -454,33 +454,50 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
   };
 
   const results = getResults();
+  const isSingleFounder = answers[0] === 0;
+
   const mainReasonText = strings.mainReasons[results.topKey as keyof typeof strings.mainReasons] || strings.mainReasons.decision;
   const riskLevels = strings.riskLevels;
   const riskSubtexts = strings.riskSubtexts;
 
   const handleCopy = () => {
-    const levelText = riskLevels[results.riskLevel];
-    const bulletStr = strings.recBullets.map((b) => `- ${b}`).join("\n");
+    const levelText = isSingleFounder
+      ? (lang === "DE" ? "Fürs Erste dürfte die Gründung mit Musterprotokoll regelmäßig ausreichend sein." : "The model protocol is likely sufficient for the initial formation.")
+      : riskLevels[results.riskLevel];
+    
+    const displayExplanation = isSingleFounder
+      ? (lang === "DE" ? "Bei einer Ein-Personen-GmbH bestehen typischerweise keine Gründerkonflikte, keine Abstimmungsblockaden und keine komplexe Beteiligungslogik zwischen mehreren Gesellschaftern. Das Musterprotokoll kann daher für den Start eine pragmatische und kosteneffiziente Lösung sein." : "In a single-founder GmbH, there are usually no founder conflicts, voting deadlocks or complex ownership arrangements between several shareholders. For the initial setup, the model protocol can therefore be a pragmatic and cost-efficient option.")
+      : mainReasonText;
+
+    const displayNuance = isSingleFounder
+      ? (lang === "DE" ? "Spätestens wenn weitere Gesellschafter, Investoren, Mitarbeiterbeteiligungen oder besondere Regelungen zu Geschäftsführung, Anteilsübertragung oder Exit hinzukommen, sollte die Struktur überprüft und angepasst werden." : "Once additional shareholders, investors, employee participation or specific rules on management, share transfers or exit are introduced, the structure should be reviewed and adapted.")
+      : "";
+
+    const displayRecAction = isSingleFounder
+      ? (lang === "DE" ? "Start mit Musterprotokoll möglich. Struktur bei Wachstum or Aufnahme weiterer Beteiligter prüfen." : "Formation with the model protocol is likely acceptable for now. Review the structure when the company grows or additional stakeholders join.")
+      : strings.recText;
+
+    const bullets = isSingleFounder
+      ? (lang === "DE"
+          ? ["Aufnahme weiterer Gesellschafter", "Einstieg von Investoren", "Einführung von Mitarbeiterbeteiligungen", "Besondere Regelungen (z. B. GF, Exit)"]
+          : ["Adding additional shareholders", "Investor entry or fundraising", "Employee participation plans", "Custom management or exit rules"])
+      : strings.recBullets;
+
+    const bulletStr = bullets.map((b) => `- ${b}`).join("\n");
     const textToCopy =
       lang === "DE"
         ? `GRÜNDERSTRUKTUR CHECK — ERGEBNIS\n\n` +
           `Einschätzung: ${levelText}\n\n` +
-          `Hauptgrund:\n${mainReasonText}\n\n` +
-          `Zentrale Risikofelder:\n` +
-          `- Entscheidungsblockaden: ${strings.riskCards.decision.desc}\n` +
-          `- Anteilsübertragung: ${strings.riskCards.transfer.desc}\n` +
-          `- Leaver / Vesting: ${strings.riskCards.leaver.desc}\n\n` +
-          `Empfohlene Struktur: ${strings.recText}\n` +
+          `Erklärung:\n${displayExplanation}\n\n` +
+          (isSingleFounder ? `Wichtiger Hinweis:\n${displayNuance}\n\n` : "") +
+          `Empfehlung: ${displayRecAction}\n` +
           `${bulletStr}\n\n` +
           `Hinweis: ${strings.disclaimer}`
         : `FOUNDER STRUCTURE CHECK — RESULT\n\n` +
           `Assessment: ${levelText}\n\n` +
-          `Main Reason:\n${mainReasonText}\n\n` +
-          `Key Risk Areas:\n` +
-          `- Decision deadlocks: ${strings.riskCards.decision.desc}\n` +
-          `- Share transfers: ${strings.riskCards.transfer.desc}\n` +
-          `- Leaver / vesting: ${strings.riskCards.leaver.desc}\n\n` +
-          `Recommended Structure: ${strings.recText}\n` +
+          `Explanation:\n${displayExplanation}\n\n` +
+          (isSingleFounder ? `Important Nuance:\n${displayNuance}\n\n` : "") +
+          `Recommendation: ${displayRecAction}\n` +
           `${bulletStr}\n\n` +
           `Note: ${strings.disclaimer}`;
 
@@ -602,7 +619,7 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                         onClick={() => handleSelectOption(oIdx)}
                         className={`w-full text-left p-4 border transition-all duration-300 flex items-center justify-between text-xs sm:text-sm ${
                           isSelected 
-                            ? "border-[#C0823E] bg-[#FAF8F5] text-charcoal font-semibold shadow-sm"
+                             ? "border-[#C0823E] bg-[#FAF8F5] text-charcoal font-semibold shadow-sm"
                             : "border-charcoal/10 bg-white hover:border-charcoal/40 text-charcoal/80"
                         }`}
                       >
@@ -665,16 +682,20 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                 </div>
                 
                 <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
-                  <h4 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal tracking-tight">
-                    {riskLevels[results.riskLevel]}
+                  <h4 className="font-serif text-xl sm:text-2xl font-bold text-charcoal tracking-tight max-w-3xl leading-snug">
+                    {isSingleFounder 
+                      ? (lang === "DE" ? "Fürs Erste dürfte die Gründung mit Musterprotokoll regelmäßig ausreichend sein." : "The model protocol is likely sufficient for the initial formation.")
+                      : riskLevels[results.riskLevel]}
                   </h4>
                   <div className="font-mono text-xs text-charcoal/50">
-                    Total: {results.totalScore} Points
+                    {isSingleFounder ? (lang === "DE" ? "1 Gründer" : "1 Founder") : `Total: ${results.totalScore} Points`}
                   </div>
                 </div>
 
                 <p className="font-sans text-charcoal/85 text-sm sm:text-base leading-relaxed max-w-3xl">
-                  {riskSubtexts[results.riskLevel]}
+                  {isSingleFounder 
+                    ? (lang === "DE" ? "Bei einer Ein-Personen-GmbH bestehen typischerweise keine Gründerkonflikte, keine Abstimmungsblockaden und keine komplexe Beteiligungslogik zwischen mehreren Gesellschaftern. Das Musterprotokoll kann daher für den Start eine pragmatische und kosteneffiziente Lösung sein." : "In a single-founder GmbH, there are usually no founder conflicts, voting deadlocks or complex ownership arrangements between several shareholders. For the initial setup, the model protocol can therefore be a pragmatic and cost-efficient option.")
+                    : riskSubtexts[results.riskLevel]}
                 </p>
               </div>
 
@@ -684,21 +705,25 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                 {/* Left: Why / Main reason */}
                 <div className="md:col-span-5 space-y-4">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#C0823E] font-bold block">
-                    {strings.whyHeading}
+                    {isSingleFounder ? (lang === "DE" ? "WICHTIGER HINWEIS" : "IMPORTANT NUANCE") : strings.whyHeading}
                   </span>
                   <div className="p-5 bg-[#FAF8F5] border-l-2 border-[#C0823E] space-y-2">
                     <p className="font-sans text-charcoal text-xs sm:text-sm leading-relaxed font-semibold">
-                      {mainReasonText}
+                      {isSingleFounder 
+                        ? (lang === "DE" ? "Spätestens wenn weitere Gesellschafter, Investoren, Mitarbeiterbeteiligungen oder besondere Regelungen zu Geschäftsführung, Anteilsübertragung oder Exit hinzukommen, sollte die Struktur überprüft und angepasst werden." : "Once additional shareholders, investors, employee participation or specific rules on management, share transfers or exit are introduced, the structure should be reviewed and adapted.")
+                        : mainReasonText}
                     </p>
                   </div>
                   
                   {/* Scope note */}
                   <div className="space-y-2 pt-2">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-charcoal/40 font-bold block">
-                      {strings.whatHeading}
+                      {isSingleFounder ? (lang === "DE" ? "HINTERGRUND" : "BACKGROUND") : strings.whatHeading}
                     </span>
                     <p className="font-sans text-charcoal/65 text-xs leading-relaxed">
-                      {strings.whatText}
+                      {isSingleFounder 
+                        ? (lang === "DE" ? "Eine Ein-Personen-GmbH benötigt am ersten Tag selten eine maßgeschneiderte Satzung. Erst wenn Partner oder externes Kapital ins Spiel kommen, entstehen die typischen Reibungspunkte, die das Musterprotokoll unbrauchbar machen." : "A single-founder GmbH rarely requires customized articles of association on day one. Only once partners or external capital are introduced do the typical friction points arise where the model protocol falls short.")
+                        : strings.whatText}
                     </p>
                   </div>
                 </div>
@@ -712,10 +737,12 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                         <span className="font-mono text-[9px] uppercase tracking-widest font-bold text-charcoal/70">
                           {strings.riskCards.decision.title}
                         </span>
-                        <span className={`w-1.5 h-1.5 rounded-full ${results.decision >= 4 ? "bg-[#C0823E]" : "bg-charcoal/20"}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full ${!isSingleFounder && results.decision >= 4 ? "bg-[#C0823E]" : "bg-charcoal/20"}`} />
                       </div>
                       <p className="font-sans text-charcoal/60 text-[11px] leading-relaxed">
-                        {strings.riskCards.decision.desc}
+                        {isSingleFounder 
+                          ? (lang === "DE" ? "Keine Abstimmungsblockaden möglich." : "No voting deadlocks possible.") 
+                          : strings.riskCards.decision.desc}
                       </p>
                     </div>
 
@@ -725,10 +752,12 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                         <span className="font-mono text-[9px] uppercase tracking-widest font-bold text-charcoal/70">
                           {strings.riskCards.transfer.title}
                         </span>
-                        <span className={`w-1.5 h-1.5 rounded-full ${results.transfer >= 4 ? "bg-[#C0823E]" : "bg-charcoal/20"}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full ${!isSingleFounder && results.transfer >= 4 ? "bg-[#C0823E]" : "bg-charcoal/20"}`} />
                       </div>
                       <p className="font-sans text-charcoal/60 text-[11px] leading-relaxed">
-                        {strings.riskCards.transfer.desc}
+                        {isSingleFounder 
+                          ? (lang === "DE" ? "Anteilsübertragungen liegen allein bei Ihnen." : "Share transfers are solely up to you.") 
+                          : strings.riskCards.transfer.desc}
                       </p>
                     </div>
 
@@ -738,10 +767,12 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                         <span className="font-mono text-[9px] uppercase tracking-widest font-bold text-charcoal/70">
                           {strings.riskCards.leaver.title}
                         </span>
-                        <span className={`w-1.5 h-1.5 rounded-full ${results.leaver >= 4 ? "bg-[#C0823E]" : "bg-charcoal/20"}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full ${!isSingleFounder && results.leaver >= 4 ? "bg-[#C0823E]" : "bg-charcoal/20"}`} />
                       </div>
                       <p className="font-sans text-charcoal/60 text-[11px] leading-relaxed">
-                        {strings.riskCards.leaver.desc}
+                        {isSingleFounder 
+                          ? (lang === "DE" ? "Keine Leaver- oder Vesting-Themen relevant." : "No leaver or vesting issues relevant.") 
+                          : strings.riskCards.leaver.desc}
                       </p>
                     </div>
                   </div>
@@ -751,15 +782,28 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                     <div className="flex items-center space-x-2">
                       <FileText className="w-4 h-4 text-[#C0823E]" />
                       <span className="font-mono text-[10px] uppercase tracking-widest text-charcoal font-bold">
-                        {strings.recHeading}
+                        {isSingleFounder ? (lang === "DE" ? "EMPFOHLENER FAHRPLAN" : "RECOMMENDED PATH") : strings.recHeading}
                       </span>
                     </div>
                     <div className="space-y-3">
-                      <p className="font-serif text-base font-semibold text-[#1B2A4A]">
-                        {strings.recText}
+                      <p className="font-serif text-base font-semibold text-[#1B2A4A] leading-relaxed">
+                        {isSingleFounder 
+                          ? (lang === "DE" ? "Start mit Musterprotokoll möglich. Struktur bei Wachstum oder Aufnahme weiterer Beteiligter prüfen." : "Formation with the model protocol is likely acceptable for now. Review the structure when the company grows or additional stakeholders join.") 
+                          : strings.recText}
                       </p>
+                      
+                      {isSingleFounder && (
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-charcoal/50 block pt-1">
+                          {lang === "DE" ? "Sollte überprüft werden bei:" : "Should be reviewed upon:"}
+                        </span>
+                      )}
+
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-charcoal/80 font-sans">
-                        {strings.recBullets.map((bullet, bIdx) => (
+                        {(isSingleFounder
+                          ? (lang === "DE" 
+                              ? ["Aufnahme weiterer Gesellschafter", "Einstieg von Investoren", "Einführung von Mitarbeiterbeteiligungen", "Besondere Regelungen (z. B. GF, Exit)"]
+                              : ["Adding additional shareholders", "Investor entry or fundraising", "Employee participation plans", "Custom management or exit rules"])
+                          : strings.recBullets).map((bullet, bIdx) => (
                           <li key={bIdx} className="flex items-start space-x-2">
                             <Check className="w-3.5 h-3.5 text-[#C0823E] mt-0.5 flex-shrink-0" />
                             <span>{bullet}</span>
@@ -786,10 +830,16 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
                 <div className="md:col-span-4 flex flex-col gap-2 sm:flex-row md:flex-col justify-end">
                   <button
                     onClick={() => {
-                      const levelText = riskLevels[results.riskLevel];
-                      const inquiryMsg = lang === "DE" 
-                        ? `Gründerstruktur Check Ergebnis: ${levelText}. Hauptgrund: ${mainReasonText}. Gewünscht ist eine Prüfung für die Gründerstruktur.`
-                        : `Founder Structure Check Result: ${levelText}. Main Reason: ${mainReasonText}. Requesting founder structure review.`;
+                      const levelText = isSingleFounder
+                        ? (lang === "DE" ? "Ausreichend mit Musterprotokoll (Ein-Gründer-Szenario)" : "Model protocol sufficient (Single-founder scenario)")
+                        : riskLevels[results.riskLevel];
+                      const inquiryMsg = isSingleFounder
+                        ? (lang === "DE"
+                            ? `Ein-Gründer-Szenario: Gründung mit Musterprotokoll geplant. Beratung gewünscht zur Strukturierung bei Wachstum.`
+                            : `Single-founder scenario: Formation with model protocol planned. Requesting advice on growth structuring.`)
+                        : (lang === "DE" 
+                            ? `Gründerstruktur Check Ergebnis: ${levelText}. Hauptgrund: ${mainReasonText}. Gewünscht ist eine Prüfung für die Gründerstruktur.`
+                            : `Founder Structure Check Result: ${levelText}. Main Reason: ${mainReasonText}. Requesting founder structure review.`);
                       onNavigateToConsult(inquiryMsg);
                     }}
                     className="w-full bg-[#C0823E] text-white px-5 py-2.5 font-mono text-[11px] uppercase tracking-widest font-bold hover:bg-charcoal transition-colors text-center"
