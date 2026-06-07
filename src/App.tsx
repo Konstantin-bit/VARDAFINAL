@@ -16,6 +16,7 @@ import {
   Phone, 
   ArrowUpRight, 
   ChevronRight, 
+  ChevronDown, 
   BookOpen, 
   Sliders, 
   Plus, 
@@ -875,6 +876,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [heroSlide, setHeroSlide] = useState(0);
   const [activeLegalModal, setActiveLegalModal] = useState<"impressum" | "datenschutz" | null>(null);
+  const [showShortProfile, setShowShortProfile] = useState(false);
 
   // Simulated ProRes Living Video state
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
@@ -1851,6 +1853,125 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+
+          {/* Dr. Konstantin Filbinger Personal Profile / Trust Architecture Section */}
+          <div className="mt-24 pt-16 border-t border-charcoal/10 space-y-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              {/* Left Column: Direct personal advisory framing */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[0.25em] text-[#C0823E] uppercase font-bold">
+                    <span className="w-1.5 h-1.5 bg-[#C0823E]" />
+                    <span>{lang === "DE" ? "Persönliche Beratung" : "Personal Guidance"}</span>
+                  </div>
+                  <h3 className="font-serif text-3xl sm:text-4xl text-charcoal font-medium tracking-tight">
+                    {lang === "DE" ? "Persönliche Beratung. Klare Verantwortung." : "Personal advice. Clear responsibility."}
+                  </h3>
+                  <p className="font-sans text-sm sm:text-base text-charcoal font-medium tracking-wide">
+                    {lang === "DE" 
+                      ? "Dr. Konstantin Filbinger ist Ihr direkter Ansprechpartner bei Varda Legal."
+                      : "Dr. Konstantin Filbinger is your direct point of contact at Varda Legal."}
+                  </p>
+                </div>
+
+                <div className="font-sans text-charcoal/80 leading-relaxed text-sm md:text-base max-w-xl space-y-4">
+                  <p>
+                    {lang === "DE"
+                      ? "Ich berate Unternehmen, Gründer und Investoren in gesellschaftsrechtlichen, kommerziellen und technologiebezogenen Fragen. Im Mittelpunkt steht nicht die juristische Darstellung, sondern die unternehmerisch brauchbare Entscheidung: Was ist relevant? Was ist riskant? Was sollte als Nächstes geschehen?"
+                      : "I advise companies, founders and investors on corporate, commercial and technology-related matters. The focus is not legal exposition for its own sake, but a commercially usable decision: What matters? What is risky? What should happen next?"}
+                  </p>
+                </div>
+
+                {/* Expandable short profile controller */}
+                <div className="pt-4">
+                  <button
+                    onClick={() => setShowShortProfile(!showShortProfile)}
+                    className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-charcoal hover:text-brand-red transition-colors focus:outline-none cursor-pointer p-0 bg-transparent border-none"
+                  >
+                    <span className="border-b border-charcoal/50 group-hover:border-brand-red/50 pb-0.5 font-bold">
+                      {lang === "DE" 
+                        ? (showShortProfile ? "Kurzprofil ausblenden" : "Kurzprofil anzeigen")
+                        : (showShortProfile ? "Hide short profile" : "Show short profile")}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: showShortProfile ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-3.5 w-3.5 text-charcoal/50 group-hover:text-brand-red" />
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {showShortProfile && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-4 p-5 md:p-6 bg-[#FAF8F4] border border-charcoal/15 font-sans text-xs sm:text-sm text-charcoal/85 leading-relaxed space-y-3 shadow-inner rounded-none">
+                          <p className="font-serif italic text-charcoal/70 mb-2 border-l border-[#C0823E]/40 pl-4 py-0.5 font-medium">
+                            {lang === "DE" ? "Kanzlei-Profil & Kerndaten" : "Firm Profile & Key Credentials"}
+                          </p>
+                          <p>
+                            {lang === "DE"
+                              ? "Rechtsanwalt in München. Beratung von Unternehmen, Gründern und Investoren in Corporate-, Commercial-, M&A- und Tech-Mandaten. Langjährige Erfahrung mit komplexen Vertrags- und Transaktionsstrukturen, einschließlich digitaler Netzwerke und datengetriebener Geschäftsmodelle. Beratung auf Deutsch und Englisch."
+                              : "Lawyer based in Munich. Advising companies, founders and investors on corporate, commercial, M&A and tech matters. Many years of experience with complex contractual and transaction structures, including digital networks and data-driven business models. Advice in German and English."}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Right Column: Three Trust Architecture Information Modules */}
+              <div className="lg:col-span-5 space-y-6">
+                {/* Module 1: Fokus */}
+                <div className="border border-charcoal/15 bg-[#FAF8F4] p-5 sm:p-6 rounded-none space-y-2 group hover:border-[#C0823E]/60 transition-colors duration-300">
+                  <div className="flex justify-between items-baseline border-b border-charcoal/10 pb-2">
+                    <span className="font-mono text-[9px] font-bold text-charcoal/40 group-hover:text-[#C0823E] transition-colors uppercase tracking-[0.2em]">01 / {lang === "DE" ? "Fokus" : "Focus"}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-charcoal/20 group-hover:bg-[#C0823E]" />
+                  </div>
+                  <h4 className="font-serif text-lg font-medium text-charcoal">
+                    {lang === "DE" ? "Fokus" : "Focus"}
+                  </h4>
+                  <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-normal">
+                    {lang === "DE" ? "Corporate / Commercial / M&A / Tech" : "Corporate / Commercial / M&A / Tech"}
+                  </p>
+                </div>
+
+                {/* Module 2: Arbeitsweise */}
+                <div className="border border-charcoal/15 bg-[#FAF8F4] p-5 sm:p-6 rounded-none space-y-2 group hover:border-brand-red/60 transition-colors duration-300">
+                  <div className="flex justify-between items-baseline border-b border-charcoal/10 pb-2">
+                    <span className="font-mono text-[9px] font-bold text-charcoal/40 group-hover:text-brand-red transition-colors uppercase tracking-[0.2em]">02 / {lang === "DE" ? "Arbeitsweise" : "Working style"}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-charcoal/20 group-hover:bg-brand-red" />
+                  </div>
+                  <h4 className="font-serif text-lg font-medium text-charcoal">
+                    {lang === "DE" ? "Arbeitsweise" : "Working style"}
+                  </h4>
+                  <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-normal">
+                    {lang === "DE" ? "Direkt, strukturiert, empfehlungsorientiert" : "Direct, structured, recommendation-oriented"}
+                  </p>
+                </div>
+
+                {/* Module 3: Erfahrung */}
+                <div className="border border-charcoal/15 bg-[#FAF8F4] p-5 sm:p-6 rounded-none space-y-2 group hover:border-charcoal/50 transition-colors duration-300">
+                  <div className="flex justify-between items-baseline border-b border-charcoal/10 pb-2">
+                    <span className="font-mono text-[9px] font-bold text-charcoal/40 group-hover:text-charcoal transition-colors uppercase tracking-[0.2em]">03 / {lang === "DE" ? "Erfahrung" : "Experience"}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-charcoal/20 group-hover:bg-charcoal" />
+                  </div>
+                  <h4 className="font-serif text-lg font-medium text-charcoal">
+                    {lang === "DE" ? "Erfahrung" : "Experience"}
+                  </h4>
+                  <p className="font-sans text-xs sm:text-sm text-charcoal/70 leading-relaxed font-normal">
+                    {lang === "DE" ? "Verträge, Transaktionen, digitale Geschäftsmodelle" : "Contracts, transactions, digital business models"}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Interactive Gründerstruktur / Founder Structure Check App */}
