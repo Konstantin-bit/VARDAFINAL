@@ -138,7 +138,7 @@ export const content: Record<Language, ContentData> = {
     hero: {
       badge: "Corporate/Commercial/M&A/Tech",
       title: "Klarheit für komplexe Entscheidungen.",
-      subtitle: "Wir übersetzen tiefes juristisches Fachwissen in strategische Klarheit. Varda Legal reduziert Risiken, eliminiert Rauschen und schafft die Fundamente für Ihr unternehmerisches Wachstum.",
+      subtitle: "Varda Legal ist eine Rechtsanwaltskanzlei für unternehmerische Entscheidungen. Wir beraten in Corporate, Commercial, M&A und Tech — und übersetzen juristische Komplexität in strategische Klarheit.",
       cta: "Beratung buchen",
       secCta: "Fokus-Bereiche",
       stats: [
@@ -678,7 +678,7 @@ Token-Recovery-Probleme aufgrund Überweisungen an eine Wallet, deren Schlüssel
     hero: {
       badge: "Corporate/Commercial/M&A/Tech",
       title: "Clarity for Complex Decisions.",
-      subtitle: "We translate deep corporate expertise into strategic clarity. Varda Legal manages risks, reduces noise, and builds the blueprint that empowers fast-growing companies to scale with confidence.",
+      subtitle: "Varda Legal is a law firm for entrepreneurial decisions. We advise on corporate, commercial, M&A and tech matters — translating legal complexity into strategic clarity.",
       cta: "Book Advisory",
       secCta: "Our Focus",
       stats: [

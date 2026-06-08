@@ -1680,7 +1680,7 @@ export default function App() {
                   Dr. Konstantin Filbinger
                 </div>
                 <div className="font-mono text-[9px] text-[#C0823E] uppercase tracking-widest mt-1 font-semibold">
-                  {lang === "DE" ? "Ihr persönlicher Rechtsberater" : "Your Trusted Advisor"}
+                  {lang === "DE" ? "Rechtsanwalt · Gründer von Varda Legal" : "Lawyer · Founder of Varda Legal"}
                 </div>
               </div>
             </div>
