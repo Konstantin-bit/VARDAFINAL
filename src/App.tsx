@@ -977,6 +977,42 @@ export default function App() {
     return () => clearInterval(carouselTimer);
   }, []);
 
+  // Standalone linkability and language sync routing for "Gründerstruktur Check"
+  useEffect(() => {
+    const handleRouting = () => {
+      const hash = window.location.hash;
+      const path = window.location.pathname;
+
+      if (hash === "#founder-structure-check" || path.includes("/en")) {
+        setLang("EN");
+      } else if (hash === "#gruenderstruktur-check") {
+        setLang("DE");
+      }
+
+      const targetId = hash === "#founder-structure-check" 
+        ? "founder-structure-check" 
+        : hash === "#gruenderstruktur-check" 
+          ? "gruenderstruktur-check" 
+          : null;
+
+      if (targetId) {
+        setTimeout(() => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 150);
+      }
+    };
+
+    // Run on initial mount
+    handleRouting();
+
+    // Listen to hash/history changes for shared links or navigation
+    window.addEventListener("hashchange", handleRouting);
+    return () => window.removeEventListener("hashchange", handleRouting);
+  }, []);
+
   // Structural dynamic schema injection for LLMs / GEO Search indexing
   useEffect(() => {
     const existingScript = document.getElementById("ld-json-schema");

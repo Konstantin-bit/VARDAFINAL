@@ -512,7 +512,7 @@ export default function GruenderstrukturCheck({ lang, onNavigateToConsult }: { l
   const currentAnswers = lang === "DE" ? currentQ.answersDe : currentQ.answersEn;
 
   return (
-    <div id="gruender-check" className="mt-16 border-t border-charcoal/10 pt-16 max-w-5xl mx-auto">
+    <div id={lang === "DE" ? "gruenderstruktur-check" : "founder-structure-check"} className="mt-16 border-t border-charcoal/10 pt-16 max-w-5xl mx-auto scroll-mt-[120px]">
       {/* Restrained introductory block */}
       <div className="mb-8 space-y-3 max-w-2xl text-left">
         <span className="font-mono text-[10px] uppercase tracking-widest text-[#C0823E] font-bold">

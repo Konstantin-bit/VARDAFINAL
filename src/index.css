@@ -35,3 +35,8 @@
     overflow-x: hidden;
   }
 }
+
+#gruenderstruktur-check,
+#founder-structure-check {
+  scroll-margin-top: 120px;
+}
